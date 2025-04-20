@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cvlfsbayttnbq"]
 
-[ext_resource type="Script" uid="uid://bfksnyjj8k63a" path="res://Scripts/playermove.gd" id="1_a02cp"]
+[ext_resource type="Script" uid="uid://bfksnyjj8k63a" path="res://Scripts/playerscript.gd" id="1_a02cp"]
 
 [sub_resource type="Environment" id="Environment_a02cp"]
 fog_enabled = true
@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.478643, 0)
 shape = SubResource("BoxShape3D_a02cp")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.4, 3)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.5, 0.4, 0.5)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="floor/StaticBody3D"]
 shape = SubResource("BoxShape3D_go701")
@@ -74,5 +74,3 @@ shape = SubResource("CapsuleShape3D_a02cp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_go701")
-
-[node name="GridMap" type="GridMap" parent="."]
