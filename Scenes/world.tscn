@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=9 format=3 uid="uid://cvlfsbayttnbq"]
 
 [ext_resource type="Script" uid="uid://bfksnyjj8k63a" path="res://Scripts/playermove.gd" id="1_a02cp"]
-[ext_resource type="Script" uid="uid://cphm8xxjf5r84" path="res://Scripts/top_camera.gd" id="2_go701"]
 
 [sub_resource type="Environment" id="Environment_a02cp"]
 fog_enabled = true
@@ -27,9 +26,10 @@ size = Vector3(2, 2, 2)
 [node name="World" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.58883, 0.808257, 0, -0.808257, 0.58883, 0, 3.51138, 0)
+transform = Transform3D(1, 0, 0, 0, 0.350502, 0.936562, 0, -0.936562, 0.350502, 0, 3.51138, 0)
 shadow_enabled = true
-directional_shadow_max_distance = 20.0
+directional_shadow_max_distance = 50.0
+directional_shadow_pancake_size = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a02cp")
@@ -64,7 +64,6 @@ fov = 80.0
 [node name="Top camera" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15, 0)
 size = 15.0
-script = ExtResource("2_go701")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_a02cp")

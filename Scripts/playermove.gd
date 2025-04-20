@@ -6,6 +6,7 @@ extends CharacterBody3D
 const SPEED = 10.0
 const JUMP_VELOCITY = 5
 var MOUSE_SENSITIVITY = 0.002
+var buildmode = false
 
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -15,7 +16,7 @@ func _ready():
 
 func _input(event):
 	#Camera rotation
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and buildmode == false:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		camera.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
@@ -32,9 +33,15 @@ func _physics_process(delta):
 		get_tree().quit()
 	if Input.is_action_just_pressed("switchcam"):
 		if camera.current == true:
+			rotation = Vector3(0, 0, 0)
+			tcamera.rotation_degrees = Vector3(-90, 0, 0)
 			tcamera.current = true
+			buildmode = true
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif tcamera.current == true:
 			camera.current = true
+			buildmode = false
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
