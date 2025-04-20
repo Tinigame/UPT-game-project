@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=10 format=3 uid="uid://cvlfsbayttnbq"]
 
 [ext_resource type="Script" uid="uid://bfksnyjj8k63a" path="res://Scripts/playermove.gd" id="1_a02cp"]
 
@@ -7,8 +7,12 @@ fog_enabled = true
 fog_mode = 1
 fog_density = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a02cp"]
+albedo_color = Color(0.552956, 0.552956, 0.552956, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_yp4wr"]
-size = Vector2(100, 100)
+material = SubResource("StandardMaterial3D_a02cp")
+size = Vector2(1000, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
 size = Vector3(100, 1, 100)
