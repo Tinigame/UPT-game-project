@@ -2,15 +2,23 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $"FP camera"
 @onready var tcamera: Camera3D = $"Top camera"
 
-
-const SPEED = 10.0
-const JUMP_VELOCITY = 5
-var MOUSE_SENSITIVITY = 0.002
+const GRID_SIZE : int = 1
+const SPEED : float = 10.0
+const JUMP_VELOCITY : float = 5.0
+var MOUSE_SENSITIVITY : float= 0.002
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var ghost_location : Vector3
+var ghost_instance : MeshInstance3D
 
 
 func _ready():
+	camera.current = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	#summons and adds the initial build ghost
+	ghost_instance = summon_first_build_ghost()
+	add_child(ghost_instance)
+	ghost_instance.hide()
 
 
 #Camera and movement rotation
@@ -19,6 +27,31 @@ func _input(event):
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		camera.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
+
+
+#gets global position of where mouse clicked
+func get_mouse_world_position() -> Vector3:
+	var mouse_pos = get_viewport().get_mouse_position()
+	var from = tcamera.project_ray_origin(mouse_pos)
+	var to = from + tcamera.project_ray_normal(mouse_pos) * 1000
+	
+	var parameters = PhysicsRayQueryParameters3D.create(from, to, 2, [])
+	
+	var space_state = get_world_3d().direct_space_state
+	var result = space_state.intersect_ray(parameters)
+	
+	if result:
+		print(snap_to_grid(result.position))
+		return snap_to_grid(result.position)
+	return Vector3.ZERO
+
+#snaps the target build position to the grid (hopefully)
+func snap_to_grid(buildposition: Vector3) -> Vector3:
+	return Vector3(
+		round(buildposition.x / GRID_SIZE) * GRID_SIZE,
+		0.5,  # assuming flat plane at y=0
+		round(buildposition.z / GRID_SIZE) * GRID_SIZE
+	)
 
 
 #toggle between build mode
@@ -51,6 +84,27 @@ func player_movement():
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 
+func summon_first_build_ghost() -> MeshInstance3D:
+	var ghost_object_instance = MeshInstance3D.new()
+	var cube_mesh = BoxMesh.new()
+	var ghost_pos = Vector3(0, 0, 0)
+	var material = StandardMaterial3D.new()
+
+	material.albedo_color = Color(0.3, 0.8, 1.0, 0.5)  # semi-transparent bluish
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.flags_transparent = true
+	material.flags_unshaded = true  # optional, prevents lighting effects
+	cube_mesh.material = material
+
+	cube_mesh.size = Vector3(1, 1, 1)  # Set cube dimensions
+	ghost_object_instance.mesh = cube_mesh
+	ghost_object_instance.global_transform.origin = ghost_pos
+	
+	return ghost_object_instance
+
+func update_build_ghost(ghost_pos, ghost_instance):
+	ghost_instance.global_position = ghost_pos
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -59,6 +113,14 @@ func _physics_process(delta):
 	#exit the game when esc pressed
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
+
+	#get the mouse pos when buildmode enabled
+	if Globals.buildmode == true:
+		ghost_location = get_mouse_world_position()
+		update_build_ghost(ghost_location, ghost_instance)
+		ghost_instance.show()
+	elif Globals.buildmode == false:
+		ghost_instance.hide()
 
 	player_movement()
 	build_toggle()
