@@ -1,13 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=12 format=3 uid="uid://cvlfsbayttnbq"]
 
+[ext_resource type="Texture2D" uid="uid://b2c2mongmtk1k" path="res://Assets/Textures/Slate floor tile/Poliigon_SlateFloorTile_7657_BaseColor.jpg" id="1_5a7ea"]
 [ext_resource type="Script" uid="uid://bfksnyjj8k63a" path="res://Scripts/playermove.gd" id="1_a02cp"]
+[ext_resource type="Texture2D" uid="uid://beh10b1kxt1cc" path="res://Assets/Textures/Slate floor tile/Poliigon_SlateFloorTile_7657_Normal.png" id="2_8j60k"]
 
 [sub_resource type="Environment" id="Environment_a02cp"]
 fog_enabled = true
 fog_mode = 1
 fog_density = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a02cp"]
+albedo_texture = ExtResource("1_5a7ea")
+normal_enabled = true
+normal_texture = ExtResource("2_8j60k")
+uv1_scale = Vector3(20, 20, 20)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_yp4wr"]
+material = SubResource("StandardMaterial3D_a02cp")
 size = Vector2(100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
