@@ -41,7 +41,6 @@ func get_mouse_world_position() -> Vector3:
 	var result = space_state.intersect_ray(parameters)
 	
 	if result:
-		print(snap_to_grid(result.position))
 		return snap_to_grid(result.position)
 	return Vector3.ZERO
 
@@ -87,10 +86,9 @@ func player_movement():
 func summon_first_build_ghost() -> MeshInstance3D:
 	var ghost_object_instance = MeshInstance3D.new()
 	var cube_mesh = BoxMesh.new()
-	var ghost_pos = Vector3(0, 0, 0)
 	var material = StandardMaterial3D.new()
 
-	material.albedo_color = Color(0.3, 0.8, 1.0, 0.5)  # semi-transparent bluish
+	material.albedo_color = Color(0, 0.8, 0, 0.5)  # semi-transparent bluish
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	material.flags_transparent = true
 	material.flags_unshaded = true  # optional, prevents lighting effects
@@ -98,12 +96,11 @@ func summon_first_build_ghost() -> MeshInstance3D:
 
 	cube_mesh.size = Vector3(1, 1, 1)  # Set cube dimensions
 	ghost_object_instance.mesh = cube_mesh
-	ghost_object_instance.global_transform.origin = ghost_pos
 	
 	return ghost_object_instance
 
-func update_build_ghost(ghost_pos, ghost_instance):
-	ghost_instance.global_position = ghost_pos
+func update_build_ghost(ghost_pos, current_ghost_instance):
+	current_ghost_instance.global_position = ghost_pos
 
 func _physics_process(delta):
 	# Add the gravity.
