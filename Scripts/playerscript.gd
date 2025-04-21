@@ -3,9 +3,10 @@ extends CharacterBody3D
 @onready var tcamera: Camera3D = $"Top camera"
 
 const GRID_SIZE : int = 1
-const SPEED : float = 10.0
 const JUMP_VELOCITY : float = 5.0
-var MOUSE_SENSITIVITY : float= 0.002
+
+var move_speed : float = 5.0
+var mouse_sensitivity : float = 0.002
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var ghost_location : Vector3
 var ghost_instance : MeshInstance3D
@@ -24,8 +25,8 @@ func _ready():
 #Camera and movement rotation
 func _input(event):
 	if event is InputEventMouseMotion and Globals.buildmode == false:
-		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		camera.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
+		rotate_y(-event.relative.x * mouse_sensitivity)
+		camera.rotate_x(-event.relative.y * mouse_sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
 
 
@@ -76,11 +77,11 @@ func player_movement():
 	var input_dir = Input.get_vector("A", "D", "W", "S")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * move_speed
+		velocity.z = direction.z * move_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, move_speed)
+		velocity.z = move_toward(velocity.z, 0, move_speed)
 
 
 func summon_first_build_ghost() -> MeshInstance3D:
@@ -99,8 +100,15 @@ func summon_first_build_ghost() -> MeshInstance3D:
 	
 	return ghost_object_instance
 
+
 func update_build_ghost(ghost_pos, current_ghost_instance):
 	current_ghost_instance.global_position = ghost_pos
+
+
+#builds a building using info and resources from the current buildings resource file
+func build_building(building_resource, build_location):
+	pass
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -116,6 +124,9 @@ func _physics_process(delta):
 		ghost_location = get_mouse_world_position()
 		update_build_ghost(ghost_location, ghost_instance)
 		ghost_instance.show()
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			var current_building = preload("res://Resources/buildings/conveyor.tres")
+			build_building(current_building, ghost_location)
 	elif Globals.buildmode == false:
 		ghost_instance.hide()
 
