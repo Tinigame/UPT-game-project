@@ -11,6 +11,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var ghost_location : Vector3
 var ghost_instance : MeshInstance3D
 
+var current_building = preload("res://Resources/buildings/conveyor_belt.tres")
+
 
 func _ready():
 	camera.current = true
@@ -105,11 +107,6 @@ func update_build_ghost(ghost_pos, current_ghost_instance):
 	current_ghost_instance.global_position = ghost_pos
 
 
-#builds a building using info and resources from the current buildings resource file
-func build_building(building_resource, build_location):
-	pass
-
-
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -124,9 +121,7 @@ func _physics_process(delta):
 		ghost_location = get_mouse_world_position()
 		update_build_ghost(ghost_location, ghost_instance)
 		ghost_instance.show()
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			var current_building = preload("res://Resources/buildings/conveyor.tres")
-			build_building(current_building, ghost_location)
+		Globals.building_location = ghost_location
 	elif Globals.buildmode == false:
 		ghost_instance.hide()
 

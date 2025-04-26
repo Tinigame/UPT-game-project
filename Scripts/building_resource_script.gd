@@ -1,7 +1,7 @@
+class_name Building
 extends Resource
 
-@export var building_height : int
-@export var building_width : int
+@export var building_size : Vector3
 @export var building_mesh : Mesh
 
 @export var building_health : float
