@@ -45,9 +45,18 @@ func build_building(build_info : Building):
 		building.name = String(build_info.building_name + str(id))
 		id = id + 1
 		
-		#moves the building to the correct position
-		building.position = Vector3(Globals.building_location.x, build_info.building_size.y / 2, Globals.building_location.z)
+		#checks if the building is even sized and then applies an offset
+		var offset = Vector3(0, 0, 0)
+		if int(build_info.building_size.x) % 2 == 0:
+			offset.x += 0.5
+		if int(build_info.building_size.z) % 2 == 0:
+			offset.z += 0.5
 		
+		#moves the building to the location
+		var final_position = Vector3((Globals.building_location.x + offset.x) * 1, build_info.building_size.y / 2, (Globals.building_location.z + offset.z) * 1)
+		building.position = final_position
+		
+		#adds the building to the tree and to the array
 		add_child(building)
 		buildings.append(building)    
 		
