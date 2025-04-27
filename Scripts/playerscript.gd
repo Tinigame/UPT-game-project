@@ -121,7 +121,7 @@ func _physics_process(delta):
 		ghost_location = get_mouse_world_position()
 		update_build_ghost(ghost_location, ghost_instance)
 		ghost_instance.show()
-		Globals.building_location = ghost_location
+		Globals.building_location = Vector3(ghost_location.x, 0, ghost_location.z)
 	elif Globals.buildmode == false:
 		ghost_instance.hide()
 
