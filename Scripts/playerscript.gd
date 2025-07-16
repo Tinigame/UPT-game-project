@@ -91,13 +91,12 @@ func summon_first_build_ghost() -> MeshInstance3D:
 	var cube_mesh = BoxMesh.new()
 	var material = StandardMaterial3D.new()
 
-	material.albedo_color = Color(0, 0.8, 0, 0.5)  # semi-transparent bluish
+	material.albedo_color = Color(0, 0.8, 0, 0.5)
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	material.flags_transparent = true
-	material.flags_unshaded = true  # optional, prevents lighting effects
+	material.flags_unshaded = true
 	cube_mesh.material = material
 
-	cube_mesh.size = Vector3(1, 1, 1)  # Set cube dimensions
 	ghost_object_instance.mesh = cube_mesh
 	
 	return ghost_object_instance
@@ -105,6 +104,16 @@ func summon_first_build_ghost() -> MeshInstance3D:
 
 func update_build_ghost(ghost_pos, current_ghost_instance):
 	current_ghost_instance.global_position = ghost_pos
+	var ghost_mesh = Globals.selected_building.building_mesh.duplicate()
+	
+	var material = StandardMaterial3D.new()
+	material.albedo_color = Color(0, 0.8, 0, 0.5)
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.flags_transparent = true
+	material.flags_unshaded = true
+	
+	ghost_mesh.material = material
+	current_ghost_instance.mesh = ghost_mesh
 
 
 func _physics_process(delta):

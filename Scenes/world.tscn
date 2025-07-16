@@ -5,9 +5,11 @@
 [ext_resource type="Script" uid="uid://ceduopt35qeiq" path="res://Scenes/building_manager.gd" id="2_8j60k"]
 
 [sub_resource type="Environment" id="Environment_a02cp"]
+background_energy_multiplier = 0.0
+ambient_light_source = 1
+reflected_light_source = 1
 fog_mode = 1
 fog_density = 1.0
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.815686, 1, 1, 1)
 

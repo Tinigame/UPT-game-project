@@ -26,7 +26,6 @@ func build_building(build_info : Building):
 		#check if those cells are already in use
 		for cell in required_cells:
 			if occupied_cells.has(cell):
-				print(cell, " building space occupied")
 				return
 		
 		#adds collision shape to building
