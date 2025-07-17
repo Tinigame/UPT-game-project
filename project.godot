@@ -13,6 +13,7 @@ config_version=5
 config/name="UPT Logistics project"
 run/main_scene="uid://cvlfsbayttnbq"
 config/features=PackedStringArray("4.4", "Forward Plus")
+run/max_fps=240
 config/icon="res://icon.svg"
 
 [autoload]
@@ -23,6 +24,7 @@ Globals="*res://Scripts/globals.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/vsync/vsync_mode=0
 
 [dotnet]
 

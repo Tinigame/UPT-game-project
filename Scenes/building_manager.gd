@@ -62,3 +62,4 @@ func build_building(build_info : Building):
 		#mark the cells as occupied
 		for cell in required_cells:
 			occupied_cells[cell] = building
+			print(cell)

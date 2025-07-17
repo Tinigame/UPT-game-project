@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=15 format=3 uid="uid://cvlfsbayttnbq"]
 
 [ext_resource type="Script" uid="uid://bfksnyjj8k63a" path="res://Scripts/playerscript.gd" id="1_a02cp"]
 [ext_resource type="PackedScene" uid="uid://cal73ykiyki7y" path="res://Scenes/building.tscn" id="2_5a7ea"]
 [ext_resource type="Script" uid="uid://ceduopt35qeiq" path="res://Scenes/building_manager.gd" id="2_8j60k"]
+[ext_resource type="Script" uid="uid://4xjf73360oqy" path="res://Scripts/ore_generator.gd" id="3_8j60k"]
+[ext_resource type="Script" uid="uid://bn4uqfhshym4m" path="res://Scripts/fps_counter.gd" id="5_fo5ed"]
 
 [sub_resource type="Environment" id="Environment_a02cp"]
 background_energy_multiplier = 0.0
@@ -21,7 +23,7 @@ material = SubResource("StandardMaterial3D_a02cp")
 size = Vector2(1000, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
-size = Vector3(100, 1, 100)
+size = Vector3(1000, 1, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_go701"]
 size = Vector3(2, 2, 2)
@@ -32,6 +34,9 @@ size = Vector3(2, 2, 2)
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a02cp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_go701"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fo5ed"]
+font_size = 48
 
 [node name="World" type="Node3D"]
 
@@ -47,6 +52,9 @@ environment = SubResource("Environment_a02cp")
 [node name="Buildings" type="Node3D" parent="."]
 script = ExtResource("2_8j60k")
 building_base = ExtResource("2_5a7ea")
+
+[node name="Ore_Generator" type="Node3D" parent="."]
+script = ExtResource("3_8j60k")
 
 [node name="floor" type="StaticBody3D" parent="."]
 collision_layer = 3
@@ -85,3 +93,12 @@ shape = SubResource("CapsuleShape3D_a02cp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 mesh = SubResource("CapsuleMesh_go701")
+
+[node name="FPS counter" type="Label" parent="Player"]
+offset_left = 85.0
+offset_top = 31.0
+offset_right = 596.0
+offset_bottom = 91.0
+text = "FPS: 686964839"
+label_settings = SubResource("LabelSettings_fo5ed")
+script = ExtResource("5_fo5ed")
