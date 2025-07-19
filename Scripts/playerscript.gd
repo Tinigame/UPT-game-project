@@ -23,7 +23,6 @@ func _ready():
 	add_child(ghost_instance)
 	ghost_instance.hide()
 
-
 #Camera and movement rotation
 func _input(event):
 	if event is InputEventMouseMotion and Globals.buildmode == false:
@@ -101,20 +100,21 @@ func summon_first_build_ghost() -> MeshInstance3D:
 	
 	return ghost_object_instance
 
-
+var last_Selected_building = null
 func update_build_ghost(ghost_pos, current_ghost_instance):
 	current_ghost_instance.global_position = ghost_pos
-	var ghost_mesh = Globals.selected_building.building_mesh.duplicate()
-	
-	var material = StandardMaterial3D.new()
-	material.albedo_color = Color(0, 0.8, 0, 0.5)
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.flags_transparent = true
-	material.flags_unshaded = true
-	
-	ghost_mesh.material = material
-	current_ghost_instance.mesh = ghost_mesh
-
+	if last_Selected_building != Globals.selected_building.building_mesh:
+		last_Selected_building = Globals.selected_building.building_mesh
+		var ghost_mesh = Globals.selected_building.building_mesh.duplicate()
+		
+		var material = StandardMaterial3D.new()
+		material.albedo_color = Color(0, 0.8, 0, 0.5)
+		material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		material.flags_transparent = true
+		material.flags_unshaded = true
+		
+		ghost_mesh.material = material
+		current_ghost_instance.mesh = ghost_mesh
 
 func _physics_process(delta):
 	# Add the gravity.

@@ -2,39 +2,68 @@ extends Node3D
 
 var iron_noise = FastNoiseLite.new()
 
+var gridx : float = 1000.0
+var gridy : float = 1000.0
+
 var ore_map: Dictionary = {}
 var ore_types = ["iron", "copper", "coal", "stone"]
 
-func generate_random_ore_map(grid_size_x: int, grid_size_z: int, ore_types: Array):
+func generate_random_ore_map(grid_size_x: int, grid_size_z: int, ore2_types: Array):
 	for x in range(grid_size_x):
 		for z in range(grid_size_z):
-			if randf() < 1:
-				var ore = ore_types[randi() % ore_types.size()]
+			if randf() < 0.1:
+				var ore = ore2_types[randi() % ore2_types.size()]
 				ore_map[Vector3(x, 0, z)] = ore
 
 func visualize_ores():
+	# Create the base mesh (Box)
+	var box_mesh = BoxMesh.new()
+	box_mesh.size = Vector3(1, 1, 1)
+
+	# Create material and enable per-instance color
+	var mat = StandardMaterial3D.new()
+	mat.vertex_color_use_as_albedo = true
+	box_mesh.material = mat
+
+	# Create the multimesh
+	var multimesh = MultiMesh.new()
+	multimesh.mesh = box_mesh
+	multimesh.use_colors = true
+	multimesh.transform_format = MultiMesh.TRANSFORM_3D
+	multimesh.instance_count = ore_map.size()
+
+	# Create the instance container
+	var multimesh_instance = MultiMeshInstance3D.new()
+	multimesh_instance.multimesh = multimesh
+	multimesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+
+	# Assign transform and color to each instance
+	var i = 0
 	for cell in ore_map.keys():
-		var oremesh = MeshInstance3D.new()
-		var orecube = BoxMesh.new()
-		oremesh.scale = Vector3(1, 1, 1)
-		oremesh.position = cell + Vector3(0, 0, 0)
-		
-		var mat = StandardMaterial3D.new()
+		var transform = Transform3D()
+		transform.origin = cell
+		multimesh.set_instance_transform(i, transform)
+
+		var color := Color.WHITE
 		match ore_map[cell]:
 			"iron":
-				mat.albedo_color = Color(0.7, 0.7, 0.7)
+				color = Color(0.7, 0.7, 0.7)
 			"copper":
-				mat.albedo_color = Color(1.0, 0.5, 0.2)
+				color = Color(1.0, 0.5, 0.2)
 			"coal":
-				mat.albedo_color = Color(0.1, 0.1, 0.1)
+				color = Color(0.1, 0.1, 0.1)
 			"stone":
-				mat.albedo_color = Color(1, 0, 0)
-		
-		orecube.material = mat
-		oremesh.mesh = orecube
-		add_child(oremesh)
+				color = Color(1, 0, 0)
+
+		multimesh.set_instance_color(i, color)
+		i += 1
+
+	add_child(multimesh_instance)
+
 
 func _ready() -> void:
 	randomize()
-	generate_random_ore_map(100, 100, ore_types)
+	generate_random_ore_map(gridx, gridy, ore_types)
+	self.position.x -= gridx / 2
+	self.position.z -= gridy / 2 
 	visualize_ores()

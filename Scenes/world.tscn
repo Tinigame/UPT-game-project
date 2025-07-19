@@ -10,8 +10,10 @@
 background_energy_multiplier = 0.0
 ambient_light_source = 1
 reflected_light_source = 1
+fog_enabled = true
 fog_mode = 1
 fog_density = 1.0
+fog_depth_begin = 0.0
 volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.815686, 1, 1, 1)
 
@@ -41,8 +43,10 @@ font_size = 48
 [node name="World" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.350502, 0.936562, 0, -0.936562, 0.350502, 0, 3.51138, 0)
+transform = Transform3D(0.436912, -0.876291, -0.203032, 0, -0.225716, 0.974193, -0.899504, -0.425636, -0.0986179, 0, 3.51138, 0)
+light_energy = 2.0
 shadow_enabled = true
+directional_shadow_blend_splits = true
 directional_shadow_max_distance = 50.0
 directional_shadow_pancake_size = 0.0
 
@@ -54,6 +58,7 @@ script = ExtResource("2_8j60k")
 building_base = ExtResource("2_5a7ea")
 
 [node name="Ore_Generator" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -50)
 script = ExtResource("3_8j60k")
 
 [node name="floor" type="StaticBody3D" parent="."]
@@ -81,12 +86,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44046, 0)
 script = ExtResource("1_a02cp")
 
 [node name="FP camera" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491479, -0.000952303)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491, 0)
 fov = 80.0
 
 [node name="Top camera" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15, 0)
+fov = 80.0
 size = 15.0
+far = 100.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("CapsuleShape3D_a02cp")
