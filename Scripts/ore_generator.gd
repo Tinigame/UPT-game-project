@@ -8,6 +8,8 @@ var oregridy : float = 1000.0
 var ore_map: Dictionary = {}
 var ore_types = ["iron", "copper", "coal", "stone"]
 
+
+
 func generate_iron_ore_with_noise(grid_size : float):
 	var iron_noise = FastNoiseLite.new()
 	iron_noise.noise_type = FastNoiseLite.TYPE_PERLIN
@@ -22,6 +24,8 @@ func generate_iron_ore_with_noise(grid_size : float):
 			if number > 0.3:
 				ore_map[Vector3(x, 0, z)] = "iron"
 
+
+
 func generate_copper_ore_with_noise(grid_size : float):
 	var copper_noise = FastNoiseLite.new()
 	copper_noise.noise_type = FastNoiseLite.TYPE_PERLIN
@@ -35,6 +39,8 @@ func generate_copper_ore_with_noise(grid_size : float):
 			
 			if number > 0.3:
 				ore_map[Vector3(x, 0, z)] = "copper"
+
+
 
 func visualize_ores():
 	# Create the base mesh (Box)
@@ -85,7 +91,6 @@ func visualize_ores():
 func _ready() -> void:
 	generate_copper_ore_with_noise(ore_grid_size)
 	generate_iron_ore_with_noise(ore_grid_size)
-
-#	self.position.x -= oregridx / 2
-#	self.position.z -= oregridy / 2 
+	
 	visualize_ores()
+	Globals.ore_map = ore_map
