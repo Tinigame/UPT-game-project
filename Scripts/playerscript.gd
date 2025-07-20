@@ -71,9 +71,10 @@ func build_toggle():
 
 #handle jump, movement
 func player_movement():
-	# Handle Jump.
-	if Input.is_action_just_pressed("space") and is_on_floor():
+	# Add back in the is_on_floor(), i removed it for testing.
+	if Input.is_action_just_pressed("space"):
 		velocity.y = JUMP_VELOCITY
+
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("A", "D", "W", "S")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()

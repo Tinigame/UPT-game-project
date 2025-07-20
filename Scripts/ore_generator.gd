@@ -8,12 +8,26 @@ var gridy : float = 1000.0
 var ore_map: Dictionary = {}
 var ore_types = ["iron", "copper", "coal", "stone"]
 
-func generate_random_ore_map(grid_size_x: int, grid_size_z: int, ore2_types: Array):
+func generate_random_ore_map(grid_size_x: float, grid_size_z: float, ore2_types: Array):
 	for x in range(grid_size_x):
 		for z in range(grid_size_z):
 			if randf() < 0.1:
 				var ore = ore2_types[randi() % ore2_types.size()]
 				ore_map[Vector3(x, 0, z)] = ore
+
+
+func generate_ore_with_noise(grid_size_x: float, grid_size_z: float, ore2_types: Array):
+	iron_noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	
+	for x in range(grid_size_x):
+		for z in range(grid_size_z):
+			var number = iron_noise.get_noise_2d(x, z)
+			
+			if number > 0.3:
+				ore_map[Vector3(x, 0, z)] = "copper"
+			elif number < -0.3:
+				ore_map[Vector3(x, 0, z)] = "iron"
+
 
 func visualize_ores():
 	# Create the base mesh (Box)
@@ -47,13 +61,13 @@ func visualize_ores():
 		var color := Color.WHITE
 		match ore_map[cell]:
 			"iron":
-				color = Color(0.7, 0.7, 0.7)
+				color = Color(0.1, 0.1, 1)
 			"copper":
-				color = Color(1.0, 0.5, 0.2)
+				color = Color(1.0, 0.1, 0.1)
 			"coal":
-				color = Color(0.1, 0.1, 0.1)
+				color = Color(0, 0, 0)
 			"stone":
-				color = Color(1, 0, 0)
+				color = Color(0, 1, 0)
 
 		multimesh.set_instance_color(i, color)
 		i += 1
@@ -63,7 +77,8 @@ func visualize_ores():
 
 func _ready() -> void:
 	randomize()
-	generate_random_ore_map(gridx, gridy, ore_types)
+#	generate_random_ore_map(gridx, gridy, ore_types)
+	generate_ore_with_noise(gridx, gridy, ore_types)
 	self.position.x -= gridx / 2
 	self.position.z -= gridy / 2 
 	visualize_ores()
