@@ -1,33 +1,40 @@
 extends Node3D
 
-var iron_noise = FastNoiseLite.new()
 
-var gridx : float = 1000.0
-var gridy : float = 1000.0
+var ore_grid_size : float = 1000
+var oregridx : float = 1000.0
+var oregridy : float = 1000.0
 
 var ore_map: Dictionary = {}
 var ore_types = ["iron", "copper", "coal", "stone"]
 
-func generate_random_ore_map(grid_size_x: float, grid_size_z: float, ore2_types: Array):
-	for x in range(grid_size_x):
-		for z in range(grid_size_z):
-			if randf() < 0.1:
-				var ore = ore2_types[randi() % ore2_types.size()]
-				ore_map[Vector3(x, 0, z)] = ore
-
-
-func generate_ore_with_noise(grid_size_x: float, grid_size_z: float, ore2_types: Array):
+func generate_iron_ore_with_noise(grid_size : float):
+	var iron_noise = FastNoiseLite.new()
 	iron_noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	iron_noise.seed = randi()
 	
-	for x in range(grid_size_x):
-		for z in range(grid_size_z):
+	var half = grid_size / 2
+	
+	for x in range(-half, half):
+		for z in range(-half, half):
 			var number = iron_noise.get_noise_2d(x, z)
 			
 			if number > 0.3:
-				ore_map[Vector3(x, 0, z)] = "copper"
-			elif number < -0.3:
 				ore_map[Vector3(x, 0, z)] = "iron"
 
+func generate_copper_ore_with_noise(grid_size : float):
+	var copper_noise = FastNoiseLite.new()
+	copper_noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	copper_noise.seed = randi()
+	
+	var half = grid_size / 2
+	
+	for x in range(-half, half):
+		for z in range(-half, half):
+			var number = copper_noise.get_noise_2d(x, z)
+			
+			if number > 0.3:
+				ore_map[Vector3(x, 0, z)] = "copper"
 
 func visualize_ores():
 	# Create the base mesh (Box)
@@ -76,9 +83,9 @@ func visualize_ores():
 
 
 func _ready() -> void:
-	randomize()
-#	generate_random_ore_map(gridx, gridy, ore_types)
-	generate_ore_with_noise(gridx, gridy, ore_types)
-	self.position.x -= gridx / 2
-	self.position.z -= gridy / 2 
+	generate_copper_ore_with_noise(ore_grid_size)
+	generate_iron_ore_with_noise(ore_grid_size)
+
+#	self.position.x -= oregridx / 2
+#	self.position.z -= oregridy / 2 
 	visualize_ores()
