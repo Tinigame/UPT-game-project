@@ -103,7 +103,12 @@ func summon_first_build_ghost() -> MeshInstance3D:
 
 var last_Selected_building = null
 func update_build_ghost(ghost_pos, current_ghost_instance):
-	current_ghost_instance.global_position = ghost_pos
+	
+	#makes ghost aligned to the grid like the buildings
+	var size = Globals.selected_building.building_size
+	var offset = Vector3((size.x / 2.0) - 0.5, 0, (size.z / 2.0) - 0.5)
+	current_ghost_instance.global_position = ghost_pos + offset
+
 	if last_Selected_building != Globals.selected_building.building_mesh:
 		last_Selected_building = Globals.selected_building.building_mesh
 		var ghost_mesh = Globals.selected_building.building_mesh.duplicate()

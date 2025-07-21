@@ -2,8 +2,6 @@ extends Node3D
 
 
 var ore_grid_size : float = 1000
-var oregridx : float = 1000.0
-var oregridy : float = 1000.0
 
 var ore_map: Dictionary = {}
 var ore_types = ["iron", "copper", "coal", "stone"]
@@ -22,7 +20,7 @@ func generate_iron_ore_with_noise(grid_size : float):
 			var number = iron_noise.get_noise_2d(x, z)
 			
 			if number > 0.3:
-				ore_map[Vector3(x, 0, z)] = "iron"
+				ore_map[Vector3i(x, 0, z)] = "iron"
 
 
 
@@ -32,20 +30,20 @@ func generate_copper_ore_with_noise(grid_size : float):
 	copper_noise.seed = randi()
 	
 	var half = grid_size / 2
-	
+
 	for x in range(-half, half):
 		for z in range(-half, half):
 			var number = copper_noise.get_noise_2d(x, z)
 			
 			if number > 0.3:
-				ore_map[Vector3(x, 0, z)] = "copper"
+				ore_map[Vector3i(x, 0, z)] = "copper"
 
 
 
 func visualize_ores():
 	# Create the base mesh (Box)
 	var box_mesh = BoxMesh.new()
-	box_mesh.size = Vector3(1, 1, 1)
+	box_mesh.size = Vector3i(1, 1, 1)
 
 	# Create material and enable per-instance color
 	var mat = StandardMaterial3D.new()
@@ -68,7 +66,7 @@ func visualize_ores():
 	var i = 0
 	for cell in ore_map.keys():
 		var transform = Transform3D()
-		transform.origin = cell
+		transform.origin = Vector3(cell)
 		multimesh.set_instance_transform(i, transform)
 
 		var color := Color.WHITE

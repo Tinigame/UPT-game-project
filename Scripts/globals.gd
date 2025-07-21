@@ -16,3 +16,6 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("temp_select_building_3"):
 		selected_building = preload("res://Resources/buildings/mining_drill.tres")
 		print("selected mining drill")
+	elif Input.is_action_just_pressed("temp_select_building_4"):
+		selected_building = preload("res://Resources/buildings/assembler.tres")
+		print("selected assembler")
