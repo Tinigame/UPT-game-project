@@ -1,7 +1,7 @@
 extends Node3D
 #summons buildings when player calls the function to do it
 
-@export var building_base : PackedScene
+var building_base : PackedScene = preload("res://Scenes/building.tscn")
 
 var id = 0
 var buildings : Array = []
@@ -18,6 +18,20 @@ func has_required_ore(required_cells: Array) -> bool:
 			return true  # found the needed ore
 	return false  # none of the cells had it
 
+func get_direction_of_building(brotation):
+	var y_deg = int(round(brotation.y)) % 360
+	match y_deg:
+		0:
+			return Enums.direction.UP
+		90:
+			return Enums.direction.RIGHT
+		180:
+			return Enums.direction.DOWN
+		270:
+			return Enums.direction.LEFT
+		_:
+			print("ey boss idk the fuck this rotation is")
+			return Enums.direction.UP  # default/fallback
 
 func build_building(build_info : Building):
 		var building = building_base.instantiate()
@@ -63,18 +77,31 @@ func build_building(build_info : Building):
 		#checks if the building is even sized and then applies an offset
 		var offset = Vector3((build_info.building_size.x / 2.0) - 0.5, 0, (build_info.building_size.z / 2.0) - 0.5)
 		
-		#moves the building to the location
+		#moves the building to the location and rotation
 		var final_position = Vector3((Globals.building_location.x + offset.x) * 1, build_info.building_size.y / 2, (Globals.building_location.z + offset.z) * 1)
 		building.position = final_position
-		
+		building.rotation_degrees = Globals.building_rotation
+		building.grid_position = Globals.building_location
+
+		building.unique_script = build_info.building_script
+
+
+		building.building_direction = get_direction_of_building(building.rotation_degrees)
+
 		#adds the building to the tree and to the array
 		add_child(building)
-		buildings.append(building)    
+		buildings.append(building)
 		
 		#mark the cells as occupied
 		for cell in required_cells:
 			occupied_cells[cell] = building
-			if Globals.ore_map.has(cell):
-				print("ORE FOUND:", Globals.ore_map[cell])
-			else:
-				print("No ore at", cell)
+#			if Globals.ore_map.has(cell):
+#				print("ORE FOUND:", Globals.ore_map[cell])
+#			else:
+#				print("No ore at", cell)
+
+		update_conveyor_neighbors()
+
+func update_conveyor_neighbors():
+	for conveyor in get_tree().get_nodes_in_group("conveyors"):
+		conveyor.update_connections()

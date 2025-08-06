@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://d3v5t0dtpvewh"]
+[gd_resource type="Resource" script_class="Building" load_steps=6 format=3 uid="uid://d3v5t0dtpvewh"]
 
 [ext_resource type="Script" uid="uid://dbtoj443lgn6a" path="res://Scripts/building_resource_script.gd" id="1_03vpt"]
 [ext_resource type="Texture2D" uid="uid://bgyc0uex0irha" path="res://Assets/Textures/conveyor.png" id="1_dmevg"]
+[ext_resource type="Script" uid="uid://boyrgavm4qc8w" path="res://Scripts/conveyor_script.gd" id="2_5kou7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03vpt"]
 albedo_color = Color(0.650552, 0.649244, 1.92523e-07, 1)
@@ -19,3 +20,5 @@ building_name = "conveyor"
 building_size = Vector3(1, 0.5, 1)
 building_mesh = SubResource("BoxMesh_dmevg")
 building_health = 10.0
+only_buildable_on_ores = false
+building_script = ExtResource("2_5kou7")

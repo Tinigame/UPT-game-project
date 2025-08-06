@@ -17,4 +17,5 @@ building_name = "rock"
 building_size = Vector3(2, 2, 2)
 building_mesh = SubResource("BoxMesh_i5d80")
 building_health = 1000.0
+only_buildable_on_ores = false
 metadata/_custom_type_script = "uid://dbtoj443lgn6a"

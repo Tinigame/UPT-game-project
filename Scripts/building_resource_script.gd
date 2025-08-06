@@ -13,3 +13,6 @@ extends Resource
 #what item is required to place the building
 #idk what type this should be so its like ignore for future
 #var building_ingredient
+
+#script that gets put on the building base
+@export var building_script : GDScript

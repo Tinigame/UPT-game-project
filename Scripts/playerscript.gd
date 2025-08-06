@@ -102,12 +102,16 @@ func summon_first_build_ghost() -> MeshInstance3D:
 	return ghost_object_instance
 
 var last_Selected_building = null
-func update_build_ghost(ghost_pos, current_ghost_instance):
+func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D):
+	
+	if Input.is_action_just_pressed("rotate"):
+		Globals.building_rotation.y += 90
 	
 	#makes ghost aligned to the grid like the buildings
 	var size = Globals.selected_building.building_size
 	var offset = Vector3((size.x / 2.0) - 0.5, 0, (size.z / 2.0) - 0.5)
 	current_ghost_instance.global_position = ghost_pos + offset
+	current_ghost_instance.rotation_degrees = Globals.building_rotation
 
 	if last_Selected_building != Globals.selected_building.building_mesh:
 		last_Selected_building = Globals.selected_building.building_mesh
