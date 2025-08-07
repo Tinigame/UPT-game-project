@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://cqhbbkjbte74i"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://cqhbbkjbte74i"]
 
 [ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_2kb1y"]
 [ext_resource type="Texture2D" uid="uid://bgyc0uex0irha" path="res://Assets/Textures/conveyor.png" id="1_myqsd"]
-[ext_resource type="Resource" uid="uid://d3v5t0dtpvewh" path="res://Resources/buildings/conveyor_belt.tres" id="1_uw1lq"]
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/item_resource_script.gd" id="2_myqsd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03vpt"]
@@ -21,5 +20,4 @@ item_name = "conveyor belt"
 item_mesh = SubResource("BoxMesh_uw1lq")
 item_sprite = ExtResource("1_2kb1y")
 is_building = true
-building_resource = ExtResource("1_uw1lq")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"
