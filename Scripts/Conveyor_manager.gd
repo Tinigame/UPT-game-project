@@ -27,7 +27,6 @@ func _process(delta: float) -> void:
 
 
 func update_conveyor(conveyor):
-	# Your conveyor update logic goes here (same as before)
 	var contents = conveyor.container_manager.get_items()
 	var timer_active = conveyor.timer_active
 	var time_since_last_send = conveyor.time_since_last_send
