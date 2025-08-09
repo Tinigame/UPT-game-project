@@ -69,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.478643, 0)
 shape = SubResource("BoxShape3D_a02cp")
 
 [node name="cube" type="StaticBody3D" parent="floor"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.5, 0.4, 0.5)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="floor/cube"]
 shape = SubResource("BoxShape3D_go701")
@@ -79,7 +79,7 @@ mesh = SubResource("BoxMesh_a02cp")
 skeleton = NodePath("../..")
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44046, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19242, 0)
 script = ExtResource("1_a02cp")
 
 [node name="FP camera" type="Camera3D" parent="Player"]
