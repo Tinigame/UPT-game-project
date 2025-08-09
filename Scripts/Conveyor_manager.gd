@@ -50,7 +50,6 @@ func update_conveyor(conveyor):
 			if neighbor != null and contents.size() > 0:
 				if neighbor.container_has_space == true:
 					var item_to_move = contents[0]
-					if neighbor.container_manager.has_space_for_item(item_to_move):
-						neighbor.container_manager.add_item(item_to_move)
-						conveyor.container_manager.remove_item(item_to_move)
-						conveyor.time_since_last_send = 0.0
+					neighbor.container_manager.add_item(item_to_move)
+					conveyor.container_manager.remove_item(item_to_move)
+					conveyor.time_since_last_send = 0.0
