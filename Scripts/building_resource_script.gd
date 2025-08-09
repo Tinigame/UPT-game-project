@@ -16,3 +16,7 @@ extends Resource
 
 #script that gets put on the building base
 @export var building_script : GDScript
+#does the building have a container_manager
+@export var has_container : bool = false
+#max amount of unique items that can be in the container at a time
+@export var container_max_slots : int = 0

@@ -22,3 +22,5 @@ building_mesh = SubResource("BoxMesh_dmevg")
 building_health = 10.0
 only_buildable_on_ores = false
 building_script = ExtResource("2_5kou7")
+has_container = true
+container_max_slots = 1

@@ -2,6 +2,7 @@ extends Node3D
 #summons buildings when player calls the function to do it
 
 var building_base : PackedScene = preload("res://Scenes/building.tscn")
+var container_manager : PackedScene = preload("res://Scenes/Container_manager.tscn")
 
 var id = 0
 var buildings : Array = []
@@ -85,8 +86,14 @@ func build_building(build_info : Building):
 
 		building.unique_script = build_info.building_script
 
-
 		building.building_direction = get_direction_of_building(building.rotation_degrees)
+
+		#adds the container module to the building if needed
+		if build_info.has_container == true:
+			var container = container_manager.instantiate()
+			building.add_child(container)
+			container.set_max_items(build_info.container_max_slots)
+
 
 		#adds the building to the tree and to the array
 		add_child(building)
