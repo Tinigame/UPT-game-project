@@ -16,4 +16,6 @@ building_size = Vector3(4, 3, 4)
 building_mesh = SubResource("PrismMesh_bmi6u")
 building_health = 100.0
 only_buildable_on_ores = true
+has_container = false
+container_max_slots = 0
 metadata/_custom_type_script = "uid://dbtoj443lgn6a"

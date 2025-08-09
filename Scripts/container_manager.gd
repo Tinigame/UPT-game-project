@@ -10,7 +10,7 @@ var debugitem
 signal space_changed(has_space: bool)
 
 func _ready() -> void:
-	debugitem = preload("res://Resources/items/conveyor_2.tres")
+	debugitem = preload("res://Resources/items/item_conveyor.tres")
 
 func set_max_items(new_max_items: int) -> void:
 	max_items = new_max_items

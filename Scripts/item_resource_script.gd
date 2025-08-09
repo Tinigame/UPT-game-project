@@ -2,6 +2,7 @@ class_name Item
 extends Resource
 
 @export var item_name : String
+@export var max_stack_size : int = 1
 
 #mesh when its visible outside menus
 @export var item_mesh : Mesh = null

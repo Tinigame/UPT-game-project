@@ -13,7 +13,7 @@ var container_manager
 var time_since_last_send := 0.0
 var timer_active := false  # track whether the timer is running
 var last_contents := []
-
+var send_delay := 1.0  # seconds to wait before sending next item
 
 func _ready() -> void:
 	container_manager = get_own_container_manager()
@@ -68,3 +68,16 @@ func render_contents(item):
 	item_mesh.mesh = item.item_mesh
 	item_mesh.scale = Vector3(0.5, 0.5, 0.5)
 	item_mesh.position = self.position + Vector3(0, 1, 0)
+
+
+var cached_neighbor: Node3D = null
+
+func update_connections():
+	cached_neighbor = check_neighbor(forward_cell_offset)
+
+func check_neighbor(offset: Vector3i) -> Node3D:
+	var pos = grid_position + offset
+	if BuildingManager.occupied_cells.has(pos):
+		return BuildingManager.occupied_cells[pos]
+	else:
+		return null
