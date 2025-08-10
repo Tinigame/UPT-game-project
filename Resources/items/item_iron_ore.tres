@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://dnx2ktbw4m5t0"]
+
+[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_ws74h"]
+[ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_wc2th"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws74h"]
+albedo_color = Color(0, 0.882353, 0.901961, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_wc2th"]
+material = SubResource("StandardMaterial3D_ws74h")
+size = Vector3(0.5, 0.5, 0.5)
+
+[resource]
+script = ExtResource("2_wc2th")
+item_name = "iron ore"
+max_stack_size = 84
+item_mesh = SubResource("PrismMesh_wc2th")
+item_sprite = ExtResource("1_ws74h")
+is_building = false
+metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

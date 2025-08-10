@@ -21,6 +21,7 @@ Globals="*res://Scripts/autoload/globals.gd"
 BuildingManager="*res://Scripts/autoload/building_manager.gd"
 Enums="*res://Scripts/autoload/Enums.gd"
 ConveyorManager="*res://Scripts/autoload/Conveyor_manager.gd"
+ItemDatabase="*res://Scripts/autoload/Item_database.gd"
 
 [display]
 

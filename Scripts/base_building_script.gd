@@ -5,6 +5,8 @@ var building_direction : Enums.direction
 var container_has_space = true
 @onready var container_manager: Node = get_node_or_null("ContainerManager")
 var unique_script : GDScript = null
+var over_ores : PackedStringArray
+
 
 func _ready() -> void:
 	if unique_script:
@@ -12,6 +14,10 @@ func _ready() -> void:
 		unique_node.set_script(unique_script)
 		unique_node.forward_cell_offset = get_forward_cell_offset()
 		unique_node.grid_position = grid_position
+		
+		#sets the ores that the building has beneath, if it cares that is
+		unique_node.set("over_ores", over_ores)
+		
 		self.add_child(unique_node)
 
 	if container_manager != null:

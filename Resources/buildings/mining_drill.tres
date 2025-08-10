@@ -1,21 +1,17 @@
 [gd_resource type="Resource" script_class="Building" load_steps=4 format=3 uid="uid://dcra0jymam5p0"]
 
+[ext_resource type="Script" uid="uid://dopvvvjs051af" path="res://Scripts/buildings/mining_drill_script.gd" id="1_bmi6u"]
 [ext_resource type="Script" uid="uid://dbtoj443lgn6a" path="res://Scripts/resource base scripts/building_resource_script.gd" id="1_bvtuc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvtuc"]
-albedo_color = Color(1, 0.419608, 1, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_bmi6u"]
-material = SubResource("StandardMaterial3D_bvtuc")
-size = Vector3(4, 3, 4)
+[ext_resource type="ArrayMesh" uid="uid://bevhtr2hfdkts" path="res://Assets/Models/mining_drill.obj" id="1_yinh4"]
 
 [resource]
 script = ExtResource("1_bvtuc")
 building_name = "mining drill"
-building_size = Vector3(4, 3, 4)
-building_mesh = SubResource("PrismMesh_bmi6u")
+building_size = Vector3(3, 2, 3)
+building_mesh = ExtResource("1_yinh4")
 building_health = 100.0
 only_buildable_on_ores = true
-has_container = false
-container_max_slots = 0
+building_script = ExtResource("1_bmi6u")
+has_container = true
+container_max_slots = 1
 metadata/_custom_type_script = "uid://dbtoj443lgn6a"

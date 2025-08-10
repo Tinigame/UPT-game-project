@@ -51,7 +51,9 @@ func build_building(build_info : Building):
 				print("no ores")
 				return
 			else:
-				pass
+				for cell in required_cells:
+					if Globals.ore_map.has(cell):
+						building.over_ores.append(Globals.ore_map[cell])
 		
 		
 		#check if those cells are already in use

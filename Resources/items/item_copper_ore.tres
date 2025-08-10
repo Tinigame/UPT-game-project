@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bwlfgu77hlfb"]
+
+[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_dw3v7"]
+[ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_06bt1"]
+
+[resource]
+script = ExtResource("2_06bt1")
+item_name = "copper ore"
+max_stack_size = 84
+item_sprite = ExtResource("1_dw3v7")
+is_building = false
+metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"
