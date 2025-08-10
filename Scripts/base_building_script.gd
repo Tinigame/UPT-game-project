@@ -16,6 +16,8 @@ func _ready() -> void:
 
 	if container_manager != null:
 		container_manager.connect("space_changed", _on_space_changed)
+	elif container_manager == null:
+		container_has_space = false
 
 func get_forward_cell_offset() -> Vector3i:
 	match building_direction:

@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://Scripts/globals.gd"
-BuildingManager="*res://Scripts/building_manager.gd"
-Enums="*res://Scripts/Enums.gd"
-ConveyorManager="*res://Scripts/Conveyor_manager.gd"
+Globals="*res://Scripts/autoload/globals.gd"
+BuildingManager="*res://Scripts/autoload/building_manager.gd"
+Enums="*res://Scripts/autoload/Enums.gd"
+ConveyorManager="*res://Scripts/autoload/Conveyor_manager.gd"
 
 [display]
 

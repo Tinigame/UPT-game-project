@@ -25,12 +25,13 @@ func _ready() -> void:
 	if container_manager:
 		container_manager.connect("space_changed", _on_container_space_changed)
 		# Initialize contents now
-		conveyor_contents = container_manager.get_items()
+		conveyor_contents = container_manager.get_items_in_slot(0)
 		last_contents = conveyor_contents.duplicate()
 
-func _on_container_space_changed(has_space: bool):
+#the bool looks like it isnt used but for some reason it makes stuff more stable
+func _on_container_space_changed(_has_space : bool):
 	# Update contents when container changes
-	conveyor_contents = container_manager.get_items()
+	conveyor_contents = container_manager.get_items_in_slot(0)
 	# Then handle showing/hiding items or starting timer, etc
 	_process_contents_change()
 

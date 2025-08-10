@@ -1,7 +1,7 @@
 # ConveyorManager.gd
 extends Node3D
 
-static var instance: ConveyorManager = null
+var instance: ConveyorManager = null
 
 var conveyors : Array = []
 var update_interval := 0.5
@@ -10,7 +10,7 @@ var update_accumulator := 0.0
 func _ready():
 	instance = self
 
-static func register_conveyor(conveyor):
+func register_conveyor(conveyor):
 	if instance == null:
 		push_error("ConveyorManager not initialized")
 		return
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 
 
 func update_conveyor(conveyor):
-	var contents = conveyor.container_manager.get_items()
+	var contents = conveyor.container_manager.get_items_in_slot(0)
 	var timer_active = conveyor.timer_active
 	var time_since_last_send = conveyor.time_since_last_send
 	var send_delay = conveyor.send_delay
@@ -50,6 +50,8 @@ func update_conveyor(conveyor):
 			if neighbor != null and contents.size() > 0:
 				if neighbor.container_has_space == true:
 					var item_to_move = contents[0]
-					neighbor.container_manager.add_item(item_to_move)
-					conveyor.container_manager.remove_item(item_to_move)
+					neighbor.container_manager.add_item_to_slot(item_to_move, 0)
+					conveyor.container_manager.remove_item_from_slot(item_to_move, 0)
 					conveyor.time_since_last_send = 0.0
+			else:
+				return

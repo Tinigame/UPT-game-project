@@ -92,7 +92,13 @@ func build_building(build_info : Building):
 		if build_info.has_container == true:
 			var container = container_manager.instantiate()
 			building.add_child(container)
-			container.set_max_items(build_info.container_max_slots)
+
+			# Create the minimum number of empty slots so it can hold items at all
+			for i in range(build_info.container_max_slots):
+				container.add_slot(1, [])  # capacity=1 for now, no restrictions
+
+			# Optional: store reference for later recipe configuration
+			building.container_manager = container
 
 
 		#adds the building to the tree and to the array
