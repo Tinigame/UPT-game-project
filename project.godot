@@ -23,6 +23,10 @@ Enums="*res://Scripts/autoload/Enums.gd"
 ConveyorManager="*res://Scripts/autoload/Conveyor_manager.gd"
 ItemDatabase="*res://Scripts/autoload/Item_database.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1280

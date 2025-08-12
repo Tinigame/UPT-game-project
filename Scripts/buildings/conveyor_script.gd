@@ -76,9 +76,8 @@ var cached_neighbor: Node3D = null
 func update_connections():
 	cached_neighbor = check_neighbor(forward_cell_offset)
 
-func check_neighbor(offset: Vector3i) -> Node3D:
-	var pos = grid_position + offset
-	if BuildingManager.occupied_cells.has(pos):
-		return BuildingManager.occupied_cells[pos]
+func check_neighbor(neighbor_position: Vector3i) -> Node3D:
+	if BuildingManager.occupied_cells.has(neighbor_position):
+		return BuildingManager.occupied_cells[neighbor_position]
 	else:
 		return null

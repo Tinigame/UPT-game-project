@@ -85,6 +85,7 @@ func build_building(build_info : Building):
 		building.position = final_position
 		building.rotation_degrees = Globals.building_rotation
 		building.grid_position = Globals.building_location
+		building.building_size = build_info.building_size
 
 		building.unique_script = build_info.building_script
 
@@ -120,3 +121,6 @@ func build_building(build_info : Building):
 func update_conveyor_neighbors():
 	for conveyor in get_tree().get_nodes_in_group("conveyors"):
 		conveyor.update_connections()
+
+	for miner in get_tree().get_nodes_in_group("miners"):
+		miner.update_connections()

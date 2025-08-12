@@ -2,6 +2,7 @@ extends StaticBody3D
 
 var grid_position: Vector3i
 var building_direction : Enums.direction
+var building_size : Vector3i
 var container_has_space = true
 @onready var container_manager: Node = get_node_or_null("ContainerManager")
 var unique_script : GDScript = null
@@ -26,16 +27,20 @@ func _ready() -> void:
 		container_has_space = false
 
 func get_forward_cell_offset() -> Vector3i:
+	var width := building_size.x
+	var depth := building_size.z
+	
 	match building_direction:
 		Enums.direction.UP:
-			return Vector3i(0, 0, -1)
+			return grid_position + Vector3i(width / 2, 0, -1)
 		Enums.direction.RIGHT:
-			return Vector3i(1, 0, 0)
+			return grid_position + Vector3i(width, 0, depth / 2)
 		Enums.direction.DOWN:
-			return Vector3i(0, 0, 1)
+			return grid_position + Vector3i(width / 2, 0, depth)
 		Enums.direction.LEFT:
-			return Vector3i(-1, 0, 0)
-	return Vector3i.ZERO
+			return grid_position + Vector3i(-1, 0, depth / 2)
+	return grid_position
+
 
 func _on_space_changed(has_space: bool):
 	if has_space == true:

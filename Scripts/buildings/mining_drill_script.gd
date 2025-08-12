@@ -6,7 +6,7 @@ var debugname = "mininginator"
 var conveyor_contents : Array
 
 #the offset required to see where the forward cell is
-var forward_cell_offset : Vector3i
+var forward_cell_offset : Vector3
 var container_manager
 
 #delays and timers for delaying item movement
@@ -19,8 +19,8 @@ var mining_ticker
 var over_ores : PackedStringArray
 var ores : Array
 
-func set_over_ores(ores : PackedStringArray):
-	over_ores = ores
+func set_over_ores(mineable_ores : PackedStringArray):
+	over_ores = mineable_ores
 	print(over_ores)
 
 
@@ -34,6 +34,8 @@ func _ready() -> void:
 	add_child(mining_ticker)
 	mining_ticker.start()
 	mining_ticker.connect("timeout", Callable(self, "mine_ore").bind(ores))
+	
+	add_to_group("miners")
 	
 	if container_manager:
 		container_manager.connect("space_changed", _on_container_space_changed)
@@ -73,10 +75,9 @@ var cached_neighbor: Node3D = null
 func update_connections():
 	cached_neighbor = check_neighbor(forward_cell_offset)
 
-func check_neighbor(offset: Vector3i) -> Node3D:
-	var pos = grid_position + offset
-	if BuildingManager.occupied_cells.has(pos):
-		return BuildingManager.occupied_cells[pos]
+func check_neighbor(neighbor_position : Vector3i) -> Node3D:
+	if BuildingManager.occupied_cells.has(neighbor_position):
+		return BuildingManager.occupied_cells[neighbor_position]
 	else:
 		return null
 
@@ -96,7 +97,16 @@ func get_unique_ore_resources(ore_names: Array) -> Array:
 
 
 
-func mine_ore(ores):
-	for ore in ores:
-		print("we added this to our ore buffer: ", ore)
+func mine_ore(mineable_ores):
+	for ore in mineable_ores:
 		container_manager.add_item_to_slot(ore, 0)
+		push_items()
+
+func push_items():
+	var contents = container_manager.get_items_in_slot(0)
+	var neighbor = cached_neighbor
+	if neighbor != null and contents.size() > 0:
+		if neighbor.container_has_space == true:
+			var item_to_move = contents[0]
+			neighbor.container_manager.add_item_to_slot(item_to_move, 0)
+			container_manager.remove_item_from_slot(item_to_move, 0)

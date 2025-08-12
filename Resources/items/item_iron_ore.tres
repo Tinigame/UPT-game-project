@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_wc2th"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws74h"]
-albedo_color = Color(0, 0.882353, 0.901961, 1)
+albedo_color = Color(0, 0, 1, 1)
 
 [sub_resource type="PrismMesh" id="PrismMesh_wc2th"]
 material = SubResource("StandardMaterial3D_ws74h")
