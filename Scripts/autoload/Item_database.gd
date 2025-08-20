@@ -3,6 +3,7 @@ extends Node
 var items = {
 	"iron": preload("res://Resources/items/item_iron_ore.tres"),
 	"copper": preload("res://Resources/items/item_copper_ore.tres"),
+	"conveyor" : preload("res://Resources/items/item_conveyor.tres"),
 }
 
 func get_item_resource(item_name: String) -> Resource:

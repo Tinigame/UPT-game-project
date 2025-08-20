@@ -124,3 +124,6 @@ func update_conveyor_neighbors():
 
 	for miner in get_tree().get_nodes_in_group("miners"):
 		miner.update_connections()
+	
+	for assembler in get_tree().get_nodes_in_group("assemblers"):
+		assembler.update_connections()

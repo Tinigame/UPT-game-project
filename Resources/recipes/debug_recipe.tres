@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://7hxwkpo31opd"]
+
+[ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="1_5v6uj"]
+
+[resource]
+script = ExtResource("1_5v6uj")
+recipe_ingridients = {
+&"debug_item": 1
+}
+recipe_products = {
+&"debug_item": 2
+}
+crafting_time = 1
+metadata/_custom_type_script = "uid://dv0jdd6iysabc"

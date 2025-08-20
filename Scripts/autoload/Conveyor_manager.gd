@@ -46,12 +46,31 @@ func update_conveyor(conveyor):
 	if conveyor.timer_active:
 		conveyor.time_since_last_send += update_interval
 		if conveyor.time_since_last_send >= send_delay:
+			
 			var neighbor = conveyor.cached_neighbor
+			if neighbor == null:
+				print_debug("there is no neighbor")
+			
 			if neighbor != null and contents.size() > 0:
-				if neighbor.container_has_space == true:
-					var item_to_move = contents[0]
-					neighbor.container_manager.add_item_to_slot(item_to_move, 0)
-					conveyor.container_manager.remove_item_from_slot(item_to_move, 0)
-					conveyor.time_since_last_send = 0.0
-			else:
-				return
+				var item_to_move = contents[0]
+				
+				push_items(neighbor, conveyor, item_to_move)
+				conveyor.time_since_last_send = 0.0
+
+
+#tries to push the first item in the first output slot to the neighbor
+func push_items(neighbor, conveyor, item_to_move) -> void:
+	if neighbor == null:
+		print_debug("there is no neighbor")
+		return
+	var neighbor_cm: ContainerManager = neighbor.container_manager
+	if neighbor_cm == null:
+		print_debug("there is no CM in neighbor")
+		return
+
+	if neighbor_cm.has_space_for_item_in_slot(item_to_move, 0):
+		print_debug("we have space for ", item_to_move)
+		if neighbor_cm.add_item_to_slot(item_to_move, 0):
+			print_debug("we added ", item_to_move, " to slot 0")
+			conveyor.container_manager.remove_item_from_slot(item_to_move, 0)
+			print_debug("we removed ", item_to_move, " from ourselves")

@@ -6,6 +6,8 @@ var building_rotation = Vector3(0, 0, 0)
 var selected_building = preload("res://Resources/buildings/conveyor_belt.tres")
 var ore_map : Dictionary
 
+var debug_item = preload("res://Resources/buildings/conveyor_belt.tres")
+var debug_recipe = preload("res://Resources/recipes/debug_recipe.tres")
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("temp_select_building_1"):
