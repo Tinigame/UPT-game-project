@@ -54,6 +54,8 @@ func get_mouse_world_position() -> Vector3:
 		return snap_to_grid(result.position)
 	return Vector3.ZERO
 
+
+
 #snaps the target build position to the grid (hopefully)
 func snap_to_grid(buildposition: Vector3) -> Vector3:
 	return Vector3(
@@ -80,7 +82,7 @@ func build_toggle():
 
 
 
-#handle jump, movement
+#handle jump, movement etc
 func player_movement():
 	# Add back in the is_on_floor(), i removed it for testing.
 	if Input.is_action_just_pressed("space"):
@@ -97,6 +99,7 @@ func player_movement():
 		velocity.z = move_toward(velocity.z, 0, move_speed)
 
 
+#creates the build ghost
 func summon_first_build_ghost() -> MeshInstance3D:
 	var ghost_object_instance = MeshInstance3D.new()
 	var cube_mesh = BoxMesh.new()
@@ -114,6 +117,7 @@ func summon_first_build_ghost() -> MeshInstance3D:
 
 
 
+#creates the build rotation indicating ghost
 func summon_rotation_build_ghost():
 	var ghost_object_instance = MeshInstance3D.new()
 	var cube_mesh = BoxMesh.new()
@@ -131,11 +135,19 @@ func summon_rotation_build_ghost():
 	return ghost_object_instance
 
 
+
+#updates the build ghosts position, mesh, rotation indicator, etc
 var last_Selected_building = null
 func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, ghost_rotation_instance : MeshInstance3D):
 	
-	if Input.is_action_just_pressed("rotate"):
+	if Input.is_action_just_pressed("rotate_clockwise"):
 		Globals.building_rotation.y += 90
+		print(Globals.building_rotation.y)
+		print("rotate clock")
+	if Input.is_action_just_pressed("rotate_counterclockwise"):
+		Globals.building_rotation.y += -180
+		print(Globals.building_rotation.y)
+		print("rotate counter clock")
 	
 	#makes ghost aligned to the grid like the buildings
 	var size = Globals.selected_building.building_size
@@ -143,9 +155,11 @@ func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, ghos
 	current_ghost_instance.global_position = ghost_pos + offset
 	current_ghost_instance.rotation_degrees = Globals.building_rotation
 	
+	#gets the offset for the front-middle of the building then applies the offset to the rotation ghost
 	var front_offset = get_forward_cell_offset(size, current_ghost_instance.rotation_degrees)
 	ghost_rotation_instance.global_position = ghost_pos + offset + front_offset
 
+	#if the building changes then match the mesh to the building
 	if last_Selected_building != Globals.selected_building.building_mesh:
 		last_Selected_building = Globals.selected_building.building_mesh
 		var ghost_mesh = Globals.selected_building.building_mesh.duplicate()
@@ -163,6 +177,8 @@ func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, ghos
 		current_ghost_instance.mesh = ghost_mesh
 
 
+
+#gets the offset for the rotation indicating ghost
 var building_direction : Enums.direction
 func get_forward_cell_offset(building_size, grotation) -> Vector3:
 	var forward = Vector3.ZERO
