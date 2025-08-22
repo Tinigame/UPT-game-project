@@ -23,6 +23,9 @@ func _process(delta: float) -> void:
 	update_accumulator = 0.0
 
 	for conveyor in conveyors:
+		if not is_instance_valid(conveyor):
+			conveyors.erase(conveyor)
+			continue
 		update_conveyor(conveyor)
 
 

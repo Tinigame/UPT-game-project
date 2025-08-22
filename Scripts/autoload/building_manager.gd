@@ -11,6 +11,8 @@ var occupied_cells : Dictionary = {}
 func _physics_process(_delta: float) -> void:
 	if Globals.buildmode == true and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		build_building(Globals.selected_building)
+	if Globals.buildmode == true and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		remove_building()
 
 
 func has_required_ore(required_cells: Array) -> bool:
@@ -117,6 +119,32 @@ func build_building(build_info : Building):
 #				print("No ore at", cell)
 
 		update_conveyor_neighbors()
+
+
+
+func remove_building():
+	var target_cell: Vector3i = Globals.building_location
+	if not occupied_cells.has(target_cell):
+		return
+	
+	#gets the building instance
+	var building = occupied_cells[target_cell]
+	
+	#frees the cells that the building occupied
+	var size = building.building_size
+	var base = building.grid_position
+	for x in range(size.x):
+		for z in range(size.z):
+			var cell = base + Vector3i(x, 0, z)
+			if occupied_cells.has(cell) and occupied_cells[cell] == building:
+				occupied_cells.erase(cell)
+	
+	#removes building from list of buildings then deletes it
+	buildings.erase(building)
+	building.queue_free()
+	
+	update_conveyor_neighbors()
+
 
 func update_conveyor_neighbors():
 	for conveyor in get_tree().get_nodes_in_group("conveyors"):
