@@ -31,7 +31,7 @@ func _ready() -> void:
 #sets the recipe then calls the array rebuilder
 func set_recipe(recipe: Recipe) -> void:
 	current_recipe = recipe
-	print_debug("our recipe is ", current_recipe.recipe_name)
+#	print("our recipe is ", current_recipe.recipe_name)
 	
 	set_container_slots()
 	
@@ -52,14 +52,14 @@ func set_container_slots():
 		var ingridients : Array = [ingridient.item] 
 		var slot_index = container_manager.add_slot(84, ingridients)
 		input_slots.append(slot_index)
-		print("we added slot for: ", ingridient.item.item_name)
+#		print("we added slot for: ", ingridient.item.item_name)
 
 	# Outputs
 	for product in current_recipe.recipe_products:
 		var products : Array = [product.item] 
 		var slot_index = container_manager.add_slot(84, products)
 		output_slots.append(slot_index)
-		print("we added slot for: ", product.item.item_name)
+#		print("we added slot for: ", product.item.item_name)
 
 
 
@@ -103,7 +103,7 @@ func _outputs_have_space() -> bool:
 			var slot := output_slots[i]
 			var free : int = container_manager.slot_free_space(slot)
 			if free >= 0 and free < want.amount:
-				print("we dont have enough space in outputs")
+#				print("we dont have enough space in outputs")
 				return false
 	return true
 
@@ -123,7 +123,7 @@ func _consume_inputs() -> void:
 
 
 func _start_crafting() -> void:
-	print("we started crafting!!")
+#	print("we started crafting!!")
 	is_crafting = true
 	crafting_timer.start(current_recipe.crafting_time)
 
@@ -136,9 +136,9 @@ func _on_crafting_complete() -> void:
 		var out = current_recipe.recipe_products[i]
 		var slot := output_slots[i]
 		for k in range(out.amount):
-			print("we made this many items: ", out.amount)
+#			print("we made this many items: ", out.amount)
 			var ok := container_manager.add_item_to_slot(out.item, slot)
-			print("we finished craftin ", out.item.item_name)
+#			print("we finished craftin ", out.item.item_name)
 			if not ok:
 				# Slot is full; you can buffer, drop, or pause here.
 				break

@@ -8,8 +8,10 @@ const JUMP_VELOCITY : float = 5.0
 var move_speed : float = 5.0
 var mouse_sensitivity : float = 0.002
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 var ghost_location : Vector3
 var ghost_instance : MeshInstance3D
+var ghost_rotation_instance : MeshInstance3D
 
 var current_building = preload("res://Resources/buildings/conveyor_belt.tres")
 
@@ -20,8 +22,13 @@ func _ready():
 	
 	#summons and adds the initial build ghost
 	ghost_instance = summon_first_build_ghost()
+	ghost_rotation_instance = summon_rotation_build_ghost()
 	add_child(ghost_instance)
+	add_child(ghost_rotation_instance)
 	ghost_instance.hide()
+	ghost_rotation_instance.hide()
+
+
 
 #Camera and movement rotation
 func _input(event):
@@ -29,6 +36,7 @@ func _input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
+
 
 
 #gets global position of where mouse clicked
@@ -55,6 +63,7 @@ func snap_to_grid(buildposition: Vector3) -> Vector3:
 	)
 
 
+
 #toggle between build mode
 func build_toggle():
 	if Input.is_action_just_pressed("switchcam"):
@@ -68,6 +77,8 @@ func build_toggle():
 			camera.current = true
 			Globals.buildmode = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
 
 #handle jump, movement
 func player_movement():
@@ -101,8 +112,27 @@ func summon_first_build_ghost() -> MeshInstance3D:
 	
 	return ghost_object_instance
 
+
+
+func summon_rotation_build_ghost():
+	var ghost_object_instance = MeshInstance3D.new()
+	var cube_mesh = BoxMesh.new()
+	var material = StandardMaterial3D.new()
+
+	material.albedo_color = Color(0.8, 0, 0, 0.5)
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.flags_transparent = true
+	material.flags_unshaded = true
+	cube_mesh.material = material
+
+	ghost_object_instance.mesh = cube_mesh
+	ghost_object_instance.scale = Vector3(0.3, 0.3, 0.3)
+	
+	return ghost_object_instance
+
+
 var last_Selected_building = null
-func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D):
+func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, ghost_rotation_instance : MeshInstance3D):
 	
 	if Input.is_action_just_pressed("rotate"):
 		Globals.building_rotation.y += 90
@@ -112,6 +142,9 @@ func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D):
 	var offset = Vector3((size.x / 2.0) - 0.5, 0, (size.z / 2.0) - 0.5)
 	current_ghost_instance.global_position = ghost_pos + offset
 	current_ghost_instance.rotation_degrees = Globals.building_rotation
+	
+	var front_offset = get_forward_cell_offset(size, current_ghost_instance.rotation_degrees)
+	ghost_rotation_instance.global_position = ghost_pos + offset + front_offset
 
 	if last_Selected_building != Globals.selected_building.building_mesh:
 		last_Selected_building = Globals.selected_building.building_mesh
@@ -129,6 +162,25 @@ func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D):
 			ghost_mesh.surface_set_material(i, material)
 		current_ghost_instance.mesh = ghost_mesh
 
+
+var building_direction : Enums.direction
+func get_forward_cell_offset(building_size, grotation) -> Vector3:
+	var forward = Vector3.ZERO
+	
+	match int(grotation.y) % 360:
+		0:
+			forward = Vector3(0, 0, -1)
+		90:
+			forward = Vector3(1, 0, 0)
+		180:
+			forward = Vector3(0, 0, 1)
+		270:
+			forward = Vector3(-1, 0, 0)
+	
+	return forward * (building_size.z / 2.0)
+
+
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -141,11 +193,14 @@ func _physics_process(delta):
 	#get the mouse pos when buildmode enabled
 	if Globals.buildmode == true:
 		ghost_location = get_mouse_world_position()
-		update_build_ghost(ghost_location, ghost_instance)
+		update_build_ghost(ghost_location, ghost_instance, ghost_rotation_instance)
 		ghost_instance.show()
+		ghost_rotation_instance.show()
+		
 		Globals.building_location = Vector3(ghost_location.x, 0, ghost_location.z)
 	elif Globals.buildmode == false:
 		ghost_instance.hide()
+		ghost_rotation_instance.hide()
 
 	player_movement()
 	build_toggle()
