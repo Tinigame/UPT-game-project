@@ -1,14 +1,18 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://7hxwkpo31opd"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://7hxwkpo31opd"]
 
 [ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="1_5v6uj"]
+[ext_resource type="Resource" uid="uid://cqhbbkjbte74i" path="res://Resources/items/item_conveyor.tres" id="1_ncwvt"]
 
 [resource]
 script = ExtResource("1_5v6uj")
-recipe_ingridients = {
-&"debug_item": 1
-}
-recipe_products = {
-&"debug_item": 2
-}
-crafting_time = 1
+recipe_ingredients = Array[Dictionary]([{
+"amount": 1,
+"item": ExtResource("1_ncwvt")
+}])
+recipe_products = Array[Dictionary]([{
+"amount": 2,
+"item": ExtResource("1_ncwvt")
+}])
+crafting_time = 1.0
+recipe_name = "eldritch belt duplication"
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

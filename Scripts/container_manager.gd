@@ -16,15 +16,19 @@ func _ready() -> void:
 
 
 # Adds a new slot with capacity and optional allowed item types
-func add_slot(capacity: int, allowed_types: Array = []):
-	# allowed_types example: ["iron_ore", "coal"]
+func add_slot(capacity: int, allowed_types: Array = []) -> int:
 	slots.append({
 		"contents": [],
 		"capacity": capacity,
 		"allowed_types": allowed_types
 	})
 	emit_signal("space_changed", has_any_space())
+	return slots.size() - 1
 
+
+func clear_slots():
+	slots.clear()
+	emit_signal("space_changed", has_any_space())
 
 
 #returns the number of total slots
@@ -78,7 +82,7 @@ func add_item_to_slot(item : Item, slot_index: int) -> bool:
 	var slot = slots[slot_index]
 
 	#Check if this slot has a filter and the item matches
-	if slot["allowed_types"].size() > 0 and not (item.item_type in slot["allowed_types"]):
+	if slot["allowed_types"].size() > 0 and not (item in slot["allowed_types"]):
 		print_debug("item not allowed by filter")
 		return false
 
@@ -132,7 +136,7 @@ func has_space_for_item_in_slot(item, slot_index: int) -> bool:
 	var slot = slots[slot_index]
 	
 	#checks if this slot has a filter and the item matches it
-	if slot["allowed_types"].size() > 0 and not (item.item_type in slot["allowed_types"]):
+	if slot["allowed_types"].size() > 0 and not (item in slot["allowed_types"]):
 		return false
 
 	return slot["contents"].size() < slot["capacity"]

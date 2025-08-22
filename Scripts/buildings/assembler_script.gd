@@ -17,23 +17,49 @@ var debugname = "assemblinator"
 
 func _ready() -> void:
 	self.name = debugname
-	set_recipe(Globals.debug_recipe)
+
 	container_manager = get_own_container_manager()
 	crafting_timer = Timer.new()
 	crafting_timer.one_shot = true
 	add_child(crafting_timer)
 	crafting_timer.connect("timeout", _on_crafting_complete)
 	add_to_group("assemblers")
-
+	
+	set_recipe(Globals.debug_recipe)
 
 
 #sets the recipe then calls the array rebuilder
 func set_recipe(recipe: Recipe) -> void:
 	current_recipe = recipe
 	print_debug("our recipe is ", current_recipe.recipe_name)
+	
+	set_container_slots()
+	
 	# (Optional) validate slot counts
 	assert(recipe.recipe_ingredients.size() == input_slots.size(), "input_slots count must match number of ingredients")
 	assert(recipe.recipe_products.size() == output_slots.size(), "output_slots count must match number of products")
+
+
+
+func set_container_slots():
+
+	container_manager.clear_slots()
+	input_slots.clear()
+	output_slots.clear()
+
+	# Inputs
+	for ingridient in current_recipe.recipe_ingredients:
+		var ingridients : Array = [ingridient.item] 
+		var slot_index = container_manager.add_slot(84, ingridients)
+		input_slots.append(slot_index)
+		print("we added slot for: ", ingridient.item.item_name)
+
+	# Outputs
+	for product in current_recipe.recipe_products:
+		var products : Array = [product.item] 
+		var slot_index = container_manager.add_slot(84, products)
+		output_slots.append(slot_index)
+		print("we added slot for: ", product.item.item_name)
 
 
 
@@ -44,6 +70,7 @@ func _process(_delta: float) -> void:
 	if _has_required_inputs() and _outputs_have_space():
 		_consume_inputs()
 		_start_crafting()
+	push_items()
 
 
 
@@ -96,7 +123,7 @@ func _consume_inputs() -> void:
 
 
 func _start_crafting() -> void:
-	print_debug("we started crafting!!")
+	print("we started crafting!!")
 	is_crafting = true
 	crafting_timer.start(current_recipe.crafting_time)
 
@@ -109,27 +136,14 @@ func _on_crafting_complete() -> void:
 		var out = current_recipe.recipe_products[i]
 		var slot := output_slots[i]
 		for k in range(out.amount):
+			print("we made this many items: ", out.amount)
 			var ok := container_manager.add_item_to_slot(out.item, slot)
-			print_debug("we finished craftin ", out.item)
+			print("we finished craftin ", out.item.item_name)
 			if not ok:
 				# Slot is full; you can buffer, drop, or pause here.
 				break
 	
-
-	#when finished crafting try to push items out
-	push_items()
 	is_crafting = false
-
-
-
-#func push_items():
-	#var contents = container_manager.get_items_in_slot(0)
-	#var neighbor = cached_neighbor
-	#if neighbor != null and contents.size() > 0:
-		#if neighbor.container_has_space == true:
-			#var item_to_move = contents[0]
-			#neighbor.container_manager.add_item_to_slot(item_to_move, 0)
-			#container_manager.remove_item_from_slot(item_to_move, 0)
 
 
 
@@ -146,9 +160,10 @@ func push_items() -> void:
 	# Push only from the FIRST output slot for simplicity
 	if output_slots.size() == 0:
 		return
+	
+	
 	var out_slot := output_slots[0]
 	var items := container_manager.get_items_in_slot(out_slot)
-	print_debug("the items we wanna push are: ", items)
 	if items.size() == 0:
 		return
 
@@ -157,33 +172,6 @@ func push_items() -> void:
 	if neighbor_cm.has_space_for_item_in_slot(item_to_move, 0):
 		if neighbor_cm.add_item_to_slot(item_to_move, 0):
 			container_manager.remove_item_from_slot(item_to_move, out_slot)
-
-
-
-#tries to push the first item in the first output slot to the neighbor
-#func push_items() -> void:
-	#var neighbor = cached_neighbor
-	#if neighbor == null:
-		#print_debug("no neighbors")
-		#return
-	#if output_slots.size() == 0:
-		#print_debug("output slots are size 0")
-		#return
-#
-#
-	#var out_slot := output_slots[0]
-	#var items := container_manager.get_items_in_slot(out_slot)
-	#print_debug("the items we wanna push are: ", items)
-	#if items.size() == 0:
-		#return
-		#
-		#
-		## Your neighbor API:
-		#if neighbor.container_has_space == true:
-			#var item_to_move = items[0]
-			#var accepted : bool = neighbor.container_manager.add_item_to_slot(item_to_move, 0)
-			#if accepted:
-				#container_manager.remove_item_from_slot(item_to_move, out_slot)
 
 
 
