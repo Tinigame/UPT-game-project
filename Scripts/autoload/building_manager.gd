@@ -56,6 +56,9 @@ func build_building(build_info : Building):
 				return
 		return
 	
+	if PlayerUI.menu_open == true:
+		return
+	
 	
 	var building = building_base.instantiate()
 	

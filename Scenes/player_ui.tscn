@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dihals8hnh3ju" path="res://Scripts/autoload/player_UI.gd" id="1_ohrjl"]
 
 [node name="Player_UI" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_ohrjl")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -21,8 +20,65 @@ layout_mode = 2
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/AspectRatioContainer"]
 layout_mode = 2
 
-[node name="ItemList" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer"]
+layout_mode = 2
+split_offset = 300
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="Container menu" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer"]
+layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="Container label" type="Label" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="ItemList" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu"]
 unique_name_in_owner = true
 layout_mode = 2
 icon_mode = 0
 fixed_icon_size = Vector2i(32, 32)
+
+[node name="crafting menu" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer"]
+layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="Recipe Label" type="Label" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu"]
+layout_mode = 2
+text = "Crafting"
+
+[node name="TabContainer" type="TabContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu"]
+layout_mode = 2
+current_tab = 0
+
+[node name="Buildings" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
+layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 2
+metadata/_tab_index = 0
+
+[node name="Panel" type="Panel" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/Buildings"]
+layout_mode = 2
+
+[node name="Intermediates" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
+visible = false
+layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 2
+metadata/_tab_index = 1
+
+[node name="Panel" type="Panel" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/Intermediates"]
+layout_mode = 2
+
+[node name="Consumables" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
+visible = false
+layout_mode = 2
+dragging_enabled = false
+dragger_visibility = 2
+metadata/_tab_index = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/Consumables"]
+layout_mode = 2
