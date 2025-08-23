@@ -22,3 +22,6 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("temp_select_building_4"):
 		selected_building = preload("res://Resources/buildings/assembler.tres")
 		print("selected assembler")
+	elif Input.is_action_just_pressed("temp_deselect_building"):
+		selected_building = null
+		print("nothing selected")

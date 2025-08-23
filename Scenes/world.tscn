@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=15 format=3 uid="uid://cvlfsbayttnbq"]
 
 [ext_resource type="Script" uid="uid://bfksnyjj8k63a" path="res://Scripts/playerscript.gd" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://ceduopt35qeiq" path="res://Scripts/autoload/building_manager.gd" id="2_8j60k"]
 [ext_resource type="Script" uid="uid://4xjf73360oqy" path="res://Scripts/ore_generator.gd" id="3_8j60k"]
+[ext_resource type="PackedScene" uid="uid://moegk404igb4" path="res://Scenes/player_ui.tscn" id="5_5ukr8"]
 [ext_resource type="Script" uid="uid://bn4uqfhshym4m" path="res://Scripts/fps_counter.gd" id="5_fo5ed"]
 
 [sub_resource type="Environment" id="Environment_a02cp"]
@@ -106,3 +107,6 @@ offset_bottom = 91.0
 text = "FPS: 686964839"
 label_settings = SubResource("LabelSettings_fo5ed")
 script = ExtResource("5_fo5ed")
+
+[node name="Player_UI" parent="." instance=ExtResource("5_5ukr8")]
+visible = true

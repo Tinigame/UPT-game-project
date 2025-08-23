@@ -15,6 +15,10 @@ var ghost_rotation_instance : MeshInstance3D
 
 var current_building = preload("res://Resources/buildings/conveyor_belt.tres")
 
+var container_manager = preload("res://Scenes/Container_manager.tscn")
+var inventory
+
+
 
 func _ready():
 	camera.current = true
@@ -27,6 +31,14 @@ func _ready():
 	add_child(ghost_rotation_instance)
 	ghost_instance.hide()
 	ghost_rotation_instance.hide()
+
+	#adds the container module to act as an inventory
+	inventory = container_manager.instantiate()
+	self.add_child(inventory)
+	
+	#adds 5 inventory slots
+	for i in range(5):
+		inventory.add_slot(84, [])
 
 
 
@@ -85,7 +97,7 @@ func build_toggle():
 #handle jump, movement etc
 func player_movement():
 	# Add back in the is_on_floor(), i removed it for testing.
-	if Input.is_action_just_pressed("space"):
+	if Input.is_action_just_pressed("space") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -138,16 +150,12 @@ func summon_rotation_build_ghost():
 
 #updates the build ghosts position, mesh, rotation indicator, etc
 var last_Selected_building = null
-func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, ghost_rotation_instance : MeshInstance3D):
+func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, current_ghost_rotation_instance : MeshInstance3D):
 	
 	if Input.is_action_just_pressed("rotate_clockwise"):
 		Globals.building_rotation.y += 90
-		print(Globals.building_rotation.y)
-		print("rotate clock")
 	if Input.is_action_just_pressed("rotate_counterclockwise"):
 		Globals.building_rotation.y += -180
-		print(Globals.building_rotation.y)
-		print("rotate counter clock")
 	
 	#makes ghost aligned to the grid like the buildings
 	var size = Globals.selected_building.building_size
@@ -157,7 +165,7 @@ func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, ghos
 	
 	#gets the offset for the front-middle of the building then applies the offset to the rotation ghost
 	var front_offset = get_forward_cell_offset(size, current_ghost_instance.rotation_degrees)
-	ghost_rotation_instance.global_position = ghost_pos + offset + front_offset
+	current_ghost_rotation_instance.global_position = ghost_pos + offset + front_offset
 
 	#if the building changes then match the mesh to the building
 	if last_Selected_building != Globals.selected_building.building_mesh:
@@ -202,22 +210,33 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	#exit the game when esc pressed
-	if Input.is_action_just_pressed("exit"):
+	#exit the game when f4 pressed
+	if Input.is_action_just_pressed("close_game"):
 		get_tree().quit()
 
-	#get the mouse pos when buildmode enabled
-	if Globals.buildmode == true:
-		ghost_location = get_mouse_world_position()
-		update_build_ghost(ghost_location, ghost_instance, ghost_rotation_instance)
-		ghost_instance.show()
-		ghost_rotation_instance.show()
-		
-		Globals.building_location = Vector3(ghost_location.x, 0, ghost_location.z)
-	elif Globals.buildmode == false:
-		ghost_instance.hide()
-		ghost_rotation_instance.hide()
+	if Input.is_action_just_pressed("open_inventory"):
+		PlayerUI.open(inventory)
+
 
 	player_movement()
 	build_toggle()
 	move_and_slide()
+
+
+	#get the mouse pos when buildmode enabled
+	if Globals.buildmode == true:
+		ghost_location = get_mouse_world_position()
+		Globals.building_location = Vector3(ghost_location.x, 0, ghost_location.z)
+		
+		if Globals.selected_building == null:
+			ghost_instance.hide()
+			ghost_rotation_instance.hide()
+			return
+		
+		update_build_ghost(ghost_location, ghost_instance, ghost_rotation_instance)
+		ghost_instance.show()
+		ghost_rotation_instance.show()
+		
+	elif Globals.buildmode == false:
+		ghost_instance.hide()
+		ghost_rotation_instance.hide()
