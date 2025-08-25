@@ -109,4 +109,3 @@ label_settings = SubResource("LabelSettings_fo5ed")
 script = ExtResource("5_fo5ed")
 
 [node name="Player_UI" parent="." instance=ExtResource("5_5ukr8")]
-visible = true

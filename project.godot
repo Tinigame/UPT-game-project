@@ -23,6 +23,7 @@ Enums="*res://Scripts/autoload/Enums.gd"
 ConveyorManager="*res://Scripts/autoload/Conveyor_manager.gd"
 ItemDatabase="*res://Scripts/autoload/Item_database.gd"
 PlayerUI="*res://Scenes/player_ui.tscn"
+RecipeDatabase="*res://Scripts/autoload/Recipe_database.gd"
 
 [debug]
 

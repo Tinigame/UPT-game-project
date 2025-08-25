@@ -35,7 +35,7 @@ dragger_visibility = 2
 layout_mode = 2
 text = "Inventory"
 
-[node name="ItemList" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu"]
+[node name="InventoryList" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu"]
 unique_name_in_owner = true
 layout_mode = 2
 icon_mode = 0
@@ -54,31 +54,33 @@ text = "Crafting"
 layout_mode = 2
 current_tab = 0
 
-[node name="Buildings" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
+[node name="buildings" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
 layout_mode = 2
 dragging_enabled = false
 dragger_visibility = 2
 metadata/_tab_index = 0
 
-[node name="Panel" type="Panel" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/Buildings"]
+[node name="buildings" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/buildings"]
 layout_mode = 2
 
-[node name="Intermediates" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
+[node name="intermediates" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
 visible = false
 layout_mode = 2
 dragging_enabled = false
 dragger_visibility = 2
 metadata/_tab_index = 1
 
-[node name="Panel" type="Panel" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/Intermediates"]
+[node name="intermediates" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/intermediates"]
 layout_mode = 2
 
-[node name="Consumables" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
+[node name="consumables" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
 visible = false
 layout_mode = 2
 dragging_enabled = false
 dragger_visibility = 2
 metadata/_tab_index = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/Consumables"]
+[node name="consumables" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/consumables"]
 layout_mode = 2
+
+[connection signal="tab_changed" from="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer" to="." method="_on_tab_container_tab_changed"]
