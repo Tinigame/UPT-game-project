@@ -9,9 +9,9 @@ var buildings : Array = []
 var occupied_cells : Dictionary = {}
 
 func _physics_process(_delta: float) -> void:
-	if Globals.buildmode == true and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if Globals.buildmode == true and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and PlayerUI.menu_open == false:
 		build_building(Globals.selected_building)
-	if Globals.buildmode == true and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+	if Globals.buildmode == true and Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and PlayerUI.menu_open == false:
 		remove_building()
 
 

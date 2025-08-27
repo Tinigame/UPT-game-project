@@ -10,9 +10,7 @@ signal space_changed(has_space: bool)
 
 var is_player_inventory : bool = false
 
-var debugitem
-func _ready() -> void:
-	debugitem = preload("res://Resources/items/item_conveyor.tres")
+var debugitem : Item
 
 
 
@@ -155,8 +153,10 @@ func has_any_space() -> bool:
 
 # Debug function
 func debug_populate_slot(slot_index: int):
+	debugitem = load("res://Resources/items/item_conveyor.tres")
 	print("DEBUGITEM CLASS: ", debugitem, debugitem.get_class())
 	add_item_to_slot(debugitem, slot_index)
+	PlayerUI.update_menu()
 
 
 

@@ -11,4 +11,5 @@ extends Resource
 
 #set if item is also a building
 @export var is_building : bool = false
-@export var building_resource : Resource
+#@export var building_resource_dir = "res://Resources/buildings/conveyor_belt.tres"
+@export var building_resource : Resource = load("res://Resources/buildings/conveyor_belt.tres")

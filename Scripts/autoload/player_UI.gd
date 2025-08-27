@@ -29,6 +29,7 @@ func open(target_building):
 	else:
 		container = target_building.container_manager
 	
+	
 	if menu_open == true:
 		return
 	menu_open = true
@@ -42,6 +43,9 @@ func open(target_building):
 	inventory_item_list = %InventoryList
 	inventory_item_list.max_columns = container.get_slot_count()
 #	print(inventory_item_list.max_columns, " collumns")
+	if not inventory_item_list.item_selected.is_connected(_on_inventory_item_selected):
+		inventory_item_list.item_selected.connect(_on_inventory_item_selected)
+	
 	
 	for slot_index in range(container.get_slot_count()):
 		var slot = container.slots[slot_index]
@@ -78,6 +82,7 @@ func _connect_recipe_list_signals():
 
 
 #should craft the recipe if from inventory or set the recipe if on building.
+#sets the recipe on a building but no crafting yet.
 func _on_recipe_selected(index: int, list: ItemList):
 	var recipe = list.get_item_metadata(index)
 	if current_container.is_player_inventory == false:
@@ -88,10 +93,12 @@ func _on_recipe_selected(index: int, list: ItemList):
 
 
 #turn into building selection.
-#func _on_item_list_item_selected(index: int) -> void:
-	#current_selected_item = inventory_item_list.get_item_metadata(index)
-	#print("The selected item is: ", current_selected_item.name)
-	#selected_item.emit(current_selected_item)
+func _on_inventory_item_selected(index: int) -> void:
+	var current_selected_item : Item = inventory_item_list.get_item_metadata(index)
+	print("The selected item is: ", current_selected_item.item_name)
+	if current_selected_item.is_building == true:
+		Globals.selected_building = current_selected_item.building_resource
+		print("selected building: ", current_selected_item.item_name)
 
 
 
@@ -106,7 +113,7 @@ func update_menu():
 	for slot_index in range(current_container.get_slot_count()):
 		var slot = current_container.slots[slot_index]
 		for item in slot["contents"]:
-			print("we got a ", item.item_name)
+#			print("we got a ", item.item_name)
 			var index = inventory_item_list.add_icon_item(item.item_sprite)
 			inventory_item_list.set_item_text(index, item.item_name)
 			inventory_item_list.set_item_metadata(index, item)
