@@ -2,6 +2,7 @@ extends Node
 
 var building_recipes = {
 	"eldritch belt duplication" = preload("res://Resources/recipes/debug_recipe.tres"),
+	"belt making" = preload("res://Resources/recipes/conveyor_from_ore.tres")
 }
 
 var intermediates_recipes = {

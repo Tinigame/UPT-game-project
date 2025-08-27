@@ -1,10 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=9 format=3 uid="uid://cvlfsbayttnbq"]
 
-[ext_resource type="Script" uid="uid://bfksnyjj8k63a" path="res://Scripts/playerscript.gd" id="1_a02cp"]
-[ext_resource type="Script" uid="uid://ceduopt35qeiq" path="res://Scripts/autoload/building_manager.gd" id="2_8j60k"]
 [ext_resource type="Script" uid="uid://4xjf73360oqy" path="res://Scripts/ore_generator.gd" id="3_8j60k"]
 [ext_resource type="PackedScene" uid="uid://moegk404igb4" path="res://Scenes/player_ui.tscn" id="5_5ukr8"]
-[ext_resource type="Script" uid="uid://bn4uqfhshym4m" path="res://Scripts/fps_counter.gd" id="5_fo5ed"]
 
 [sub_resource type="Environment" id="Environment_a02cp"]
 background_energy_multiplier = 0.0
@@ -32,13 +29,6 @@ size = Vector3(2, 2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_a02cp"]
 size = Vector3(2, 2, 2)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a02cp"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_go701"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fo5ed"]
-font_size = 36
-
 [node name="World" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -51,9 +41,6 @@ directional_shadow_pancake_size = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_a02cp")
-
-[node name="Buildings" type="Node3D" parent="."]
-script = ExtResource("2_8j60k")
 
 [node name="Ore_Generator" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
@@ -78,34 +65,5 @@ shape = SubResource("BoxShape3D_go701")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="floor/cube"]
 mesh = SubResource("BoxMesh_a02cp")
 skeleton = NodePath("../..")
-
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19242, 0)
-script = ExtResource("1_a02cp")
-
-[node name="FP camera" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491, 0)
-fov = 80.0
-
-[node name="Top camera" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15, 0)
-fov = 80.0
-size = 15.0
-far = 100.0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-shape = SubResource("CapsuleShape3D_a02cp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-mesh = SubResource("CapsuleMesh_go701")
-
-[node name="FPS counter" type="Label" parent="Player"]
-offset_left = 85.0
-offset_top = 31.0
-offset_right = 596.0
-offset_bottom = 91.0
-text = "FPS: 686964839"
-label_settings = SubResource("LabelSettings_fo5ed")
-script = ExtResource("5_fo5ed")
 
 [node name="Player_UI" parent="." instance=ExtResource("5_5ukr8")]

@@ -1,6 +1,6 @@
 extends CharacterBody3D
-@onready var camera: Camera3D = $"FP camera"
-@onready var tcamera: Camera3D = $"Top camera"
+var camera: Camera3D
+var tcamera: Camera3D
 
 const GRID_SIZE : int = 1
 const JUMP_VELOCITY : float = 5.0
@@ -18,9 +18,14 @@ var current_building = preload("res://Resources/buildings/conveyor_belt.tres")
 var container_manager = preload("res://Scenes/Container_manager.tscn")
 var inventory
 
-
+var crafting_module = preload("res://Scripts/buildings/pocket_assembler_script.gd")
+var crafter_node : Node3D
 
 func _ready():
+	camera = $"FP camera"
+	tcamera = $"Top camera"
+	
+	
 	camera.current = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
@@ -36,6 +41,10 @@ func _ready():
 	inventory = container_manager.instantiate()
 	inventory.is_player_inventory = true
 	self.add_child(inventory)
+	
+	crafter_node = Node3D.new()
+	crafter_node.set_script(crafting_module)
+	self.add_child(crafter_node)
 	
 	#adds 5 inventory slots
 	for i in range(5):
@@ -205,6 +214,10 @@ func get_forward_cell_offset(building_size, grotation) -> Vector3:
 	return forward * (building_size.z / 2.0)
 
 
+
+
+func handcraft_item(recipe):
+	crafter_node.set_recipe(recipe)
 
 func _physics_process(delta):
 	# Add the gravity.

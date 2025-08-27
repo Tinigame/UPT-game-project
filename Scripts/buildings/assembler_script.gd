@@ -80,8 +80,8 @@ func _has_required_inputs() -> bool:
 		var need = current_recipe.recipe_ingredients[i]
 		var slot := input_slots[i]
 		
-		if container_manager.get_items_in_slot(slot):
-			print("we have ", container_manager.get_items_in_slot(slot))
+#		if container_manager.get_items_in_slot(slot):
+#			print("we have ", container_manager.get_items_in_slot(slot))
 		
 		if container_manager.count_item_in_slot(need.item, slot) < need.amount:
 			return false

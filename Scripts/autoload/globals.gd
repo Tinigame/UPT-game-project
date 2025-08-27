@@ -24,4 +24,4 @@ func _physics_process(_delta: float) -> void:
 		print("selected assembler")
 	elif Input.is_action_just_pressed("temp_deselect_building"):
 		selected_building = null
-		print("nothing selected")
+		print("no building selected")

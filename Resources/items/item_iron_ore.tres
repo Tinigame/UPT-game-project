@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://dnx2ktbw4m5t0"]
 
-[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_ws74h"]
+[ext_resource type="Texture2D" uid="uid://byrfat28laqyp" path="res://Assets/Textures/iron_ore texture.png" id="1_ws74h"]
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_wc2th"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws74h"]

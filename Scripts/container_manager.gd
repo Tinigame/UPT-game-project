@@ -152,15 +152,14 @@ func has_any_space() -> bool:
 
 
 # Debug function
-func debug_populate_slot(slot_index: int):
+func debug_populate_slot():
 	debugitem = load("res://Resources/items/item_conveyor.tres")
-	print("DEBUGITEM CLASS: ", debugitem, debugitem.get_class())
-	add_item_to_slot(debugitem, slot_index)
+	add_item_to_slot(debugitem, 0)
 	PlayerUI.update_menu()
 
 
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("debug_populate_containers"):
-		print("populating slot 0")
-		debug_populate_slot(0)
+		print_debug("populating slot 0")
+		debug_populate_slot()

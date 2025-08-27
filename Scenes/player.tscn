@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgyg7jq40r1a5"]
+
+[ext_resource type="Script" uid="uid://bfksnyjj8k63a" path="res://Scripts/playerscript.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://bn4uqfhshym4m" path="res://Scripts/fps_counter.gd" id="2_6t5aa"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a02cp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_go701"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fo5ed"]
+font_size = 36
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_cvnsp")
+
+[node name="FP camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.491, 0)
+fov = 80.0
+
+[node name="Top camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15, 0)
+fov = 80.0
+size = 15.0
+far = 100.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_a02cp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_go701")
+
+[node name="FPS counter" type="Label" parent="."]
+offset_left = 85.0
+offset_top = 31.0
+offset_right = 596.0
+offset_bottom = 91.0
+text = "FPS: 686964839"
+label_settings = SubResource("LabelSettings_fo5ed")
+script = ExtResource("2_6t5aa")

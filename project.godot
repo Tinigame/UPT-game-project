@@ -18,12 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://Scripts/autoload/globals.gd"
-BuildingManager="*res://Scripts/autoload/building_manager.gd"
 Enums="*res://Scripts/autoload/Enums.gd"
 ConveyorManager="*res://Scripts/autoload/Conveyor_manager.gd"
 ItemDatabase="*res://Scripts/autoload/Item_database.gd"
 PlayerUI="*res://Scenes/player_ui.tscn"
 RecipeDatabase="*res://Scripts/autoload/Recipe_database.gd"
+BuildingManager="*res://Scenes/Building_manager.tscn"
+Player="*res://Scenes/player.tscn"
 
 [debug]
 

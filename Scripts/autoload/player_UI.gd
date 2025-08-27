@@ -45,6 +45,8 @@ func open(target_building):
 #	print(inventory_item_list.max_columns, " collumns")
 	if not inventory_item_list.item_selected.is_connected(_on_inventory_item_selected):
 		inventory_item_list.item_selected.connect(_on_inventory_item_selected)
+	if not inventory_item_list.item_activated.is_connected(_on_inventory_item_activated):
+		inventory_item_list.item_activated.connect(_on_inventory_item_activated)
 	
 	
 	for slot_index in range(container.get_slot_count()):
@@ -89,16 +91,26 @@ func _on_recipe_selected(index: int, list: ItemList):
 		if recipe:
 			print("Selected recipe:", recipe.recipe_name)
 			current_building.set_recipe(recipe)
+	elif current_container.is_player_inventory == true:
+		Player.handcraft_item(recipe)
 
 
 
-#turn into building selection.
 func _on_inventory_item_selected(index: int) -> void:
 	var current_selected_item : Item = inventory_item_list.get_item_metadata(index)
 	print("The selected item is: ", current_selected_item.item_name)
-	if current_selected_item.is_building == true:
-		Globals.selected_building = current_selected_item.building_resource
-		print("selected building: ", current_selected_item.item_name)
+	if current_container.is_player_inventory == true:
+		if current_selected_item.is_building == true:
+			Globals.selected_building = current_selected_item.building_resource
+			print("selected building: ", current_selected_item.item_name)
+
+
+
+func _on_inventory_item_activated(index: int) -> void:
+	var current_selected_item : Item = inventory_item_list.get_item_metadata(index)
+	Player.inventory.add_item_to_slot(current_selected_item, 0)
+	inventory_item_list.remove_item(index)
+	current_container.remove_item_from_slot(current_selected_item, index)
 
 
 
