@@ -8,6 +8,7 @@ var slots: Array = []
 
 signal space_changed(has_space: bool)
 
+var is_player_inventory : bool = false
 
 var debugitem
 func _ready() -> void:

@@ -34,6 +34,7 @@ func _ready():
 
 	#adds the container module to act as an inventory
 	inventory = container_manager.instantiate()
+	inventory.is_player_inventory = true
 	self.add_child(inventory)
 	
 	#adds 5 inventory slots

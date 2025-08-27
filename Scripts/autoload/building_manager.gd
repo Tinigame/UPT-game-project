@@ -127,7 +127,9 @@ func build_building(build_info : Building):
 
 		# Optional: store reference for later recipe configuration
 		building.container_manager = container
-
+	
+	if build_info.uses_recipes == true:
+		building.is_recipe_compatible = true
 
 	#adds the building to the tree and to the array
 	add_child(building)
@@ -146,7 +148,7 @@ func build_building(build_info : Building):
 
 
 func open_building_UI(target_building):
-	PlayerUI.open(target_building.container_manager)
+	PlayerUI.open(target_building)
 
 
 

@@ -22,4 +22,5 @@ only_buildable_on_ores = false
 building_script = ExtResource("2_fk2o6")
 has_container = true
 container_max_slots = 0
+uses_recipes = true
 metadata/_custom_type_script = "uid://dbtoj443lgn6a"

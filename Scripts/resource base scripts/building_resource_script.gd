@@ -20,3 +20,5 @@ extends Resource
 @export var has_container : bool = false
 #max amount of unique items that can be in the container at a time
 @export var container_max_slots : int = 0
+#does the building utilize recipes or not
+@export var uses_recipes = false

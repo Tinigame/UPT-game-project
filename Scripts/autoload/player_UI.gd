@@ -10,13 +10,25 @@ var inventory_item_list : ItemList
 var recipe_item_list : ItemList
 
 var current_container = null
+var current_building = null
+
 
 
 func _ready() -> void:
 	self.hide()
+	recipe_tabs.tab_changed.connect(_on_tab_container_tab_changed)
+	_connect_recipe_list_signals()
 
 
-func open(container):
+
+func open(target_building):
+	current_building = target_building
+	var container
+	if target_building.name == "ContainerManager":
+		container = target_building
+	else:
+		container = target_building.container_manager
+	
 	if menu_open == true:
 		return
 	menu_open = true
@@ -49,16 +61,38 @@ func open(container):
 	for recipe in category_recipes.values():
 		var index = recipe_item_list.add_icon_item(recipe.recipe_sprite)
 		recipe_item_list.set_item_text(index, recipe.recipe_name)
-		inventory_item_list.set_item_metadata(index, recipe)
+		recipe_item_list.set_item_metadata(index, recipe)
 	
 	show()
 
 
-#turn into building selection, and a seperate one for recipes/crafting
+
+func _connect_recipe_list_signals():
+	for i in range(recipe_tabs.get_tab_count()):
+		var tab = recipe_tabs.get_tab_control(i)
+		if tab.get_child_count() > 0 and tab.get_child(0) is ItemList:
+			var list = tab.get_child(0)
+			if not list.is_connected("item_selected", _on_recipe_selected):
+				list.item_selected.connect(_on_recipe_selected.bind(list))
+
+
+
+#should craft the recipe if from inventory or set the recipe if on building.
+func _on_recipe_selected(index: int, list: ItemList):
+	var recipe = list.get_item_metadata(index)
+	if current_container.is_player_inventory == false:
+		if recipe:
+			print("Selected recipe:", recipe.recipe_name)
+			current_building.set_recipe(recipe)
+
+
+
+#turn into building selection.
 #func _on_item_list_item_selected(index: int) -> void:
 	#current_selected_item = inventory_item_list.get_item_metadata(index)
 	#print("The selected item is: ", current_selected_item.name)
 	#selected_item.emit(current_selected_item)
+
 
 
 func update_menu():
@@ -89,7 +123,7 @@ func update_menu():
 	for recipe in category_recipes.values():
 		var index = recipe_item_list.add_icon_item(recipe.recipe_sprite)
 		recipe_item_list.set_item_text(index, recipe.recipe_name)
-		inventory_item_list.set_item_metadata(index, recipe)
+		recipe_item_list.set_item_metadata(index, recipe)
 
 
 
@@ -104,8 +138,10 @@ func close_menu() -> void:
 	recipe_item_list.clear()
 	recipe_item_list.deselect_all()
 	
+	current_building = null
 	current_container = null
 	menu_open = false
+
 
 
 func _physics_process(_delta: float) -> void:
@@ -114,5 +150,6 @@ func _physics_process(_delta: float) -> void:
 
 
 
-func _on_tab_container_tab_changed(tab: int) -> void:
+func _on_tab_container_tab_changed(_tab: int) -> void:
+	_connect_recipe_list_signals()
 	update_menu()

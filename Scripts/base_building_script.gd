@@ -6,12 +6,14 @@ var building_size : Vector3i
 var container_has_space = true
 @onready var container_manager: Node = get_node_or_null("ContainerManager")
 var unique_script : GDScript = null
+var is_recipe_compatible = false
 var over_ores : PackedStringArray
 
+var unique_node : Node3D = null
 
 func _ready() -> void:
 	if unique_script:
-		var unique_node = Node3D.new()
+		unique_node = Node3D.new()
 		unique_node.set_script(unique_script)
 		unique_node.forward_cell_offset = get_forward_cell_offset()
 		unique_node.grid_position = grid_position
@@ -47,3 +49,15 @@ func _on_space_changed(has_space: bool):
 		container_has_space = true
 	else:
 		container_has_space = false
+
+
+
+func set_recipe(recipe: Resource) -> void:
+	if not is_recipe_compatible:
+		push_warning("This building cannot use recipes.")
+		return
+	
+	if unique_node != null and unique_node.has_method("set_recipe"):
+		unique_node.set_recipe(recipe)
+	else:
+		push_warning("Unique node does not support recipes.")
