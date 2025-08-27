@@ -86,6 +86,17 @@ func build_building(build_info : Building):
 		if occupied_cells.has(cell):
 			return
 	
+	print("this building requires an: ", build_info.building_ingredient_name)
+	var building_ingredient = ItemDatabase.get_item_resource(build_info.building_ingredient_name)
+	if Player.inventory.has_item(building_ingredient) == true:
+		Player.inventory.remove_n_of_item(building_ingredient, 1)
+		pass
+	elif Player.inventory.has_item(building_ingredient) == false and Globals.debug_mode == false:
+		print("no required building item")
+		return
+	else:
+		pass
+	
 	#adds collision shape to building
 	var building_collision = CollisionShape3D.new()
 	var collision_shape = BoxShape3D.new()
@@ -134,6 +145,7 @@ func build_building(build_info : Building):
 	#adds the building to the tree and to the array
 	add_child(building)
 	buildings.append(building)
+	
 	
 	#mark the cells as occupied
 	for cell in required_cells:

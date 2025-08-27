@@ -10,9 +10,7 @@ extends Resource
 
 @export var only_buildable_on_ores : bool = false
 
-#what item is required to place the building
-#idk what type this should be so its like ignore for future
-#var building_ingredient
+@export var building_ingredient_name : String
 
 #script that gets put on the building base
 @export var building_script : GDScript

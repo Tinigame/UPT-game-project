@@ -88,6 +88,7 @@ func add_item_to_slot(item : Item, slot_index: int) -> bool:
 	#if slot has less than available capacity, add item
 	if slot["contents"].size() < slot["capacity"]:
 		slot["contents"].append(item)
+		PlayerUI.update_menu()
 		emit_signal("space_changed", has_any_space())
 		return true
 	return false
@@ -106,6 +107,25 @@ func remove_item_from_slot(item, slot_index: int) -> void:
 	if slot["contents"].has(item):
 		slot["contents"].erase(item)
 		emit_signal("space_changed", has_any_space())
+
+
+
+# Removes up to `n` of `item` from *any* slots in this container.
+# Returns how many items were actually removed.
+func remove_n_of_item(item: Item, n: int) -> int:
+	var total_removed := 0
+
+	# Iterate slots in reverse so removal doesn't mess with iteration order
+	for slot_index in range(slots.size() - 1, -1, -1):
+		if total_removed >= n:
+			break
+
+		var to_remove := n - total_removed
+		var removed_from_slot := remove_n_of_item_from_slot(item, to_remove, slot_index)
+
+		total_removed += removed_from_slot
+
+	return total_removed
 
 
 
@@ -146,6 +166,15 @@ func has_space_for_item_in_slot(item, slot_index: int) -> bool:
 func has_any_space() -> bool:
 	for slot in slots:
 		if slot["contents"].size() < slot["capacity"]:
+			return true
+	return false
+
+
+
+# Returns true if this container has at least one of the given item
+func has_item(item: Item) -> bool:
+	for slot in slots:
+		if item in slot["contents"]:
 			return true
 	return false
 
