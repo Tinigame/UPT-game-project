@@ -25,7 +25,7 @@ func _ready() -> void:
 	crafting_timer.connect("timeout", _on_crafting_complete)
 	add_to_group("assemblers")
 	
-	set_recipe(Globals.debug_recipe)
+#	set_recipe(Globals.debug_recipe)
 
 
 #sets the recipe then calls the array rebuilder

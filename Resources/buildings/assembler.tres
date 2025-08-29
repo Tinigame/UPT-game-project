@@ -19,6 +19,7 @@ building_size = Vector3(3, 2, 3)
 building_mesh = SubResource("BoxMesh_i5d80")
 building_health = 1000.0
 only_buildable_on_ores = false
+building_ingredient_name = ""
 building_script = ExtResource("2_fk2o6")
 has_container = true
 container_max_slots = 0

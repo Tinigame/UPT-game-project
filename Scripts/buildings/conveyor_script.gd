@@ -25,6 +25,7 @@ func _ready() -> void:
 	if container_manager:
 		container_manager.connect("space_changed", _on_container_space_changed)
 		# Initialize contents now
+		container_manager.add_slot(1, [])
 		conveyor_contents = container_manager.get_items_in_slot(0)
 		last_contents = conveyor_contents.duplicate()
 

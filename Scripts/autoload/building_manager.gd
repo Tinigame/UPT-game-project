@@ -132,9 +132,9 @@ func build_building(build_info : Building):
 		var container = container_manager.instantiate()
 		building.add_child(container)
 
-		# Create the minimum number of empty slots so it can hold items at all
-		for i in range(build_info.container_max_slots):
-			container.add_slot(1, [])  # capacity=1 for now, no restrictions
+		## Create the minimum number of empty slots so it can hold items at all
+		#for i in range(build_info.container_max_slots):
+			#container.add_slot(1, [])  # capacity=1 for now, no restrictions
 
 		# Optional: store reference for later recipe configuration
 		building.container_manager = container

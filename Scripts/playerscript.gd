@@ -13,8 +13,6 @@ var ghost_location : Vector3
 var ghost_instance : MeshInstance3D
 var ghost_rotation_instance : MeshInstance3D
 
-var current_building = preload("res://Resources/buildings/conveyor_belt.tres")
-
 var container_manager = preload("res://Scenes/Container_manager.tscn")
 var inventory
 

@@ -3,7 +3,7 @@ extends Node
 var buildmode = false
 var building_location = Vector3(0, 0, 0)
 var building_rotation = Vector3(0, 0, 0)
-var selected_building = preload("res://Resources/buildings/conveyor_belt.tres")
+var selected_building = null
 var ore_map : Dictionary
 
 var debug_item = preload("res://Resources/buildings/conveyor_belt.tres")
@@ -27,6 +27,7 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_just_pressed("temp_deselect_building"):
 		selected_building = null
 		print("no building selected")
+		
 	elif Input.is_action_just_pressed("toggle_debug_mode"):
 		if debug_mode == true:
 			debug_mode = false

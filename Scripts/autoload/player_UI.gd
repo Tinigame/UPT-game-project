@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var UI_base : PanelContainer = $CenterContainer/AspectRatioContainer/PanelContainer
 @onready var inventory_splitter : HSplitContainer = $CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer
 @onready var recipe_tabs: TabContainer = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"
+@onready var container_label: Label = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu/Container label"
 
 var menu_open : bool = false
 
@@ -26,8 +27,10 @@ func open(target_building):
 	var container
 	if target_building.name == "ContainerManager":
 		container = target_building
+		container_label.text = "Inventory"
 	else:
 		container = target_building.container_manager
+		container_label.text = str("Container of ", target_building.name)
 	
 	
 	if menu_open == true:
@@ -51,12 +54,22 @@ func open(target_building):
 	
 	for slot_index in range(container.get_slot_count()):
 		var slot = container.slots[slot_index]
+		var last_item = null
+		var item_count : int = 1
+		var index
 		for item in slot["contents"]:
 			print("we got a ", item.item_name)
-			var index = inventory_item_list.add_icon_item(item.item_sprite)
-			inventory_item_list.set_item_text(index, item.item_name)
+			
+			if item == last_item:
+				item_count += 1
+			else:
+				item_count = 1
+				index = inventory_item_list.add_icon_item(item.item_sprite)
+			
+			
+			inventory_item_list.set_item_text(index, str(item.item_name, " (", item_count, ")"))
 			inventory_item_list.set_item_metadata(index, item)
-	
+			last_item = item
 	
 	
 	recipe_item_list = recipe_tabs.get_current_tab_control().get_child(0)
@@ -124,11 +137,22 @@ func update_menu():
 	inventory_item_list.max_columns = current_container.get_slot_count()
 	for slot_index in range(current_container.get_slot_count()):
 		var slot = current_container.slots[slot_index]
+		var last_item = null
+		var item_count : int = 1
+		var index
 		for item in slot["contents"]:
-#			print("we got a ", item.item_name)
-			var index = inventory_item_list.add_icon_item(item.item_sprite)
-			inventory_item_list.set_item_text(index, item.item_name)
+			print("we got a ", item.item_name)
+			
+			if item == last_item:
+				item_count += 1
+			else:
+				item_count = 1
+				index = inventory_item_list.add_icon_item(item.item_sprite)
+			
+			
+			inventory_item_list.set_item_text(index, str(item.item_name, " (", item_count, ")"))
 			inventory_item_list.set_item_metadata(index, item)
+			last_item = item
 	
 	
 	
