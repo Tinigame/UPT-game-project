@@ -44,9 +44,8 @@ func _ready():
 	crafter_node.set_script(crafting_module)
 	self.add_child(crafter_node)
 	
-	#adds 5 inventory slots
-	for i in range(5):
-		inventory.add_slot(84, [])
+	#adds 1 slot
+	inventory.add_slot(84, [])
 
 
 

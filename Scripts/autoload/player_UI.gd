@@ -120,10 +120,13 @@ func _on_inventory_item_selected(index: int) -> void:
 
 
 func _on_inventory_item_activated(index: int) -> void:
-	var current_selected_item : Item = inventory_item_list.get_item_metadata(index)
-	Player.inventory.add_item_to_slot(current_selected_item, 0)
-	inventory_item_list.remove_item(index)
-	current_container.remove_item_from_slot(current_selected_item, index)
+	if current_container.is_player_inventory == true:
+		return
+	
+	var current_activated_item : Item = inventory_item_list.get_item_metadata(index)
+	Player.inventory.add_item_to_slot(current_activated_item, 0)
+#	inventory_item_list.remove_item(index)
+	current_container.remove_item_from_slot(current_activated_item, index)
 
 
 

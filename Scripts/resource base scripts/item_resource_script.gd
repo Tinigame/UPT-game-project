@@ -13,3 +13,6 @@ extends Resource
 @export var is_building : bool = false
 #@export var building_resource_dir = "res://Resources/buildings/conveyor_belt.tres"
 @export var building_resource : Resource = load("res://Resources/buildings/conveyor_belt.tres")
+
+#amount of items, used for UI and stacks, maybe works idunno
+var count : int
