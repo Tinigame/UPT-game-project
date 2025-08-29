@@ -46,7 +46,10 @@ func _ready():
 	
 	#adds 1 slot
 	inventory.add_slot(84, [])
-
+	
+	for x in range(10):
+		for item in Globals.starter_kit:
+			inventory.add_item_to_slot(item, 0)
 
 
 #Camera and movement rotation

@@ -58,7 +58,7 @@ func open(target_building):
 		var item_count : int = 1
 		var index
 		for item in slot["contents"]:
-			print("we got a ", item.item_name)
+#			print("we got a ", item.item_name)
 			
 			if item == last_item:
 				item_count += 1
@@ -127,6 +127,7 @@ func _on_inventory_item_activated(index: int) -> void:
 	Player.inventory.add_item_to_slot(current_activated_item, 0)
 #	inventory_item_list.remove_item(index)
 	current_container.remove_item_from_slot(current_activated_item, index)
+	update_menu()
 
 
 
@@ -144,7 +145,7 @@ func update_menu():
 		var item_count : int = 1
 		var index
 		for item in slot["contents"]:
-			print("we got a ", item.item_name)
+#			print("we got a ", item.item_name)
 			
 			if item == last_item:
 				item_count += 1

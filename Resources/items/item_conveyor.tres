@@ -1,26 +1,22 @@
-[gd_resource type="Resource" script_class="Item" load_steps=7 format=3 uid="uid://cqhbbkjbte74i"]
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bkeso58byrvis"]
 
 [ext_resource type="Resource" uid="uid://d3v5t0dtpvewh" path="res://Resources/buildings/conveyor_belt.tres" id="1_2b1go"]
 [ext_resource type="Texture2D" uid="uid://bgyc0uex0irha" path="res://Assets/Textures/conveyor.png" id="1_ur84b"]
-[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="2_2b1go"]
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="3_ejmay"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_03vpt"]
-albedo_color = Color(0.650552, 0.649244, 1.92523e-07, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur84b"]
 albedo_texture = ExtResource("1_ur84b")
-uv1_scale = Vector3(3, 3, 3)
-uv1_offset = Vector3(0.1, 0, 0)
+uv1_scale = Vector3(2, 2, 2)
 
-[sub_resource type="BoxMesh" id="BoxMesh_uw1lq"]
-material = SubResource("StandardMaterial3D_03vpt")
-size = Vector3(1, 0.5, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_2b1go"]
+material = SubResource("StandardMaterial3D_ur84b")
 
 [resource]
 script = ExtResource("3_ejmay")
 item_name = "conveyor belt"
-max_stack_size = 1
-item_mesh = SubResource("BoxMesh_uw1lq")
-item_sprite = ExtResource("2_2b1go")
+max_stack_size = 84
+item_mesh = SubResource("BoxMesh_2b1go")
+item_sprite = ExtResource("1_ur84b")
 is_building = true
 building_resource = ExtResource("1_2b1go")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

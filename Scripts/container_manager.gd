@@ -14,6 +14,23 @@ var debugitem : Item
 
 
 
+func group_duplicates(array: Array) -> Array:
+	var groups := {}
+	
+	# Group items by type
+	for item in array:
+		if not groups.has(item):
+			groups[item] = []
+		groups[item].append(item)
+	
+	# Flatten the dictionary back into a single array
+	var result := []
+	for group in groups.values():
+		result += group
+	return result
+
+
+
 # Adds a new slot with capacity and optional allowed item types
 func add_slot(capacity: int, allowed_types: Array = []) -> int:
 	slots.append({
@@ -88,6 +105,10 @@ func add_item_to_slot(item : Item, slot_index: int) -> bool:
 	#if slot has less than available capacity, add item
 	if slot["contents"].size() < slot["capacity"]:
 		slot["contents"].append(item)
+		
+		#sorts the slots contents so similar items are arranged to eachother
+		slot["contents"] = group_duplicates(slot["contents"])
+		
 		PlayerUI.update_menu()
 		emit_signal("space_changed", has_any_space())
 		return true

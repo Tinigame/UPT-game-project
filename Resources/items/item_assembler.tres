@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://c3mwgrehm27rk"]
+
+[ext_resource type="Resource" uid="uid://c30cusrtqxxfc" path="res://Resources/buildings/assembler.tres" id="1_lp7qw"]
+[ext_resource type="Texture2D" uid="uid://cjvvkb13bl0r5" path="res://Assets/Textures/Assembler.png" id="2_50tc2"]
+[ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="3_oykdp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oykdp"]
+albedo_texture = ExtResource("2_50tc2")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5tifn"]
+material = SubResource("StandardMaterial3D_oykdp")
+
+[resource]
+script = ExtResource("3_oykdp")
+item_name = "assembler"
+max_stack_size = 84
+item_mesh = SubResource("BoxMesh_5tifn")
+item_sprite = ExtResource("2_50tc2")
+is_building = true
+building_resource = ExtResource("1_lp7qw")
+metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

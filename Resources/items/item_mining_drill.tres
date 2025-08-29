@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://d4camtdf2emeb"]
+
+[ext_resource type="Resource" uid="uid://dcra0jymam5p0" path="res://Resources/buildings/mining_drill.tres" id="1_6aqhh"]
+[ext_resource type="ArrayMesh" uid="uid://bevhtr2hfdkts" path="res://Assets/Models/mining_drill.obj" id="2_v8550"]
+[ext_resource type="Texture2D" uid="uid://cktgku3mu3iqj" path="res://Assets/Textures/mining_drill.png" id="3_aedt6"]
+[ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="3_v8550"]
+
+[resource]
+script = ExtResource("3_v8550")
+item_name = "mining drill"
+max_stack_size = 84
+item_mesh = ExtResource("2_v8550")
+item_sprite = ExtResource("3_aedt6")
+is_building = true
+building_resource = ExtResource("1_6aqhh")
+metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"
