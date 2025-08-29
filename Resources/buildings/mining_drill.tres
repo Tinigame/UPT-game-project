@@ -6,12 +6,14 @@
 
 [resource]
 script = ExtResource("1_bvtuc")
-building_name = "mining drill"
+building_name = "mining_drill"
 building_size = Vector3(3, 2, 3)
 building_mesh = ExtResource("1_yinh4")
 building_health = 100.0
 only_buildable_on_ores = true
+building_ingredient_name = "mining_drill"
 building_script = ExtResource("1_bmi6u")
 has_container = true
 container_max_slots = 1
+uses_recipes = false
 metadata/_custom_type_script = "uid://dbtoj443lgn6a"

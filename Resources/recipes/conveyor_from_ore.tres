@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://ckl66clerivdg"]
 
-[ext_resource type="Resource" uid="uid://cqhbbkjbte74i" path="res://Resources/items/item_conveyor.tres" id="1_mqqaj"]
+[ext_resource type="Resource" uid="uid://bkeso58byrvis" path="res://Resources/items/item_conveyor.tres" id="1_mqqaj"]
 [ext_resource type="Resource" uid="uid://dnx2ktbw4m5t0" path="res://Resources/items/item_iron_ore.tres" id="1_ojnsn"]
 [ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_gimp6"]
 [ext_resource type="Texture2D" uid="uid://bgyc0uex0irha" path="res://Assets/Textures/conveyor.png" id="3_ojnsn"]

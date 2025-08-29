@@ -5,7 +5,7 @@ var items = {
 	"copper": preload("res://Resources/items/item_copper_ore.tres"),
 	"conveyor" : preload("res://Resources/items/item_conveyor.tres"),
 	"assembler" : preload("res://Resources/items/item_assembler.tres"),
-	"mining drill" : preload("res://Resources/items/item_assembler.tres"),
+	"mining_drill" : preload("res://Resources/items/item_mining_drill.tres"),
 }
 
 func get_item_resource(item_name: String) -> Resource:
@@ -14,3 +14,7 @@ func get_item_resource(item_name: String) -> Resource:
 	else:
 		push_warning("Resource not found for: " + item_name)
 		return null
+
+func _ready() -> void:
+	print(get_item_resource("mining_drill"))
+	print("we got the drill?")

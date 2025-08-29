@@ -8,6 +8,7 @@ var container_has_space = true
 var unique_script : GDScript = null
 var is_recipe_compatible = false
 var over_ores : PackedStringArray
+var building_info : Resource
 
 var unique_node : Node3D = null
 

@@ -142,6 +142,9 @@ func build_building(build_info : Building):
 	if build_info.uses_recipes == true:
 		building.is_recipe_compatible = true
 
+	building.building_info = build_info
+
+
 	#adds the building to the tree and to the array
 	add_child(building)
 	buildings.append(building)
@@ -171,6 +174,13 @@ func remove_building():
 	
 	#gets the building instance
 	var building = occupied_cells[target_cell]
+	
+	var building_item = ItemDatabase.get_item_resource(building.building_info.building_ingredient_name)
+	if Player.inventory.has_space_for_item_in_slot(building_item, 0) == true:
+		Player.inventory.add_item_to_slot(building_item, 0)
+	else:
+		push_warning("Player does not have enough space for building item")
+		return
 	
 	#frees the cells that the building occupied
 	var size = building.building_size

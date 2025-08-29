@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("3_v8550")
-item_name = "mining drill"
+item_name = "mining_drill"
 max_stack_size = 84
 item_mesh = ExtResource("2_v8550")
 item_sprite = ExtResource("3_aedt6")
