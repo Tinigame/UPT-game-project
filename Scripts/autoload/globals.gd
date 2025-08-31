@@ -10,7 +10,7 @@ var debug_item = preload("res://Resources/buildings/conveyor_belt.tres")
 var debug_recipe = preload("res://Resources/recipes/debug_recipe.tres")
 var debug_mode : bool = true
 
-var starter_kit : Array = [preload("res://Resources/items/item_assembler.tres"), preload("res://Resources/items/item_conveyor.tres"), preload("res://Resources/items/item_mining_drill.tres")]
+var starter_kit : Array = [preload("res://Resources/items/item_assembler.tres"), preload("res://Resources/items/item_conveyor.tres")]
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("temp_select_building_1"):

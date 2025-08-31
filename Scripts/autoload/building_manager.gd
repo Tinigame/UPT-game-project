@@ -87,7 +87,7 @@ func build_building(build_info : Building):
 			return
 	
 #	print("this building requires an: ", build_info.building_ingredient_name)
-	var building_ingredient = ItemDatabase.get_item_resource(build_info.building_ingredient_name)
+	var building_ingredient : Item = ItemDatabase.get_item_resource(build_info.building_ingredient_name)
 	if Player.inventory.has_item(building_ingredient) == true:
 		Player.inventory.remove_n_of_item(building_ingredient, 1)
 		pass
