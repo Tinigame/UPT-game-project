@@ -63,16 +63,23 @@ func update_conveyor(conveyor):
 #tries to push the first item in the first output slot to the neighbor
 func push_items(neighbor, conveyor, item_to_move) -> void:
 	if neighbor == null:
-#		print_debug("there is no neighbor")
 		return
 	var neighbor_cm: ContainerManager = neighbor.container_manager
 	if neighbor_cm == null:
-#		print_debug("there is no CM in neighbor")
 		return
 
-	if neighbor_cm.has_space_for_item_in_slot(item_to_move, 0):
-#		print_debug("we have space for ", item_to_move)
-		if neighbor_cm.add_item_to_slot(item_to_move, 0):
-#			print_debug("we added ", item_to_move, " to slot 0")
-			conveyor.container_manager.remove_item_from_slot(item_to_move, 0)
-#			print_debug("we removed ", item_to_move, " from ourselves")
+	#if building is an assembler do special stuff
+	if neighbor.is_in_group("assemblers"):
+		
+		var assembler = neighbor.get_node("assemblinator")
+		
+		for slot in assembler.get_input_slots():
+			if neighbor_cm.has_space_for_item_in_slot(item_to_move, slot):
+				if neighbor_cm.add_item_to_slot(item_to_move, slot):
+					conveyor.container_manager.remove_item_from_slot(item_to_move, 0)
+					return  # stop once item is delivered
+	else:
+		#if nothing works push to slot 0
+		if neighbor_cm.has_space_for_item_in_slot(item_to_move, 0):
+			if neighbor_cm.add_item_to_slot(item_to_move, 0):
+				conveyor.container_manager.remove_item_from_slot(item_to_move, 0)

@@ -206,4 +206,5 @@ func update_conveyor_neighbors():
 		miner.update_connections()
 	
 	for assembler in get_tree().get_nodes_in_group("assemblers"):
-		assembler.update_connections()
+		if assembler.has_method("update_connections"):
+			assembler.update_connections()

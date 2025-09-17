@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://moegk404igb4"]
+[gd_scene load_steps=3 format=3 uid="uid://moegk404igb4"]
 
 [ext_resource type="Script" uid="uid://dihals8hnh3ju" path="res://Scripts/autoload/player_UI.gd" id="1_ohrjl"]
+[ext_resource type="PackedScene" uid="uid://bxa2yxsnng716" path="res://Scenes/RecipeTooltip.tscn" id="2_dxtgh"]
 
 [node name="Player_UI" type="CanvasLayer"]
 script = ExtResource("1_ohrjl")
@@ -86,3 +87,17 @@ metadata/_tab_index = 2
 [node name="Consumables" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/consumables"]
 layout_mode = 2
 allow_reselect = true
+
+[node name="tooltiplayer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RecipeTooltip" parent="tooltiplayer" instance=ExtResource("2_dxtgh")]
+visible = false
+layout_mode = 0
+anchors_preset = 0

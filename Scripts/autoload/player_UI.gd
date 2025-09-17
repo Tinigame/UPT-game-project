@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var inventory_splitter : HSplitContainer = $CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer
 @onready var recipe_tabs: TabContainer = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"
 @onready var container_label: Label = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu/Container label"
+@onready var tooltip = $tooltiplayer/RecipeTooltip
+
 
 var menu_open : bool = false
 
@@ -73,15 +75,40 @@ func open(target_building):
 	
 	
 	recipe_item_list = recipe_tabs.get_current_tab_control().get_child(0)
-	print(recipe_item_list.name)
+	
+	#if not recipe_item_list.mouse_entered.is_connected(_on_recipe_hovered):
+		#recipe_item_list.connect("mouse_entered", _on_recipe_hovered)
+	#if not recipe_item_list.mouse_exited.is_connected(_on_recipe_unhovered):
+		#recipe_item_list.connect("mouse_exited", _on_recipe_hovered)
+
 	var category_recipes = RecipeDatabase.get_all_recipes(recipe_item_list.name)
 	
 	recipe_item_list.max_columns = len(category_recipes)
 	
 	for recipe in category_recipes.values():
 		var index = recipe_item_list.add_icon_item(recipe.recipe_sprite)
+		
+		# Build tooltip strings
+		var ingredients_text := ""
+		for ing in recipe.recipe_ingredients:
+			ingredients_text += str(ing.item.item_name, " x", ing.amount, "\n")
+		
+		var products_text := ""
+		for prod in recipe.recipe_products:
+			products_text += str(prod.item.item_name, " x", prod.amount, "\n")
+		
+		var tooltip_text : String = recipe.recipe_name + "\n" \
+			+ "Ingredients:\n" + ingredients_text \
+			+ "Products:\n" + products_text \
+			+ "Time to craft: " + str(recipe.crafting_time) + "s"
+		
+		recipe_item_list.set_item_tooltip_enabled(index, true)
+		recipe_item_list.set_item_tooltip(index, tooltip_text)
 		recipe_item_list.set_item_text(index, recipe.recipe_name)
 		recipe_item_list.set_item_metadata(index, recipe)
+		
+	
+	
 	
 	show()
 
@@ -89,6 +116,9 @@ func open(target_building):
 
 func _connect_recipe_list_signals():
 	for i in range(recipe_tabs.get_tab_count()):
+		
+
+		
 		var tab = recipe_tabs.get_tab_control(i)
 #		if tab.get_child_count() > 0 and tab.get_child(0) is ItemList:
 		var list = tab.get_child(0)
@@ -171,8 +201,38 @@ func update_menu():
 	
 	for recipe in category_recipes.values():
 		var index = recipe_item_list.add_icon_item(recipe.recipe_sprite)
+		
+		#constructs ingridients tooltip text
+		var ingredients_text = ""
+		for ing in recipe.recipe_ingredients:
+			ingredients_text += str(ing.item.item_name, " x", ing.amount, "\n")
+		
+		#constructs products tooltip text
+		var products_text = ""
+		for prod in recipe.recipe_products:
+			products_text += str(prod.item.item_name, " x", prod.amount, "\n")
+		
+		var tooltip_text : String = recipe.recipe_name + "\n" \
+			+ "Ingredients:\n" + ingredients_text \
+			+ "Products:\n" + products_text \
+			+ "Time to craft: " + str(recipe.crafting_time) + "s"
+		
+		recipe_item_list.set_item_tooltip_enabled(index, true)
+		recipe_item_list.set_item_tooltip(index, tooltip_text)
 		recipe_item_list.set_item_text(index, recipe.recipe_name)
 		recipe_item_list.set_item_metadata(index, recipe)
+
+
+
+
+
+func _on_recipe_hovered(index):
+	var recipe = recipe_item_list.get_item_metadata(index)
+	tooltip.show_recipe(recipe)
+	tooltip.show()
+
+func _on_recipe_unhovered(index):
+	tooltip.hide()
 
 
 
@@ -197,6 +257,10 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("close_menu"):
 		close_menu()
 
+
+func _process(_delta):
+	if tooltip.visible:
+		tooltip.position = get_viewport().get_mouse_position() + Vector2(16, 16)
 
 
 func _on_tab_container_tab_changed(_tab: int) -> void:

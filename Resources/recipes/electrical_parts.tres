@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://drh4gdqutvkfa"]
+
+[ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_cdhhd"]
+[ext_resource type="Resource" uid="uid://wxvhibtryflm" path="res://Resources/items/item_copper_wire.tres" id="2_bu17o"]
+[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="2_l2sqf"]
+[ext_resource type="Resource" uid="uid://dgx8nruow5c06" path="res://Resources/items/item_pure_copper.tres" id="3_pbqt3"]
+[ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_shjm2"]
+[ext_resource type="Resource" uid="uid://ddlws1uul1ugp" path="res://Resources/items/item_electrical_parts.tres" id="4_v5gpx"]
+
+[sub_resource type="Resource" id="Resource_vwrn2"]
+script = ExtResource("1_cdhhd")
+item = ExtResource("2_bu17o")
+amount = 8
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_i5bc5"]
+script = ExtResource("1_cdhhd")
+item = ExtResource("3_pbqt3")
+amount = 2
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_184so"]
+script = ExtResource("1_cdhhd")
+item = ExtResource("4_v5gpx")
+amount = 2
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[resource]
+script = ExtResource("3_shjm2")
+recipe_ingredients = Array[ExtResource("1_cdhhd")]([SubResource("Resource_vwrn2"), SubResource("Resource_i5bc5")])
+recipe_products = Array[ExtResource("1_cdhhd")]([SubResource("Resource_184so")])
+crafting_time = 4.0
+recipe_name = "electrical parts"
+recipe_sprite = ExtResource("2_l2sqf")
+recipe_tab = "Intermediates"
+metadata/_custom_type_script = "uid://dv0jdd6iysabc"

@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=12 format=3 uid="uid://b01b82mvlc8yw"]
+
+[ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_gfp6q"]
+[ext_resource type="Resource" uid="uid://dgkue0mlq4kg2" path="res://Resources/items/item_pure_iron.tres" id="2_wqgi6"]
+[ext_resource type="Resource" uid="uid://b5i81b08yfu1v" path="res://Resources/items/item_mechanical_parts.tres" id="3_fhhcj"]
+[ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_qvbs3"]
+[ext_resource type="Resource" uid="uid://ddlws1uul1ugp" path="res://Resources/items/item_electrical_parts.tres" id="4_542s2"]
+[ext_resource type="Resource" uid="uid://c3mwgrehm27rk" path="res://Resources/items/item_assembler.tres" id="5_fgusm"]
+[ext_resource type="Texture2D" uid="uid://cjvvkb13bl0r5" path="res://Assets/Textures/Assembler.png" id="6_j0qck"]
+
+[sub_resource type="Resource" id="Resource_2ubyf"]
+script = ExtResource("1_gfp6q")
+item = ExtResource("2_wqgi6")
+amount = 10
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_7uauk"]
+script = ExtResource("1_gfp6q")
+item = ExtResource("3_fhhcj")
+amount = 4
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_ci82v"]
+script = ExtResource("1_gfp6q")
+item = ExtResource("4_542s2")
+amount = 2
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_aihor"]
+script = ExtResource("1_gfp6q")
+item = ExtResource("5_fgusm")
+amount = 1
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[resource]
+script = ExtResource("3_qvbs3")
+recipe_ingredients = Array[ExtResource("1_gfp6q")]([SubResource("Resource_2ubyf"), SubResource("Resource_7uauk"), SubResource("Resource_ci82v")])
+recipe_products = Array[ExtResource("1_gfp6q")]([SubResource("Resource_aihor")])
+crafting_time = 10.0
+recipe_name = "assembler"
+recipe_sprite = ExtResource("6_j0qck")
+recipe_tab = "Buildings"
+metadata/_custom_type_script = "uid://dv0jdd6iysabc"

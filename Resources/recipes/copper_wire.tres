@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3 uid="uid://d05kc2bidqse"]
+
+[ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_1knub"]
+[ext_resource type="Resource" uid="uid://dgx8nruow5c06" path="res://Resources/items/item_pure_copper.tres" id="2_8t5vi"]
+[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="2_xrp55"]
+[ext_resource type="Resource" uid="uid://wxvhibtryflm" path="res://Resources/items/item_copper_wire.tres" id="3_4x3od"]
+[ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_8t5vi"]
+
+[sub_resource type="Resource" id="Resource_vfwk2"]
+script = ExtResource("1_1knub")
+item = ExtResource("2_8t5vi")
+amount = 1
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_50r15"]
+script = ExtResource("1_1knub")
+item = ExtResource("3_4x3od")
+amount = 2
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[resource]
+script = ExtResource("3_8t5vi")
+recipe_ingredients = Array[ExtResource("1_1knub")]([SubResource("Resource_vfwk2")])
+recipe_products = Array[ExtResource("1_1knub")]([SubResource("Resource_50r15")])
+crafting_time = 0.5
+recipe_name = "copper wire"
+recipe_sprite = ExtResource("2_xrp55")
+recipe_tab = "Intermediates"
+metadata/_custom_type_script = "uid://dv0jdd6iysabc"

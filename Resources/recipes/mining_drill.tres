@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=12 format=3 uid="uid://y8m0ukxedhsq"]
+
+[ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_xnq3x"]
+[ext_resource type="Resource" uid="uid://dgkue0mlq4kg2" path="res://Resources/items/item_pure_iron.tres" id="2_e8nsi"]
+[ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_32emd"]
+[ext_resource type="Resource" uid="uid://b5i81b08yfu1v" path="res://Resources/items/item_mechanical_parts.tres" id="3_hs1h1"]
+[ext_resource type="Resource" uid="uid://ciaj1w7lcpne0" path="res://Resources/items/item_iron_gear.tres" id="4_8qrl8"]
+[ext_resource type="Resource" uid="uid://dm6bu7txklg6r" path="res://Resources/items/item_mining_drill.tres" id="5_ylhm1"]
+[ext_resource type="Texture2D" uid="uid://cktgku3mu3iqj" path="res://Assets/Textures/mining_drill.png" id="6_hc1tn"]
+
+[sub_resource type="Resource" id="Resource_l8yuc"]
+script = ExtResource("1_xnq3x")
+item = ExtResource("2_e8nsi")
+amount = 8
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_7obn3"]
+script = ExtResource("1_xnq3x")
+item = ExtResource("3_hs1h1")
+amount = 2
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_xprk1"]
+script = ExtResource("1_xnq3x")
+item = ExtResource("4_8qrl8")
+amount = 10
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_swwhd"]
+script = ExtResource("1_xnq3x")
+item = ExtResource("5_ylhm1")
+amount = 1
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[resource]
+script = ExtResource("3_32emd")
+recipe_ingredients = Array[ExtResource("1_xnq3x")]([SubResource("Resource_l8yuc"), SubResource("Resource_7obn3"), SubResource("Resource_xprk1")])
+recipe_products = Array[ExtResource("1_xnq3x")]([SubResource("Resource_swwhd")])
+crafting_time = 10.0
+recipe_name = "mining drill"
+recipe_sprite = ExtResource("6_hc1tn")
+recipe_tab = "Buildings"
+metadata/_custom_type_script = "uid://dv0jdd6iysabc"

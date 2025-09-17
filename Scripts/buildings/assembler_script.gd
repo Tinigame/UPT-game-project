@@ -24,6 +24,7 @@ func _ready() -> void:
 	add_child(crafting_timer)
 	crafting_timer.connect("timeout", _on_crafting_complete)
 	add_to_group("assemblers")
+	get_parent().add_to_group("assemblers")
 	
 #	set_recipe(Globals.debug_recipe)
 
@@ -152,7 +153,7 @@ func push_items() -> void:
 	if cached_neighbor == null:
 		return
 
-	# Always talk to the neighbor’s container_manager directly
+
 	var neighbor_cm: ContainerManager = cached_neighbor.container_manager
 	if neighbor_cm == null:
 		return
@@ -168,7 +169,7 @@ func push_items() -> void:
 		return
 
 	var item_to_move = items[0]
-	# ✅ use ContainerManager API directly instead of neighbor.container_has_space
+
 	if neighbor_cm.has_space_for_item_in_slot(item_to_move, 0):
 		if neighbor_cm.add_item_to_slot(item_to_move, 0):
 			container_manager.remove_item_from_slot(item_to_move, out_slot)
@@ -191,3 +192,8 @@ func check_neighbor(neighbor_position: Vector3i) -> Node3D:
 	if BuildingManager.occupied_cells.has(neighbor_position):
 		return BuildingManager.occupied_cells[neighbor_position]
 	return null
+
+
+
+func get_input_slots() -> PackedInt32Array:
+	return input_slots

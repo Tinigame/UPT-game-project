@@ -2,16 +2,18 @@ extends Node
 
 var items : Dictionary = {}
 
+
+
 func _ready():
 	_load_items_from("res://Resources/items")
 
-	# sanity check
-	for name in items.keys():
-		var res = items[name]
-		if not (res is Item):
-			push_error("%s is not an Item! It's a %s" % [name, res])
-		else:
-			print("Loaded item:", name)
+	#for name in items.keys():
+		#var res = items[name]
+		#if not (res is Item):
+			#push_error("%s is not an Item! It's a %s" % [name, res])
+		#else:
+			#print("Loaded item:", name)
+
 
 
 func _load_items_from(path: String):
@@ -19,6 +21,7 @@ func _load_items_from(path: String):
 	if dir == null:
 		push_error("ItemDatabase: directory not found: " + path)
 		return
+
 
 	dir.list_dir_begin()
 	var fname = dir.get_next()
@@ -30,6 +33,7 @@ func _load_items_from(path: String):
 				items[res.item_name] = res
 		fname = dir.get_next()
 	dir.list_dir_end()
+
 
 
 func get_item_resource(item_name: String) -> Item:
