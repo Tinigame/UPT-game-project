@@ -5,7 +5,7 @@ extends Resource
 @export var max_stack_size : int = 84
 
 #mesh when its visible outside menus
-@export var item_mesh : Mesh = null
+@export var item_mesh : Mesh = BoxMesh.new()
 #sprite for the item
 @export var item_sprite : Texture2D = preload("res://Assets/Textures/placeholder texture.png")
 

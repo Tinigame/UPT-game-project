@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3 uid="uid://c7461104oh12r"]
+
+[ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_vms6q"]
+[ext_resource type="Resource" uid="uid://bwlfgu77hlfb" path="res://Resources/items/item_copper_ore.tres" id="1_y47g3"]
+[ext_resource type="Resource" uid="uid://dgx8nruow5c06" path="res://Resources/items/item_pure_copper.tres" id="2_bcw3k"]
+[ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_bcw3k"]
+[ext_resource type="Texture2D" uid="uid://dwm6b1ygl7yry" path="res://Assets/Textures/copper_ore texture.png" id="4_bcw3k"]
+
+[sub_resource type="Resource" id="Resource_r8mhf"]
+script = ExtResource("1_vms6q")
+item = ExtResource("1_y47g3")
+amount = 5
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_rvdev"]
+script = ExtResource("1_vms6q")
+item = ExtResource("2_bcw3k")
+amount = 1
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[resource]
+script = ExtResource("3_bcw3k")
+recipe_ingredients = Array[ExtResource("1_vms6q")]([SubResource("Resource_r8mhf")])
+recipe_products = Array[ExtResource("1_vms6q")]([SubResource("Resource_rvdev")])
+crafting_time = 3.0
+recipe_name = "purify copper"
+recipe_sprite = ExtResource("4_bcw3k")
+recipe_tab = "Intermediates"
+metadata/_custom_type_script = "uid://dv0jdd6iysabc"

@@ -2,13 +2,9 @@ class_name Recipe
 extends Resource
 
 # one entry = { "item": Item, "amount": int }
-@export var recipe_ingredients : Array[Dictionary] = [
-	{ "item": preload("res://Resources/items/item_conveyor.tres"), "amount": 1 }
-]
+@export var recipe_ingredients : Array[RecipeSlot]
 
-@export var recipe_products : Array[Dictionary] = [
-	{ "item": preload("res://Resources/items/item_conveyor.tres"), "amount": 2 }
-]
+@export var recipe_products : Array[RecipeSlot]
 
 #in seconds
 @export var crafting_time : float = 1.0

@@ -1,19 +1,26 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=4 format=3 uid="uid://7hxwkpo31opd"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=7 format=3 uid="uid://7hxwkpo31opd"]
 
 [ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="1_5v6uj"]
+[ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_i022s"]
 [ext_resource type="Resource" uid="uid://bkeso58byrvis" path="res://Resources/items/item_conveyor.tres" id="1_ncwvt"]
 [ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="2_co3uu"]
 
+[sub_resource type="Resource" id="Resource_06bfu"]
+script = ExtResource("1_i022s")
+item = ExtResource("1_ncwvt")
+amount = 1
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_f1fmu"]
+script = ExtResource("1_i022s")
+item = ExtResource("1_ncwvt")
+amount = 2
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
 [resource]
 script = ExtResource("1_5v6uj")
-recipe_ingredients = Array[Dictionary]([{
-"amount": 1,
-"item": ExtResource("1_ncwvt")
-}])
-recipe_products = Array[Dictionary]([{
-"amount": 2,
-"item": ExtResource("1_ncwvt")
-}])
+recipe_ingredients = Array[ExtResource("1_i022s")]([SubResource("Resource_06bfu")])
+recipe_products = Array[ExtResource("1_i022s")]([SubResource("Resource_f1fmu")])
 crafting_time = 1.0
 recipe_name = "eldritch belt duplication"
 recipe_sprite = ExtResource("2_co3uu")

@@ -73,6 +73,7 @@ func open(target_building):
 	
 	
 	recipe_item_list = recipe_tabs.get_current_tab_control().get_child(0)
+	print(recipe_item_list.name)
 	var category_recipes = RecipeDatabase.get_all_recipes(recipe_item_list.name)
 	
 	recipe_item_list.max_columns = len(category_recipes)
@@ -89,10 +90,10 @@ func open(target_building):
 func _connect_recipe_list_signals():
 	for i in range(recipe_tabs.get_tab_count()):
 		var tab = recipe_tabs.get_tab_control(i)
-		if tab.get_child_count() > 0 and tab.get_child(0) is ItemList:
-			var list = tab.get_child(0)
-			if not list.is_connected("item_selected", _on_recipe_selected):
-				list.item_selected.connect(_on_recipe_selected.bind(list))
+#		if tab.get_child_count() > 0 and tab.get_child(0) is ItemList:
+		var list = tab.get_child(0)
+		if not list.is_connected("item_selected", _on_recipe_selected):
+			list.item_selected.connect(_on_recipe_selected.bind(list))
 
 
 
@@ -162,7 +163,8 @@ func update_menu():
 	
 	recipe_item_list.clear()
 	recipe_item_list.deselect_all()
-	
+	recipe_item_list = recipe_tabs.get_current_tab_control().get_child(0)
+	print(recipe_item_list.name)
 	var category_recipes = RecipeDatabase.get_all_recipes(recipe_item_list.name)
 	
 	recipe_item_list.max_columns = len(category_recipes)

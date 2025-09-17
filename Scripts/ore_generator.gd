@@ -4,7 +4,7 @@ extends Node3D
 var ore_grid_size : float = 1000
 
 var ore_map: Dictionary = {}
-var ore_types = ["iron", "copper", "coal", "stone"]
+var ore_types = ["iron ore", "copper ore", "coal ore", "stone ore"]
 
 
 
@@ -20,7 +20,7 @@ func generate_iron_ore_with_noise(grid_size : float):
 			var number = iron_noise.get_noise_2d(x, z)
 			
 			if number > 0.3:
-				ore_map[Vector3i(x, 0, z)] = "iron"
+				ore_map[Vector3i(x, 0, z)] = "iron ore"
 
 
 
@@ -36,7 +36,7 @@ func generate_copper_ore_with_noise(grid_size : float):
 			var number = copper_noise.get_noise_2d(x, z)
 			
 			if number > 0.3:
-				ore_map[Vector3i(x, 0, z)] = "copper"
+				ore_map[Vector3i(x, 0, z)] = "copper ore"
 
 
 
@@ -71,13 +71,13 @@ func visualize_ores():
 
 		var color := Color.WHITE
 		match ore_map[cell]:
-			"iron":
+			"iron ore":
 				color = Color(0.1, 0.1, 1)
-			"copper":
+			"copper ore":
 				color = Color(1.0, 0.1, 0.1)
-			"coal":
+			"coal ore":
 				color = Color(0, 0, 0)
-			"stone":
+			"stone ore":
 				color = Color(0, 1, 0)
 
 		multimesh.set_instance_color(i, color)

@@ -61,7 +61,7 @@ dragging_enabled = false
 dragger_visibility = 2
 metadata/_tab_index = 0
 
-[node name="Buildings" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/buildings"]
+[node name="buildings" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/buildings"]
 layout_mode = 2
 allow_reselect = true
 
@@ -72,7 +72,7 @@ dragging_enabled = false
 dragger_visibility = 2
 metadata/_tab_index = 1
 
-[node name="Intermediates" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/intermediates"]
+[node name="intermediates" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/intermediates"]
 layout_mode = 2
 allow_reselect = true
 
@@ -83,6 +83,6 @@ dragging_enabled = false
 dragger_visibility = 2
 metadata/_tab_index = 2
 
-[node name="Consumables" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/consumables"]
+[node name="consumables" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/consumables"]
 layout_mode = 2
 allow_reselect = true

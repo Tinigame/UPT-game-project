@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dgx8nruow5c06"]
+
+[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_a2ey2"]
+[ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_t56oe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_a2ey2"]
+
+[resource]
+script = ExtResource("2_t56oe")
+item_name = "pure copper"
+max_stack_size = 84
+item_mesh = SubResource("BoxMesh_a2ey2")
+item_sprite = ExtResource("1_a2ey2")
+is_building = false
+metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"
