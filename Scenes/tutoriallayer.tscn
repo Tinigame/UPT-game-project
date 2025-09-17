@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c5bo2w1aq25g0"]
+
+[node name="Tutoriallayer" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "
+WASD - movement
+E - inventory
+esc - close menu
+space - jump
+B - toggle build mode
+Left mouse - build
+Right mouse - remove building
+R - rotate clockwise
+shift + R - rotate counter clockwise
+1-4 - select building (3 doesnt work, can also select from inventory)
+backspace - unselect building
+
+clicking on a recipe inside your own inventory crafts the item from your inventory
+clicking on a recipe inside a building sets the buildings recipe
+hovering over recipes shows their ingridients and products"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "
+WASD - movement
+E - inventory
+esc - close menu
+space - jump
+B - toggle build mode
+Left mouse - build
+Right mouse - remove building
+R - rotate clockwise
+shift + R - rotate counter clockwise
+1-4 - select building (3 doesnt work, can also select from inventory)
+backspace - unselect building
+
+clicking on a recipe inside your own inventory crafts the item from your inventory
+clicking on a recipe inside a building sets the buildings recipe
+hovering over recipes shows their ingridients and products"

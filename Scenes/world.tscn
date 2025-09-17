@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=10 format=3 uid="uid://cvlfsbayttnbq"]
 
 [ext_resource type="Script" uid="uid://4xjf73360oqy" path="res://Scripts/ore_generator.gd" id="3_8j60k"]
+[ext_resource type="Script" uid="uid://dtsxa10gk8wf5" path="res://Scenes/help.gd" id="3_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://moegk404igb4" path="res://Scenes/player_ui.tscn" id="5_5ukr8"]
 
 [sub_resource type="Environment" id="Environment_a02cp"]
@@ -67,3 +68,77 @@ mesh = SubResource("BoxMesh_a02cp")
 skeleton = NodePath("../..")
 
 [node name="Player_UI" parent="." instance=ExtResource("5_5ukr8")]
+
+[node name="help" type="Label" parent="."]
+offset_left = 329.0
+offset_top = 6.0
+offset_right = 452.0
+offset_bottom = 29.0
+text = "press H for help"
+script = ExtResource("3_fo5ed")
+
+[node name="CenterContainer" type="CenterContainer" parent="help"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 507.0
+offset_bottom = 364.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="help/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="help/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer ENG" type="VBoxContainer" parent="help/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="help/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer ENG"]
+layout_mode = 2
+text = "
+WASD - movement
+E - inventory
+esc - close menu
+space - jump
+B - toggle build mode
+Left mouse - build
+Right mouse - remove building
+R - rotate clockwise
+shift + R - rotate counter clockwise
+1-4 - select building (3 doesnt work, can also select from inventory)
+backspace - unselect building
+
+clicking on a recipe inside your own inventory crafts the item from your inventory
+clicking on a recipe inside a building sets the buildings recipe
+hovering over recipes shows their ingridients and products"
+
+[node name="Container" type="Container" parent="help/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="VBoxContainer EE" type="VBoxContainer" parent="help/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="help/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer EE"]
+layout_mode = 2
+text = "
+WASD - liikumine
+E - inventar
+esc - sulge menüü
+space - hüppamine
+B - ehitusrežiimi sisse-/väljalülitus
+Vasak hiir - ehita
+Parem hiir - eemalda ehitis
+R - pööra päripäeva
+Shift + R - pööra vastupäeva
+1-4 - vali ehitis (3 ei tööta, valida saab ka inventarist)
+Backspace - tühista ehitise valik
+
+Klõpsates retseptil oma inventaris, valmistatakse ese inventarist
+Klõpsates retseptil ehitisest, määratakse ehitise retsept
+Retseptide peal hõljumine näitab nende koostisosi ja tooteid
+"
