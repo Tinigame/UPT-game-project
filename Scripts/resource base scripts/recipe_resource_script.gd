@@ -14,3 +14,5 @@ extends Resource
 
 #recipe tab categories
 @export_enum("Buildings", "Intermediates", "Consumables") var recipe_tab: String = "Buildings"
+
+@export var disallowed_crafters : Array[String]

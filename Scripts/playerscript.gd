@@ -188,8 +188,7 @@ func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, curr
 		material.flags_transparent = true
 		material.flags_unshaded = true
 		
-		
-		# assign material to all surfaces of the duplicated mesh
+
 		for i in range(ghost_mesh.get_surface_count()):
 			ghost_mesh.surface_set_material(i, material)
 		current_ghost_instance.mesh = ghost_mesh

@@ -13,17 +13,16 @@ var is_player_inventory : bool = false
 var debugitem : Item
 
 
-
+#groups similar items next to eachother, makes UI work
 func group_duplicates(array: Array) -> Array:
 	var groups := {}
 	
-	# Group items by type
 	for item in array:
 		if not groups.has(item):
 			groups[item] = []
 		groups[item].append(item)
 	
-	# Flatten the dictionary back into a single array
+
 	var result := []
 	for group in groups.values():
 		result += group
@@ -31,7 +30,7 @@ func group_duplicates(array: Array) -> Array:
 
 
 
-# Adds a new slot with capacity and optional allowed item types
+#Adds a new slot with capacity and optional allowed item types
 func add_slot(capacity: int, allowed_types: Array = []) -> int:
 	slots.append({
 		"contents": [],

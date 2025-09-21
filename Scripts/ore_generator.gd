@@ -39,18 +39,17 @@ func generate_copper_ore_with_noise(grid_size : float):
 				ore_map[Vector3i(x, 0, z)] = "copper ore"
 
 
-
+#creates a mesh for each ore, assigns it to the multimesh then colours it.
 func visualize_ores():
-	# Create the base mesh (Box)
 	var box_mesh = BoxMesh.new()
 	box_mesh.size = Vector3i(1, 1, 1)
 
-	# Create material and enable per-instance color
+
 	var mat = StandardMaterial3D.new()
 	mat.vertex_color_use_as_albedo = true
 	box_mesh.material = mat
 
-	# Create the multimesh
+
 	var multimesh = MultiMesh.new()
 	multimesh.mesh = box_mesh
 	multimesh.use_colors = true
@@ -84,6 +83,7 @@ func visualize_ores():
 		i += 1
 
 	add_child(multimesh_instance)
+
 
 
 func _ready() -> void:

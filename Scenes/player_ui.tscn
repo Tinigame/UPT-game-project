@@ -65,6 +65,7 @@ metadata/_tab_index = 0
 [node name="Buildings" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/buildings"]
 layout_mode = 2
 allow_reselect = true
+max_columns = 3
 
 [node name="intermediates" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
 visible = false

@@ -224,18 +224,6 @@ func update_menu():
 
 
 
-
-
-#func _on_recipe_hovered(index):
-	#var recipe = recipe_item_list.get_item_metadata(index)
-	#tooltip.show_recipe(recipe)
-	#tooltip.show()
-#
-#func _on_recipe_unhovered(index):
-	#tooltip.hide()
-
-
-
 func close_menu() -> void:
 	self.hide()
 	inventory_item_list = %InventoryList

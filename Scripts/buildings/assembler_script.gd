@@ -15,6 +15,9 @@ var cached_neighbor: Node3D = null
 
 var debugname = "assemblinator"
 
+var crafter_type = "assembler"
+
+
 func _ready() -> void:
 	self.name = debugname
 
@@ -31,12 +34,16 @@ func _ready() -> void:
 
 #sets the recipe then calls the array rebuilder
 func set_recipe(recipe: Recipe) -> void:
+	if recipe.disallowed_crafters.has(crafter_type):
+		print("recipe not allowed")
+		return
+	
 	current_recipe = recipe
 #	print("our recipe is ", current_recipe.recipe_name)
 	
 	set_container_slots()
 	
-	# (Optional) validate slot counts
+	#Validates slot counts
 	assert(recipe.recipe_ingredients.size() == input_slots.size(), "input_slots count must match number of ingredients")
 	assert(recipe.recipe_products.size() == output_slots.size(), "output_slots count must match number of products")
 
@@ -96,6 +103,7 @@ func has_space() -> bool:
 
 
 func _outputs_have_space() -> bool:
+	# guh buh idunno what this does, recommend dingus
 	# Minimal check: if ContainerManager exposes slot_free_space, use it.
 	# Otherwise skip this and rely on add_item_to_slot() returning false when full.
 	if container_manager.has_method("slot_free_space"):
@@ -117,9 +125,7 @@ func _consume_inputs() -> void:
 		var slot := input_slots[i]
 		var removed := container_manager.remove_n_of_item_from_slot(need.item, need.amount, slot)
 		if removed != need.amount:
-			# Shouldn't happen because we check first, but guard anyway
 			push_warning("Assembler consumed less than required; check input logic.")
-			# Rollback would go here if you want it.
 
 
 
@@ -132,7 +138,7 @@ func _start_crafting() -> void:
 
 #once crafting finishes add products to output slots, also try to push them out
 func _on_crafting_complete() -> void:
-	# Produce items to outputs
+	#Add items output slots
 	for i in range(current_recipe.recipe_products.size()):
 		var out = current_recipe.recipe_products[i]
 		var slot := output_slots[i]
@@ -141,7 +147,7 @@ func _on_crafting_complete() -> void:
 			var ok := container_manager.add_item_to_slot(out.item, slot)
 #			print("we finished craftin ", out.item.item_name)
 			if not ok:
-				# Slot is full; you can buffer, drop, or pause here.
+				#the slot is full
 				break
 	
 	is_crafting = false
@@ -158,7 +164,7 @@ func push_items() -> void:
 	if neighbor_cm == null:
 		return
 
-	# Push only from the FIRST output slot for simplicity
+	#Pushes from the first output slot
 	if output_slots.size() == 0:
 		return
 	

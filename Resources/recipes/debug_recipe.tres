@@ -25,4 +25,5 @@ crafting_time = 1.0
 recipe_name = "eldritch belt duplication"
 recipe_sprite = ExtResource("2_co3uu")
 recipe_tab = "Buildings"
+disallowed_crafters = Array[String]([])
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

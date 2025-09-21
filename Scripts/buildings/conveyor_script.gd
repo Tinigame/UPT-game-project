@@ -11,9 +11,9 @@ var container_manager
 
 #delays and timers for delaying item movement
 var time_since_last_send := 0.0
-var timer_active := false  # track whether the timer is running
+var timer_active := false
 var last_contents := []
-var send_delay := 1.0  # seconds to wait before sending next item
+var send_delay := 1.0  #seconds to wait before sending next item
 
 func _ready() -> void:
 	container_manager = get_own_container_manager()
@@ -24,16 +24,14 @@ func _ready() -> void:
 	
 	if container_manager:
 		container_manager.connect("space_changed", _on_container_space_changed)
-		# Initialize contents now
 		container_manager.add_slot(1, [])
 		conveyor_contents = container_manager.get_items_in_slot(0)
 		last_contents = conveyor_contents.duplicate()
 
 #the bool looks like it isnt used but for some reason it makes stuff more stable
+#updates the miners internal copy of contents, then process them
 func _on_container_space_changed(_has_space : bool):
-	# Update contents when container changes
 	conveyor_contents = container_manager.get_items_in_slot(0)
-	# Then handle showing/hiding items or starting timer, etc
 	_process_contents_change()
 
 
@@ -56,6 +54,7 @@ func get_own_container_manager() -> ContainerManager:
 	return null
 
 #TODO todo, should visibly display the contents ingame somehow, using the mesh maybe
+#maybe like in DSP where it has the item sprite
 var item_mesh = MeshInstance3D.new()
 func summon_rendering_mesh():
 	item_mesh.mesh = BoxMesh.new()
