@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=10 format=3 uid="uid://cvlfsbayttnbq"]
 
 [ext_resource type="Script" uid="uid://4xjf73360oqy" path="res://Scripts/ore_generator.gd" id="3_8j60k"]
 [ext_resource type="Script" uid="uid://dtsxa10gk8wf5" path="res://Scenes/help.gd" id="3_fo5ed"]
@@ -32,21 +32,6 @@ size = Vector3(10, 10, 20)
 [sub_resource type="BoxMesh" id="BoxMesh_a02cp"]
 size = Vector3(10, 10, 20)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5a7ea"]
-lifetime_randomness = 0.5
-direction = Vector3(0, 1, 0)
-spread = 180.0
-gravity = Vector3(0, 4, 0)
-radial_accel_min = -2.23517e-06
-radial_accel_max = 35.19
-turbulence_enabled = true
-turbulence_noise_strength = 0.5
-turbulence_noise_scale = 5.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_5a7ea"]
-radius = 0.063
-height = 0.125
-
 [node name="World" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -76,6 +61,7 @@ shape = SubResource("BoxShape3D_a02cp")
 
 [node name="cube" type="StaticBody3D" parent="floor"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -15.5185, 0, 0)
+visible = false
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="floor/cube"]
 transform = Transform3D(0.982613, -0.0496172, 0.178914, 0, 0.96363, 0.267238, -0.185667, -0.262592, 0.946876, 0, 0, 0)
@@ -85,15 +71,6 @@ shape = SubResource("BoxShape3D_go701")
 transform = Transform3D(0.982729, -0.0494056, 0.178332, 0, 0.9637, 0.266986, -0.185049, -0.262375, 0.947057, 0, 0, 0)
 mesh = SubResource("BoxMesh_a02cp")
 skeleton = NodePath("../..")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="floor/cube"]
-transform = Transform3D(1, 0, 0, 0, -0.729697, 0.683771, 0, -0.683771, -0.729697, 0, 3.29578, 0)
-amount = 200
-lifetime = 10.0
-explosiveness = 0.2
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_5a7ea")
-draw_pass_1 = SubResource("SphereMesh_5a7ea")
 
 [node name="Player_UI" parent="." instance=ExtResource("5_5ukr8")]
 
