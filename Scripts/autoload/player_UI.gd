@@ -2,9 +2,10 @@ extends CanvasLayer
 
 @onready var UI_base : PanelContainer = $CenterContainer/AspectRatioContainer/PanelContainer
 @onready var inventory_splitter : HSplitContainer = $CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer
-@onready var recipe_tabs: TabContainer = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"
-@onready var container_label: Label = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu/Container label"
+@onready var recipe_tabs : TabContainer = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"
+@onready var container_label : Label = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu/Container label"
 @onready var tooltip = $tooltiplayer/RecipeTooltip
+@onready var feedbacklayer : = $feedbacklayer
 
 
 var menu_open : bool = false
@@ -18,7 +19,7 @@ var current_building = null
 
 
 func _ready() -> void:
-	self.hide()
+	UI_base.hide()
 	recipe_tabs.tab_changed.connect(_on_tab_container_tab_changed)
 	_connect_recipe_list_signals()
 
@@ -110,7 +111,7 @@ func open(target_building):
 	
 	
 	
-	show()
+	UI_base.show()
 
 
 
@@ -225,7 +226,7 @@ func update_menu():
 
 
 func close_menu() -> void:
-	self.hide()
+	UI_base.hide()
 	inventory_item_list = %InventoryList
 	
 	inventory_item_list.clear()

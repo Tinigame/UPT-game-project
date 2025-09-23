@@ -17,14 +17,14 @@ func _physics_process(_delta: float) -> void:
 		selected_building = preload("res://Resources/buildings/conveyor_belt.tres")
 		print("selected conveyor")
 	elif Input.is_action_just_pressed("temp_select_building_2"):
-		selected_building = preload("res://Resources/buildings/2x2 rock.tres")
-		print("selected 2x2 rock")
+		selected_building = preload("res://Resources/buildings/assembler.tres")
+		print("selected assembler")
 	elif Input.is_action_just_pressed("temp_select_building_3"):
 		selected_building = preload("res://Resources/buildings/mining_drill.tres")
 		print("selected mining drill")
-	elif Input.is_action_just_pressed("temp_select_building_4"):
-		selected_building = preload("res://Resources/buildings/assembler.tres")
-		print("selected assembler")
+	#elif Input.is_action_just_pressed("temp_select_building_4"):
+		#selected_building = preload("res://Resources/buildings/assembler.tres")
+		#print("selected assembler")
 	elif Input.is_action_just_pressed("temp_deselect_building"):
 		selected_building = null
 		print("no building selected")

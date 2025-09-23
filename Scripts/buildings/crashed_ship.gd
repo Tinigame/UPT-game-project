@@ -2,9 +2,9 @@ extends Node
 
 var container_manager : ContainerManager
 
-#var tier_1_item : Array[Item] = [preload("res://Resources/items/item_hull_component.tres")]
-var tier_1_item : Array[Item] = [preload("res://Resources/items/item_iron_ore.tres")]
-var tier_1_amount : int = 5
+
+var tier_1_item : Array = [preload("res://Resources/items/item_hull_component.tres")] 
+var tier_1_amount : int = 50
 var tier_1_completed : bool = false
 
 var forward_cell_offset : Vector3i
@@ -25,6 +25,7 @@ func get_own_container_manager() -> ContainerManager:
 
 
 func _physics_process(delta: float) -> void:
-	if container_manager.get_items_in_slot(0).count(tier_1_item) == tier_1_amount:
+	var amount = container_manager.count_item_in_slot(tier_1_item[0], 0)
+	if amount >= tier_1_amount:
 		tier_1_completed = true
 		print("YIPEEEE")

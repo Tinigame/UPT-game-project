@@ -12,7 +12,7 @@ var occupied_cells : Dictionary = {}
 
 
 func _ready() -> void:
-	build_building_manually(crashed_ship, Vector3i(100, 0, 100), Vector3(0, 0, 90))
+	build_building_manually(crashed_ship, Vector3i(10, 0, 10), Vector3(0, 0, 0))
 
 
 
@@ -86,7 +86,8 @@ func build_building(build_info : Building):
 	
 	if build_info.only_buildable_on_ores == true:
 		if has_required_ore(required_cells) == false:
-			print("no ores")
+	#		print("no ores")
+			PlayerUI.feedbacklayer.show_message(str("building ", build_info.building_name, " requires ore beneath"), true)
 			return
 		else:
 			for cell in required_cells:
@@ -105,7 +106,8 @@ func build_building(build_info : Building):
 		Player.inventory.remove_n_of_item(building_ingredient, 1)
 		pass
 	elif Player.inventory.has_item(building_ingredient) == false and Globals.debug_mode == false:
-		print("no required building item")
+	#	print("no required building item")
+		PlayerUI.feedbacklayer.show_message(str("missing ", building_ingredient.item_name, "."), true)
 		return
 	else:
 		pass
@@ -228,15 +230,15 @@ func update_conveyor_neighbors():
 #same as the regular function except it doesnt need player input
 func build_building_manually(build_info : Building, manual_building_location : Vector3i, manual_building_rotation : ):
 	
-	#if there is no building selected and user clicks on a building then open its UI
-	if Globals.selected_building == null:
-		var xn = int(1)
-		var zn = int(1)
-		var req_cells : Array[Vector3i] = []
-		for x in range(xn):
-			for z in range(zn):
-				var cell = Vector3i(manual_building_location) + Vector3i(x, 0, z)
-				req_cells.append(cell)
+	##if there is no building selected and user clicks on a building then open its UI
+	#if Globals.selected_building == null:
+		#var xn = int(1)
+		#var zn = int(1)
+		#var req_cells : Array[Vector3i] = []
+		#for x in range(xn):
+			#for z in range(zn):
+				#var cell = Vector3i(manual_building_location) + Vector3i(x, 0, z)
+				#req_cells.append(cell)
 	
 		#for cell in req_cells:
 			#if occupied_cells.has(cell):
@@ -307,7 +309,7 @@ func build_building_manually(build_info : Building, manual_building_location : V
 	var offset = Vector3((build_info.building_size.x / 2.0) - 0.5, 0, (build_info.building_size.z / 2.0) - 0.5)
 	
 	#moves the building to the location and rotation
-	var final_position = Vector3((Globals.building_location.x + offset.x) * 1, build_info.building_size.y / 2, (Globals.building_location.z + offset.z) * 1)
+	var final_position = Vector3((manual_building_location.x + offset.x) * 1, build_info.building_size.y / 2, (manual_building_location.z + offset.z) * 1)
 	building.position = final_position
 	building.rotation_degrees = manual_building_rotation
 	building.grid_position = manual_building_location

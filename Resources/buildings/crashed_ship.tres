@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://dbtoj443lgn6a" path="res://Scripts/resource base scripts/building_resource_script.gd" id="1_38u8u"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_a02cp"]
-size = Vector3(10, 10, 20)
+size = Vector3(10, 4, 10)
 
 [resource]
 script = ExtResource("1_38u8u")
 building_name = "crashed ship"
-building_size = Vector3(10, 10, 20)
+building_size = Vector3(10, 4, 10)
 building_mesh = SubResource("BoxMesh_a02cp")
 building_health = 1e+10
 only_buildable_on_ores = false

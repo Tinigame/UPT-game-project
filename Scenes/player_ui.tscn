@@ -1,10 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://moegk404igb4"]
+[gd_scene load_steps=4 format=3 uid="uid://moegk404igb4"]
 
 [ext_resource type="Script" uid="uid://dihals8hnh3ju" path="res://Scripts/autoload/player_UI.gd" id="1_ohrjl"]
 [ext_resource type="PackedScene" uid="uid://bxa2yxsnng716" path="res://Scenes/RecipeTooltip.tscn" id="2_dxtgh"]
+[ext_resource type="Script" uid="uid://cmfo1apaxqiq2" path="res://Scripts/feedbacklayer.gd" id="3_qipxh"]
 
 [node name="Player_UI" type="CanvasLayer"]
 script = ExtResource("1_ohrjl")
+
+[node name="feedbacklayer" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("3_qipxh")
+
+[node name="Timer" type="Timer" parent="feedbacklayer"]
+one_shot = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
@@ -107,3 +117,5 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[connection signal="timeout" from="feedbacklayer/Timer" to="feedbacklayer" method="_on_timer_timeout"]
