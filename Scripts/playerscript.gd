@@ -47,7 +47,7 @@ func _ready():
 	#adds 1 slot
 	inventory.add_slot(84, [])
 	
-	#adss starter items to inventory
+	#adss starter items to inventorybb
 	for x in range(20):
 		for item in Globals.starter_kit:
 			inventory.add_item_to_slot(item, 0)
