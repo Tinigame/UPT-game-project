@@ -86,8 +86,13 @@ func build_building(build_info : Building):
 	
 	if build_info.only_buildable_on_ores == true:
 		if has_required_ore(required_cells) == false:
+<<<<<<< Updated upstream
 	#		print("no ores")
 			PlayerUI.feedbacklayer.show_message(str("building ", build_info.building_name, " requires ore beneath"), true)
+=======
+			print("no ores")
+			FeedBackLayer.show_message(str("building ", build_info.building_name, " requires ore beneath"), true)
+>>>>>>> Stashed changes
 			return
 		else:
 			for cell in required_cells:
@@ -106,8 +111,13 @@ func build_building(build_info : Building):
 		Player.inventory.remove_n_of_item(building_ingredient, 1)
 		pass
 	elif Player.inventory.has_item(building_ingredient) == false and Globals.debug_mode == false:
+<<<<<<< Updated upstream
 	#	print("no required building item")
 		PlayerUI.feedbacklayer.show_message(str("missing ", building_ingredient.item_name, "."), true)
+=======
+		print("no required building item")
+		FeedBackLayer.show_message(str("missing ", building_ingredient.item_name, "."), true)
+>>>>>>> Stashed changes
 		return
 	else:
 		pass

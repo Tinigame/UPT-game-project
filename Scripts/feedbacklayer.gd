@@ -22,6 +22,10 @@ func init_message():
 	label.add_theme_color_override("font_color", error_color)
 	label.add_theme_font_size_override("font_size", 20)
 	self.add_child(label)
+<<<<<<< Updated upstream
+=======
+	print("added the damn label")
+>>>>>>> Stashed changes
 
 
 

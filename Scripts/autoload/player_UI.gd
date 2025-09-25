@@ -2,10 +2,15 @@ extends CanvasLayer
 
 @onready var UI_base : PanelContainer = $CenterContainer/AspectRatioContainer/PanelContainer
 @onready var inventory_splitter : HSplitContainer = $CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer
+<<<<<<< Updated upstream
 @onready var recipe_tabs : TabContainer = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"
 @onready var container_label : Label = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu/Container label"
 @onready var tooltip = $tooltiplayer/RecipeTooltip
 @onready var feedbacklayer : = $feedbacklayer
+=======
+@onready var recipe_tabs: TabContainer = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"
+@onready var container_label: Label = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu/Container label"
+>>>>>>> Stashed changes
 
 
 var menu_open : bool = false
@@ -16,12 +21,14 @@ var recipe_item_list : ItemList
 var current_container = null
 var current_building = null
 
-
+#var feedbacklayer
 
 func _ready() -> void:
 	UI_base.hide()
 	recipe_tabs.tab_changed.connect(_on_tab_container_tab_changed)
 	_connect_recipe_list_signals()
+#	feedbacklayer = $FeedBackLayer
+
 
 
 
@@ -195,7 +202,7 @@ func update_menu():
 	recipe_item_list.clear()
 	recipe_item_list.deselect_all()
 	recipe_item_list = recipe_tabs.get_current_tab_control().get_child(0)
-	print(recipe_item_list.name)
+#	print(recipe_item_list.name)
 	var category_recipes = RecipeDatabase.get_all_recipes(recipe_item_list.name)
 	
 	recipe_item_list.max_columns = len(category_recipes)
@@ -246,10 +253,6 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("close_menu"):
 		close_menu()
 
-
-func _process(_delta):
-	if tooltip.visible:
-		tooltip.position = get_viewport().get_mouse_position() + Vector2(16, 16)
 
 
 func _on_tab_container_tab_changed(_tab: int) -> void:

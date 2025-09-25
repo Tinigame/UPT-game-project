@@ -1,8 +1,14 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=4 format=3 uid="uid://moegk404igb4"]
 
 [ext_resource type="Script" uid="uid://dihals8hnh3ju" path="res://Scripts/autoload/player_UI.gd" id="1_ohrjl"]
 [ext_resource type="PackedScene" uid="uid://bxa2yxsnng716" path="res://Scenes/RecipeTooltip.tscn" id="2_dxtgh"]
 [ext_resource type="Script" uid="uid://cmfo1apaxqiq2" path="res://Scripts/feedbacklayer.gd" id="3_qipxh"]
+=======
+[gd_scene load_steps=2 format=3 uid="uid://moegk404igb4"]
+
+[ext_resource type="Script" uid="uid://dihals8hnh3ju" path="res://Scripts/autoload/player_UI.gd" id="1_ohrjl"]
+>>>>>>> Stashed changes
 
 [node name="Player_UI" type="CanvasLayer"]
 script = ExtResource("1_ohrjl")
@@ -98,6 +104,7 @@ metadata/_tab_index = 2
 [node name="Consumables" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/consumables"]
 layout_mode = 2
 allow_reselect = true
+<<<<<<< Updated upstream
 
 [node name="tooltiplayer" type="Control" parent="."]
 visible = false
@@ -119,3 +126,5 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="timeout" from="feedbacklayer/Timer" to="feedbacklayer" method="_on_timer_timeout"]
+=======
+>>>>>>> Stashed changes
