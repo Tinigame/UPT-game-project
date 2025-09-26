@@ -6,6 +6,6 @@ func _physics_process(_delta: float) -> void:
 	getfps()
 
 func getfps():
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.2).timeout
 	fps = Engine.get_frames_per_second()
 	text = str("fps: ", fps)

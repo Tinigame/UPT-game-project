@@ -38,6 +38,7 @@ size = Vector3(10, 10, 20)
 transform = Transform3D(0.436912, -0.876291, -0.203032, 0, -0.225716, 0.974193, -0.899504, -0.425636, -0.0986179, 0, 3.51138, 0)
 light_energy = 2.0
 shadow_enabled = true
+directional_shadow_mode = 0
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 50.0
 directional_shadow_pancake_size = 0.0
@@ -147,11 +148,13 @@ Vasak hiir - ehita
 Parem hiir - eemalda ehitis
 R - pööra päripäeva
 Shift + R - pööra vastupäeva
-1-4 - vali ehitis (3 ei tööta, valida saab ka inventarist)
+1-3 - vali ehitis (valida saab ka inventarist)
 Backspace - tühista ehitise valik
 f4 - lahku mängust
 
 Klõpsates retseptil oma inventaris, valmistatakse ese inventarist
 Klõpsates retseptil ehitisest, määratakse ehitise retsept
 Retseptide peal hõljumine näitab nende koostisosi ja tooteid
-"
+(gpt poolt tõlgitud)
+
+Eesmärk on nähtaval \"kosmoselaeva peal\""

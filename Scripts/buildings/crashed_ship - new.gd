@@ -13,6 +13,8 @@ var grid_position : Vector3i
 var goal_billboard
 var goal_text
 
+var billboard = Sprite3D.new()
+var text = Label3D.new()
 
 
 
@@ -24,14 +26,12 @@ func _ready() -> void:
 
 
 func create_goal_billboard():
-	var billboard = Sprite3D.new()
-	var text = Label3D.new()
 	billboard.texture = preload("res://Assets/Textures/ai-generated-8214374_960_720.jpg")
 	billboard.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 	billboard.position = self.position + Vector3(0, 3, 0)
 	
 	text.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
-	text.text = "Goal: 50 hull components"
+	text.text = "Eesmärk: 50 kereosa"
 	text.position = self.position + Vector3(0, 2, 0)
 	
 	add_child(billboard)
@@ -53,4 +53,6 @@ func _physics_process(_delta: float) -> void:
 	var amount = container_manager.count_item_in_slot(tier_1_item[0], 0)
 	if amount >= tier_1_amount:
 		tier_1_completed = true
+		text.text = "Eesmärk täidetud"
+		billboard.texture = "res://Assets/Textures/Untitled.png"
 		print("YIPEEEE")

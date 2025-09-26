@@ -77,10 +77,6 @@ func open(target_building):
 	
 	recipe_item_list = recipe_tabs.get_current_tab_control().get_child(0)
 	
-	#if not recipe_item_list.mouse_entered.is_connected(_on_recipe_hovered):
-		#recipe_item_list.connect("mouse_entered", _on_recipe_hovered)
-	#if not recipe_item_list.mouse_exited.is_connected(_on_recipe_unhovered):
-		#recipe_item_list.connect("mouse_exited", _on_recipe_hovered)
 
 	var category_recipes = RecipeDatabase.get_all_recipes(recipe_item_list.name)
 	
@@ -239,12 +235,6 @@ func close_menu() -> void:
 	current_building = null
 	current_container = null
 	menu_open = false
-
-
-
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("close_menu"):
-		close_menu()
 
 
 

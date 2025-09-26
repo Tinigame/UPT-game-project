@@ -7,3 +7,5 @@ func _physics_process(_delta: float) -> void:
 			tutoriallayer.hide()
 		else:
 			tutoriallayer.show()
+	if Input.is_action_just_pressed("close_menu"):
+		tutoriallayer.hide()

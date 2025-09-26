@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("2_pepi4")
-item_name = "iron gear"
+item_name = "raud hammasratas"
 max_stack_size = 84
 item_mesh = SubResource("CylinderMesh_bf8bv")
 item_sprite = ExtResource("1_q62e7")
