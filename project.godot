@@ -25,6 +25,7 @@ PlayerUI="*res://Scenes/player_ui.tscn"
 RecipeDatabase="*res://Scripts/autoload/Recipe_database.gd"
 BuildingManager="*res://Scenes/Building_manager.tscn"
 Player="*res://Scenes/player.tscn"
+FeedBackLayer="*res://Scenes/feed_back_layer.tscn"
 
 [debug]
 
@@ -158,5 +159,8 @@ common/enable_object_picking=false
 
 [rendering]
 
+lights_and_shadows/directional_shadow/size=1000
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false
+lights_and_shadows/positional_shadow/atlas_size=1000

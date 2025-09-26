@@ -40,4 +40,5 @@ crafting_time = 10.0
 recipe_name = "assembler"
 recipe_sprite = ExtResource("6_j0qck")
 recipe_tab = "Buildings"
+disallowed_crafters = Array[String]([])
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

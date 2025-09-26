@@ -43,6 +43,7 @@ func _has_required_inputs() -> bool:
 		var count : int = container_manager.count_item_in_slot(need.item, slot)
 		if count < need.amount:
 			print("missing required ingridients")
+			FeedBackLayer.show_message(str("missing required ingridients"), true)
 			return false
 	return true
 

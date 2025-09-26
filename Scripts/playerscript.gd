@@ -45,9 +45,10 @@ func _ready():
 	self.add_child(crafter_node)
 	
 	#adds 1 slot
-	inventory.add_slot(84, [])
+	inventory.add_slot(1000, [])
 	
-	for x in range(10):
+	#adss starter items to inventory
+	for x in range(20):
 		for item in Globals.starter_kit:
 			inventory.add_item_to_slot(item, 0)
 
@@ -218,6 +219,8 @@ func get_forward_cell_offset(building_size, grotation) -> Vector3:
 func handcraft_item(recipe):
 	crafter_node.set_recipe(recipe)
 
+
+var inventory_open = false
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -227,8 +230,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("close_game"):
 		get_tree().quit()
 
-	if Input.is_action_just_pressed("open_inventory"):
+	
+	if Input.is_action_just_pressed("open_inventory") and inventory_open == false:
 		PlayerUI.open(inventory)
+		inventory_open = true
+	elif Input.is_action_just_pressed("open_inventory") and inventory_open == true:
+		inventory_open = false
+		PlayerUI.close_menu()
+	if Input.is_action_just_pressed("close_menu"):
+		inventory_open = false
+		PlayerUI.close_menu()
 
 
 	player_movement()
