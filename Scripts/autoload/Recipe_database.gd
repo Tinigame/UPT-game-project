@@ -23,7 +23,7 @@ func _load_recipes_from(path: String):
 	dir.list_dir_begin()
 	var fname = dir.get_next()
 	while fname != "":
-		if fname.ends_with(".tres"):
+		if fname.ends_with(".tres") or fname.ends_with(".tres.remap") or fname.ends_with(".res"):
 			var res_path = path + "/" + fname
 			var resource = load(res_path)
 			if resource is Recipe:

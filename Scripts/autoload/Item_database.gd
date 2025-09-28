@@ -26,7 +26,7 @@ func _load_items_from(path: String):
 	dir.list_dir_begin()
 	var fname = dir.get_next()
 	while fname != "":
-		if fname.ends_with(".tres") or fname.ends_with(".res"):
+		if fname.ends_with(".tres") or fname.ends_with(".res") or fname.ends_with(".tres.remap"):
 			var res_path = path + "/" + fname
 			var res = load(res_path)
 			if res is Item:
