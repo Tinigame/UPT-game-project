@@ -14,7 +14,6 @@ material = SubResource("StandardMaterial3D_ur84b")
 [resource]
 script = ExtResource("3_ejmay")
 item_name = "conveyor belt"
-max_stack_size = 84
 item_mesh = SubResource("BoxMesh_2b1go")
 item_sprite = ExtResource("1_ur84b")
 is_building = true

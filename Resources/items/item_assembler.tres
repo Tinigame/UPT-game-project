@@ -14,7 +14,6 @@ material = SubResource("StandardMaterial3D_oykdp")
 [resource]
 script = ExtResource("3_oykdp")
 item_name = "assembler"
-max_stack_size = 84
 item_mesh = SubResource("BoxMesh_5tifn")
 item_sprite = ExtResource("2_50tc2")
 is_building = true

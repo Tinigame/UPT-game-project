@@ -55,7 +55,7 @@ func _on_space_changed(has_space: bool):
 
 func set_recipe(recipe: Resource) -> void:
 	if not is_recipe_compatible:
-		push_warning("This building cannot use recipes.")
+		FeedBackLayer.show_message("This building cannot use recipes.", true)
 		return
 	
 	if unique_node != null and unique_node.has_method("set_recipe"):

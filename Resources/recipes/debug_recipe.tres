@@ -8,7 +8,6 @@
 [sub_resource type="Resource" id="Resource_06bfu"]
 script = ExtResource("1_i022s")
 item = ExtResource("1_ncwvt")
-amount = 1
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [sub_resource type="Resource" id="Resource_f1fmu"]
@@ -21,9 +20,4 @@ metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 script = ExtResource("1_5v6uj")
 recipe_ingredients = Array[ExtResource("1_i022s")]([SubResource("Resource_06bfu")])
 recipe_products = Array[ExtResource("1_i022s")]([SubResource("Resource_f1fmu")])
-crafting_time = 1.0
-recipe_name = "eldritch belt duplication"
-recipe_sprite = ExtResource("2_co3uu")
-recipe_tab = "Buildings"
-disallowed_crafters = Array[String]([])
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

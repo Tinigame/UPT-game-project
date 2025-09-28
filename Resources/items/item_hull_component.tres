@@ -12,8 +12,6 @@ material = SubResource("StandardMaterial3D_35lmx")
 [resource]
 script = ExtResource("2_lrqwg")
 item_name = "hull component"
-max_stack_size = 84
 item_mesh = SubResource("BoxMesh_35lmx")
 item_sprite = ExtResource("1_35lmx")
-is_building = false
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"
