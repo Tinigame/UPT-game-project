@@ -20,4 +20,5 @@ metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 script = ExtResource("1_5v6uj")
 recipe_ingredients = Array[ExtResource("1_i022s")]([SubResource("Resource_06bfu")])
 recipe_products = Array[ExtResource("1_i022s")]([SubResource("Resource_f1fmu")])
+recipe_name = "Debug belt making"
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

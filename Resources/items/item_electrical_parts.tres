@@ -1,15 +1,10 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://ddlws1uul1ugp"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ddlws1uul1ugp"]
 
-[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_nkdil"]
+[ext_resource type="Texture2D" uid="uid://ccta0r0ibn315" path="res://Assets/Textures/electronics-4401805.jpg" id="1_nkdil"]
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_s50x1"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_nkdil"]
 
 [resource]
 script = ExtResource("2_s50x1")
-item_name = "electrical parts"
-max_stack_size = 84
-item_mesh = SubResource("SphereMesh_nkdil")
+item_name = "Elektrikomponendid"
 item_sprite = ExtResource("1_nkdil")
-is_building = false
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

@@ -15,7 +15,6 @@ metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 [sub_resource type="Resource" id="Resource_rvdev"]
 script = ExtResource("1_vms6q")
 item = ExtResource("2_bcw3k")
-amount = 1
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [resource]
@@ -23,7 +22,7 @@ script = ExtResource("3_bcw3k")
 recipe_ingredients = Array[ExtResource("1_vms6q")]([SubResource("Resource_r8mhf")])
 recipe_products = Array[ExtResource("1_vms6q")]([SubResource("Resource_rvdev")])
 crafting_time = 3.0
-recipe_name = "purify copper"
+recipe_name = "Vasemaagi puhastus"
 recipe_sprite = ExtResource("4_bcw3k")
 recipe_tab = "Intermediates"
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

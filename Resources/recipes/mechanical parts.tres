@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://bv5kwocclnbuv"]
 
 [ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_57e4w"]
-[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="2_8yoji"]
 [ext_resource type="Resource" uid="uid://ciaj1w7lcpne0" path="res://Resources/items/item_iron_gear.tres" id="2_66hkc"]
 [ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_ksi31"]
 [ext_resource type="Resource" uid="uid://dgkue0mlq4kg2" path="res://Resources/items/item_pure_iron.tres" id="3_uamoi"]
 [ext_resource type="Resource" uid="uid://b5i81b08yfu1v" path="res://Resources/items/item_mechanical_parts.tres" id="4_11fm6"]
+[ext_resource type="Texture2D" uid="uid://dv8pr4kijeg0p" path="res://Assets/Textures/Right Type of Chain and Sprocket.png" id="5_66hkc"]
 
 [sub_resource type="Resource" id="Resource_dw55h"]
 script = ExtResource("1_57e4w")
@@ -30,8 +30,7 @@ script = ExtResource("3_ksi31")
 recipe_ingredients = Array[ExtResource("1_57e4w")]([SubResource("Resource_dw55h"), SubResource("Resource_iid0u")])
 recipe_products = Array[ExtResource("1_57e4w")]([SubResource("Resource_yhawl")])
 crafting_time = 4.0
-recipe_name = "mehhaanilised komponendid"
-recipe_sprite = ExtResource("2_8yoji")
+recipe_name = "Mehaanikaosad"
+recipe_sprite = ExtResource("5_66hkc")
 recipe_tab = "Intermediates"
-disallowed_crafters = Array[String]([])
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

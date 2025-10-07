@@ -1,15 +1,14 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3 uid="uid://bj62v2s73aoc1"]
 
 [ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_0v8x1"]
-[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="2_70n5h"]
 [ext_resource type="Resource" uid="uid://dgkue0mlq4kg2" path="res://Resources/items/item_pure_iron.tres" id="2_l3lhp"]
 [ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_l3lhp"]
 [ext_resource type="Resource" uid="uid://ciaj1w7lcpne0" path="res://Resources/items/item_iron_gear.tres" id="3_r8j5w"]
+[ext_resource type="Texture2D" uid="uid://b7b0hldykmeyj" path="res://Assets/Textures/cnc-1270101.jpg" id="4_l3lhp"]
 
 [sub_resource type="Resource" id="Resource_cfdpg"]
 script = ExtResource("1_0v8x1")
 item = ExtResource("2_l3lhp")
-amount = 1
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [sub_resource type="Resource" id="Resource_skksn"]
@@ -23,8 +22,7 @@ script = ExtResource("3_l3lhp")
 recipe_ingredients = Array[ExtResource("1_0v8x1")]([SubResource("Resource_cfdpg")])
 recipe_products = Array[ExtResource("1_0v8x1")]([SubResource("Resource_skksn")])
 crafting_time = 0.5
-recipe_name = "raud hammasratas"
-recipe_sprite = ExtResource("2_70n5h")
+recipe_name = "Raud hammasratas"
+recipe_sprite = ExtResource("4_l3lhp")
 recipe_tab = "Intermediates"
-disallowed_crafters = Array[String]([])
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

@@ -26,6 +26,7 @@ RecipeDatabase="*res://Scripts/autoload/Recipe_database.gd"
 BuildingManager="*res://Scenes/Building_manager.tscn"
 Player="*res://Scenes/player.tscn"
 FeedBackLayer="*res://Scenes/feed_back_layer.tscn"
+Gtools="*res://Scripts/autoload/gtools.gd"
 
 [debug]
 

@@ -29,7 +29,6 @@ metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 [sub_resource type="Resource" id="Resource_aihor"]
 script = ExtResource("1_gfp6q")
 item = ExtResource("5_fgusm")
-amount = 1
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [resource]
@@ -37,8 +36,6 @@ script = ExtResource("3_qvbs3")
 recipe_ingredients = Array[ExtResource("1_gfp6q")]([SubResource("Resource_2ubyf"), SubResource("Resource_7uauk"), SubResource("Resource_ci82v")])
 recipe_products = Array[ExtResource("1_gfp6q")]([SubResource("Resource_aihor")])
 crafting_time = 10.0
-recipe_name = "assembler"
+recipe_name = "Koostamismasin"
 recipe_sprite = ExtResource("6_j0qck")
-recipe_tab = "Buildings"
-disallowed_crafters = Array[String]([])
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

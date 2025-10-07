@@ -33,14 +33,14 @@ dragger_visibility = 2
 
 [node name="Container label" type="Label" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu"]
 layout_mode = 2
-text = "Inventory"
+text = "Inventuur"
 
 [node name="InventoryList" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu"]
 unique_name_in_owner = true
 layout_mode = 2
 allow_reselect = true
 icon_mode = 0
-fixed_icon_size = Vector2i(32, 32)
+fixed_icon_size = Vector2i(64, 64)
 
 [node name="crafting menu" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer"]
 layout_mode = 2
@@ -49,41 +49,44 @@ dragger_visibility = 2
 
 [node name="Recipe Label" type="Label" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu"]
 layout_mode = 2
-text = "Crafting"
+text = "Meisterdamine"
 
 [node name="TabContainer" type="TabContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu"]
 layout_mode = 2
 current_tab = 0
 
-[node name="buildings" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
+[node name="Ehitised" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
 layout_mode = 2
 dragging_enabled = false
 dragger_visibility = 2
 metadata/_tab_index = 0
 
-[node name="Buildings" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/buildings"]
+[node name="Buildings" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/Ehitised"]
 layout_mode = 2
 allow_reselect = true
 max_columns = 3
+fixed_icon_size = Vector2i(64, 64)
 
-[node name="intermediates" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
+[node name="Vahepealsed komponendid" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
 visible = false
 layout_mode = 2
 dragging_enabled = false
 dragger_visibility = 2
 metadata/_tab_index = 1
 
-[node name="Intermediates" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/intermediates"]
+[node name="Intermediates" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/Vahepealsed komponendid"]
 layout_mode = 2
 allow_reselect = true
+fixed_icon_size = Vector2i(64, 64)
 
-[node name="consumables" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
+[node name="Kasutatavad" type="VSplitContainer" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"]
 visible = false
 layout_mode = 2
 dragging_enabled = false
 dragger_visibility = 2
 metadata/_tab_index = 2
 
-[node name="Consumables" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/consumables"]
+[node name="Consumables" type="ItemList" parent="CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer/Kasutatavad"]
 layout_mode = 2
 allow_reselect = true
+fixed_icon_size = Vector2i(64, 64)

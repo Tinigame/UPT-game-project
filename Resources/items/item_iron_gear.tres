@@ -1,15 +1,10 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://ciaj1w7lcpne0"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ciaj1w7lcpne0"]
 
-[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_q62e7"]
+[ext_resource type="Texture2D" uid="uid://b7b0hldykmeyj" path="res://Assets/Textures/cnc-1270101.jpg" id="1_q62e7"]
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_pepi4"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_bf8bv"]
 
 [resource]
 script = ExtResource("2_pepi4")
-item_name = "raud hammasratas"
-max_stack_size = 84
-item_mesh = SubResource("CylinderMesh_bf8bv")
+item_name = "Raud hammasratas"
 item_sprite = ExtResource("1_q62e7")
-is_building = false
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

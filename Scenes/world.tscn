@@ -115,7 +115,6 @@ B - toggle build mode
 Left mouse - build
 Right mouse - remove building
 R - rotate clockwise
-shift + R - rotate counter clockwise
 1-4 - select building (3 doesnt work, can also select from inventory)
 backspace - unselect building
 f4 - close game
@@ -139,14 +138,13 @@ layout_mode = 2
 layout_mode = 2
 text = "
 WASD - liikumine
-E - inventar
+E - inventuur
 esc - sulge menüü
 space - hüppamine
 B - ehitusrežiimi sisse-/väljalülitus
 Vasak hiir - ehita
 Parem hiir - eemalda ehitis
 R - pööra päripäeva
-Shift + R - pööra vastupäeva
 1-3 - vali ehitis (valida saab ka inventarist)
 Backspace - tühista ehitise valik
 f4 - lahku mängust

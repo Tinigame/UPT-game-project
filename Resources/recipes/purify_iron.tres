@@ -15,7 +15,6 @@ metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 [sub_resource type="Resource" id="Resource_fjjfv"]
 script = ExtResource("1_3jwam")
 item = ExtResource("3_s2ewy")
-amount = 1
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [resource]
@@ -23,7 +22,7 @@ script = ExtResource("3_5yf6o")
 recipe_ingredients = Array[ExtResource("1_3jwam")]([SubResource("Resource_46rks")])
 recipe_products = Array[ExtResource("1_3jwam")]([SubResource("Resource_fjjfv")])
 crafting_time = 3.0
-recipe_name = "iron purification"
+recipe_name = "Rauamaagi puhastus"
 recipe_sprite = ExtResource("4_lp17m")
 recipe_tab = "Intermediates"
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

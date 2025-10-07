@@ -26,12 +26,15 @@ func _ready() -> void:
 
 
 func create_goal_billboard():
-	billboard.texture = preload("res://Assets/Textures/ai-generated-8214374_960_720.jpg")
+	var bilbboardimage = preload("uid://88ef2wmelerv").get_image()
+	bilbboardimage.resize(64, 64, Image.INTERPOLATE_NEAREST)
+	var bilbtext = ImageTexture.create_from_image(bilbboardimage)
+	billboard.texture = bilbtext
 	billboard.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 	billboard.position = self.position + Vector3(0, 3, 0)
 	
 	text.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
-	text.text = "Eesmärk: 50 kereosa"
+	text.text = "Eesmärk: 50 Kerekomponenti"
 	text.position = self.position + Vector3(0, 2, 0)
 	
 	add_child(billboard)

@@ -24,17 +24,16 @@ func _ready() -> void:
 
 
 
-
 func open(target_building):
 	current_building = target_building
 	var container
 	if target_building.name == "ContainerManager":
 		container = target_building
-		container_label.text = str("Inventory (", container.slot_free_space(0), "/", container.slots[0].capacity, " free space)")
+		container_label.text = str("Inventuur (", container.slot_free_space(0), "/", container.slots[0].capacity, " vaba kohta)")
 		
 	else:
 		container = target_building.container_manager
-		container_label.text = str("Container of ", target_building.name)
+		container_label.text = str("Ehitise ",  target_building.name, " Konteiner")
 	
 	
 	if menu_open == true:

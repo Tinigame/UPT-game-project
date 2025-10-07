@@ -1,17 +1,10 @@
-[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://05hbtsp35g7"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://05hbtsp35g7"]
 
-[ext_resource type="Texture2D" uid="uid://bvamc7we7s3uj" path="res://Assets/Textures/ai-generated-8214374_960_720.jpg" id="1_35lmx"]
+[ext_resource type="Texture2D" uid="uid://88ef2wmelerv" path="res://Assets/Textures/honeycomb.jpg" id="1_35lmx"]
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_lrqwg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35lmx"]
-albedo_texture = ExtResource("1_35lmx")
-
-[sub_resource type="BoxMesh" id="BoxMesh_35lmx"]
-material = SubResource("StandardMaterial3D_35lmx")
 
 [resource]
 script = ExtResource("2_lrqwg")
-item_name = "hull component"
-item_mesh = SubResource("BoxMesh_35lmx")
+item_name = "Kerekomponent"
 item_sprite = ExtResource("1_35lmx")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

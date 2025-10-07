@@ -1,15 +1,9 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dgkue0mlq4kg2"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dgkue0mlq4kg2"]
 
 [ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_xcp7a"]
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_emoad"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_xcp7a"]
-
 [resource]
 script = ExtResource("2_emoad")
-item_name = "pure iron"
-max_stack_size = 84
-item_mesh = SubResource("BoxMesh_xcp7a")
-item_sprite = ExtResource("1_xcp7a")
-is_building = false
+item_name = "Puhas raud"
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

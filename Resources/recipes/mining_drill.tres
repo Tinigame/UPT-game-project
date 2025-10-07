@@ -29,7 +29,6 @@ metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 [sub_resource type="Resource" id="Resource_swwhd"]
 script = ExtResource("1_xnq3x")
 item = ExtResource("5_ylhm1")
-amount = 1
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [resource]
@@ -37,7 +36,6 @@ script = ExtResource("3_32emd")
 recipe_ingredients = Array[ExtResource("1_xnq3x")]([SubResource("Resource_l8yuc"), SubResource("Resource_7obn3"), SubResource("Resource_xprk1")])
 recipe_products = Array[ExtResource("1_xnq3x")]([SubResource("Resource_swwhd")])
 crafting_time = 10.0
-recipe_name = "mining drill"
+recipe_name = "Kaevanduspuur"
 recipe_sprite = ExtResource("6_hc1tn")
-recipe_tab = "Buildings"
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

@@ -12,9 +12,7 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [resource]
 script = ExtResource("2_wc2th")
-item_name = "iron ore"
-max_stack_size = 84
+item_name = "Rauamaak"
 item_mesh = SubResource("PrismMesh_wc2th")
 item_sprite = ExtResource("1_ws74h")
-is_building = false
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"
