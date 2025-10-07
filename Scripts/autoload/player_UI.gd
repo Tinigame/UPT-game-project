@@ -30,7 +30,8 @@ func open(target_building):
 	var container
 	if target_building.name == "ContainerManager":
 		container = target_building
-		container_label.text = "Inventory"
+		container_label.text = str("Inventory (", container.slot_free_space(0), "/", container.slots[0].capacity, " free space)")
+		
 	else:
 		container = target_building.container_manager
 		container_label.text = str("Container of ", target_building.name)
@@ -180,6 +181,7 @@ func update_menu():
 			else:
 				item_count = 1
 				index = inventory_item_list.add_icon_item(item.item_sprite)
+				
 			
 			
 			inventory_item_list.set_item_text(index, str(item.item_name, " (", item_count, ")"))
