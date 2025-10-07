@@ -15,5 +15,4 @@ building_ingredient_name = "mining drill"
 building_script = ExtResource("1_bmi6u")
 has_container = true
 container_max_slots = 1
-uses_recipes = false
 metadata/_custom_type_script = "uid://dbtoj443lgn6a"

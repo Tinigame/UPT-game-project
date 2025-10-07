@@ -1,5 +1,7 @@
 extends Node3D
 
+var placeholder_texture = preload("uid://catthc6he4qgc")
+
 var grid_position: Vector3i
 var debugname = "conveyorinator"
 
@@ -19,7 +21,7 @@ func _ready() -> void:
 	container_manager = get_own_container_manager()
 	self.name = debugname
 	add_to_group("conveyors")
-	summon_rendering_mesh()
+	summon_rendering_cube()
 	ConveyorManager.register_conveyor(self)
 	
 	if container_manager:
@@ -53,28 +55,41 @@ func get_own_container_manager() -> ContainerManager:
 		return get_parent().get_node("ContainerManager")
 	return null
 
+
+
 #TODO todo, should visibly display the contents ingame somehow, using the mesh maybe
 #maybe like in DSP where it has the item sprite
 var item_mesh = MeshInstance3D.new()
-func summon_rendering_mesh():
+var item_material = StandardMaterial3D.new()
+func summon_rendering_cube():
 	item_mesh.mesh = BoxMesh.new()
+	
+	item_material.albedo_texture = placeholder_texture
+	item_material.uv1_triplanar = true
+	item_material.uv1_scale = Vector3(1, 1, 1)
+	item_material.uv1_offset = Vector3(0.5, -0.5, 0.5)
+	item_mesh.mesh.surface_set_material(0, item_material)
+	
 	item_mesh.position = self.position + Vector3(0, 1, 0)
 	item_mesh.scale = Vector3(0.5, 0.5, 0.5)
+	
 	item_mesh.hide()
 	add_child(item_mesh)
 
 
+
 func render_contents(item):
+	item_material.albedo_texture = item.item_sprite
 	item_mesh.show()
-	item_mesh.mesh = item.item_mesh
-	item_mesh.scale = Vector3(0.5, 0.5, 0.5)
-	item_mesh.position = self.position + Vector3(0, 1, 0)
+	item_mesh.position = self.position + Vector3(0, 0.5, 0)
+
 
 
 var cached_neighbor: Node3D = null
-
 func update_connections():
 	cached_neighbor = check_neighbor(forward_cell_offset)
+
+
 
 func check_neighbor(neighbor_position: Vector3i) -> Node3D:
 	if BuildingManager.occupied_cells.has(neighbor_position):

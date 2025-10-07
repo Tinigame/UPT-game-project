@@ -12,8 +12,6 @@ material = SubResource("StandardMaterial3D_dw3v7")
 [resource]
 script = ExtResource("2_06bt1")
 item_name = "copper ore"
-max_stack_size = 84
 item_mesh = SubResource("PrismMesh_06bt1")
 item_sprite = ExtResource("1_dw3v7")
-is_building = false
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

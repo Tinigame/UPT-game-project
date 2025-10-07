@@ -165,8 +165,14 @@ func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, curr
 	
 	if Input.is_action_just_pressed("rotate_clockwise"):
 		Globals.building_rotation.y += 90
-	if Input.is_action_just_pressed("rotate_counterclockwise"):
-		Globals.building_rotation.y += -180
+		if Globals.building_rotation.y == 360 or Globals.building_rotation.y == -360:
+			Globals.building_rotation.y = 0
+		print(Globals.building_rotation.y)
+	#if Input.is_action_just_pressed("rotate_counterclockwise"):
+		#Globals.building_rotation.y += -180
+		#if Globals.building_rotation.y == 360 or Globals.building_rotation.y == -360:
+			#Globals.building_rotation.y = 0
+		#print(Globals.building_rotation.y)
 	
 	#makes ghost aligned to the grid like the buildings
 	var size = Globals.selected_building.building_size
