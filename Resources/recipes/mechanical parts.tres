@@ -33,4 +33,5 @@ crafting_time = 4.0
 recipe_name = "Mehaanikaosad"
 recipe_sprite = ExtResource("5_66hkc")
 recipe_tab = "Intermediates"
+disallowed_crafters = 5
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

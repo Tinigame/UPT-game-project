@@ -38,4 +38,5 @@ recipe_products = Array[ExtResource("1_xnq3x")]([SubResource("Resource_swwhd")])
 crafting_time = 10.0
 recipe_name = "Kaevanduspuur"
 recipe_sprite = ExtResource("6_hc1tn")
+disallowed_crafters = 4
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

@@ -107,7 +107,7 @@ func build_building(build_info : Building):
 		pass
 	elif Player.inventory.has_item(building_ingredient) == false and Globals.debug_mode == false:
 		print("no required building item")
-		FeedBackLayer.show_message(str("missing ", building_ingredient.item_name, "."), true)
+		FeedBackLayer.show_message(str("Puudub ", building_ingredient.item_name, "."), true)
 		return
 	else:
 		pass

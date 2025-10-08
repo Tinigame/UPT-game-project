@@ -20,7 +20,7 @@ func generate_iron_ore_with_noise(grid_size : float):
 			var number = iron_noise.get_noise_2d(x, z)
 			
 			if number > 0.3:
-				ore_map[Vector3i(x, 0, z)] = "iron ore"
+				ore_map[Vector3i(x, 0, z)] = "Rauamaak"
 
 
 
@@ -36,7 +36,25 @@ func generate_copper_ore_with_noise(grid_size : float):
 			var number = copper_noise.get_noise_2d(x, z)
 			
 			if number > 0.3:
-				ore_map[Vector3i(x, 0, z)] = "copper ore"
+				ore_map[Vector3i(x, 0, z)] = "Vasemaak"
+
+
+
+func generate_coal_ore_with_noise(grid_size : float):
+	var copper_noise = FastNoiseLite.new()
+	copper_noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	copper_noise.seed = randi()
+	
+	var half = grid_size / 2
+
+	for x in range(-half, half):
+		for z in range(-half, half):
+			var number = copper_noise.get_noise_2d(x, z)
+			
+			if number > 0.3:
+				ore_map[Vector3i(x, 0, z)] = "Süsi"
+
+
 
 
 #creates a mesh for each ore, assigns it to the multimesh then colours it.
@@ -70,11 +88,11 @@ func visualize_ores():
 
 		var color := Color.WHITE
 		match ore_map[cell]:
-			"iron ore":
+			"Rauamaak":
 				color = Color(0.1, 0.1, 1)
-			"copper ore":
+			"Vasemaak":
 				color = Color(1.0, 0.1, 0.1)
-			"coal ore":
+			"Süsi":
 				color = Color(0, 0, 0)
 			"stone ore":
 				color = Color(0, 1, 0)
@@ -89,6 +107,7 @@ func visualize_ores():
 func _ready() -> void:
 	generate_copper_ore_with_noise(ore_grid_size)
 	generate_iron_ore_with_noise(ore_grid_size)
+	generate_coal_ore_with_noise(ore_grid_size)
 	
 	visualize_ores()
 	Globals.ore_map = ore_map

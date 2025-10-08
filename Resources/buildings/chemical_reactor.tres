@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Building" load_steps=4 format=3 uid="uid://mb62a3jadg2u"]
+
+[ext_resource type="Script" uid="uid://dbtoj443lgn6a" path="res://Scripts/resource base scripts/building_resource_script.gd" id="1_q0n4k"]
+[ext_resource type="Script" uid="uid://6hj6osslm3c5" path="res://Scripts/buildings/chemical_reactor_script.gd" id="1_w0dlg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w0dlg"]
+size = Vector3(3, 5, 3)
+
+[resource]
+script = ExtResource("1_q0n4k")
+building_name = "Keemiline reaktor"
+building_size = Vector3(3, 5, 3)
+building_mesh = SubResource("BoxMesh_w0dlg")
+building_health = 300.0
+building_ingredient_name = "Keemiline reaktor"
+building_script = ExtResource("1_w0dlg")
+has_container = true
+uses_recipes = true
+metadata/_custom_type_script = "uid://dbtoj443lgn6a"

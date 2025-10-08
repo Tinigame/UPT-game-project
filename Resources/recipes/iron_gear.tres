@@ -25,4 +25,5 @@ crafting_time = 0.5
 recipe_name = "Raud hammasratas"
 recipe_sprite = ExtResource("4_l3lhp")
 recipe_tab = "Intermediates"
+disallowed_crafters = 4
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

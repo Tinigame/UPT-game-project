@@ -6,6 +6,7 @@ var container_manager: ContainerManager
 var current_recipe: Recipe = null
 var is_crafting: bool = false
 
+var crafter_type = 1
 
 func _ready() -> void:
 	# Find sibling container_manager (assumes HandAssembler is a child of Player)
@@ -20,6 +21,11 @@ func _ready() -> void:
 
 # Called externally to set what to craft
 func set_recipe(recipe: Recipe) -> void:
+	if recipe.disallowed_crafters == 1:
+		print("recipe not allowed")
+		FeedBackLayer.show_message(str("Seda retsepti ei saa käsitsi valmistada."), true)
+		return
+
 	if container_manager == null:
 		return
 
@@ -43,7 +49,7 @@ func _has_required_inputs() -> bool:
 		var count : int = container_manager.count_item_in_slot(need.item, slot)
 		if count < need.amount:
 			print("missing required ingridients")
-			FeedBackLayer.show_message(str("missing required ingridients"), true)
+			FeedBackLayer.show_message(str("Koostisosad puuduvad"), true)
 			return false
 	return true
 

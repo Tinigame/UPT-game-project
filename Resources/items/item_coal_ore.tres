@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bbosvdjm3um8w"]
+
+[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_pck4e"]
+[ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_xqypq"]
+
+[resource]
+script = ExtResource("2_xqypq")
+item_name = "Süsi"
+metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

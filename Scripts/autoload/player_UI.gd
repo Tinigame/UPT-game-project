@@ -94,11 +94,16 @@ func open(target_building):
 		for prod in recipe.recipe_products:
 			products_text += str(prod.item.item_name, " x", prod.amount, "\n")
 		
-		var tooltip_text : String = recipe.recipe_name + "\n" \
-			+ "Ingredients:\n" + ingredients_text \
-			+ "Products:\n" + products_text \
-			+ "Time to craft: " + str(recipe.crafting_time) + "s"
+		var bad_crafters = "Sobimatud tootmismeetodid: " + Enums.get_disallowed_crafter_name(recipe.disallowed_crafters)
 		
+		
+		
+		var tooltip_text : String = recipe.recipe_name + "\n" \
+			+ "Koostisosad:\n" + ingredients_text \
+			+ "Tooted:\n" + products_text \
+			+ "Meisterdamisaeg: " + str(recipe.crafting_time) + "s\n" \
+			+ bad_crafters
+
 		recipe_item_list.set_item_tooltip_enabled(index, true)
 		recipe_item_list.set_item_tooltip(index, tooltip_text)
 		recipe_item_list.set_item_text(index, recipe.recipe_name)
@@ -210,10 +215,16 @@ func update_menu():
 		for prod in recipe.recipe_products:
 			products_text += str(prod.item.item_name, " x", prod.amount, "\n")
 		
+		
+		var bad_crafters = str("Sobimatud tootmismeetodid: " + Enums.get_disallowed_crafter_name(recipe.disallowed_crafters))
+		
+		
+		
 		var tooltip_text : String = recipe.recipe_name + "\n" \
-			+ "Ingredients:\n" + ingredients_text \
-			+ "Products:\n" + products_text \
-			+ "Time to craft: " + str(recipe.crafting_time) + "s"
+			+ "Koostisosad:\n" + ingredients_text \
+			+ "Tooted:\n" + products_text \
+			+ "Meisterdamisaeg: " + str(recipe.crafting_time) + "s\n" \
+			+ bad_crafters
 		
 		recipe_item_list.set_item_tooltip_enabled(index, true)
 		recipe_item_list.set_item_tooltip(index, tooltip_text)

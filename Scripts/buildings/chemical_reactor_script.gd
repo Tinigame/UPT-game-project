@@ -13,9 +13,9 @@ var crafting_timer : Timer
 
 var cached_neighbor: Node3D = null
 
-var debugname = "assemblinator"
+var debugname = "chemical reactor"
 
-var crafter_type = 2
+var crafter_type = 3
 
 
 func _ready() -> void:
