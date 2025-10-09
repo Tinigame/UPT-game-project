@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dgkue0mlq4kg2"]
 
-[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_xcp7a"]
+[ext_resource type="Texture2D" uid="uid://bktglhtpeqe65" path="res://Assets/Textures/iron-ingot-wrought-o0nyvyB-600.jpg" id="1_xcp7a"]
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_emoad"]
 
 [resource]
 script = ExtResource("2_emoad")
 item_name = "Puhas raud"
+item_sprite = ExtResource("1_xcp7a")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

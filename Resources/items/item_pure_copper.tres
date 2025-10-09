@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dgx8nruow5c06"]
 
-[ext_resource type="Texture2D" uid="uid://catthc6he4qgc" path="res://Assets/Textures/placeholder texture.png" id="1_a2ey2"]
+[ext_resource type="Texture2D" uid="uid://dlwdltxk5v6ls" path="res://Assets/Textures/Icon-copper-ingot.webp" id="1_a2ey2"]
 [ext_resource type="Script" uid="uid://b6ywqmrhgnwyo" path="res://Scripts/resource base scripts/item_resource_script.gd" id="2_t56oe"]
 
 [resource]
 script = ExtResource("2_t56oe")
 item_name = "Puhas vask"
+item_sprite = ExtResource("1_a2ey2")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"
