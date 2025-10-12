@@ -14,7 +14,7 @@ size = Vector3(3, 2, 3)
 
 [resource]
 script = ExtResource("1_wci7x")
-building_name = "assembler"
+building_name = "Koostamismasin"
 building_size = Vector3(3, 2, 3)
 building_mesh = SubResource("BoxMesh_i5d80")
 building_health = 1000.0

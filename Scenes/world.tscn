@@ -73,6 +73,7 @@ mesh = SubResource("BoxMesh_a02cp")
 skeleton = NodePath("../..")
 
 [node name="Player_UI" parent="." instance=ExtResource("5_5ukr8")]
+layer = -1
 
 [node name="help" type="Label" parent="."]
 offset_left = 2.0

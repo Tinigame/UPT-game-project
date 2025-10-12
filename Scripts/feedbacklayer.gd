@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @export var popup_lifetime : = 1.5
 @export var error_color : = Color.RED
@@ -11,6 +11,7 @@ var label = Label.new()
 var feedback_showing = false
 
 func _ready() -> void:
+	self.layer = 2
 	init_message()
 
 
@@ -21,6 +22,7 @@ func init_message():
 	label.add_theme_color_override("font_color", error_color)
 	label.add_theme_color_override("font_color", error_color)
 	label.add_theme_font_size_override("font_size", 20)
+	label.z_index = 100
 	self.add_child(label)
 	print("added the damn label")
 

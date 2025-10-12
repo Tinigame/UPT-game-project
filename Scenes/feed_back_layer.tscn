@@ -2,13 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7mxw22krs8fa" path="res://Scripts/feedbacklayer.gd" id="1_3dykp"]
 
-[node name="FeedBackLayer" type="Control"]
-z_index = 10
-z_as_relative = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="FeedBackLayer" type="CanvasLayer"]
 script = ExtResource("1_3dykp")
 
 [node name="Timer" type="Timer" parent="."]

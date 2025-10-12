@@ -87,7 +87,7 @@ func build_building(build_info : Building):
 	if build_info.only_buildable_on_ores == true:
 		if has_required_ore(required_cells) == false:
 			print("no ores")
-			FeedBackLayer.show_message(str("building ", build_info.building_name, " requires ore beneath"), true)
+			FeedBackLayer.show_message(str("Ehitis ", build_info.building_name, " vajab enda all ressursse"), true)
 			return
 		else:
 			for cell in required_cells:
