@@ -47,10 +47,18 @@ func _ready():
 	#adds 1 slot
 	inventory.add_slot(1000, [])
 	
-	#adss starter items to inventory
-	for x in range(20):
-		for item in Globals.starter_kit:
-			inventory.add_item_to_slot(item, 0)
+	#adds conveyors to inventory
+	for x in range(30):
+		inventory.add_item_to_slot(preload("uid://bkeso58byrvis"), 0)
+	#adds drills to inventory
+	for x in range(5):
+		inventory.add_item_to_slot(preload("uid://dm6bu7txklg6r"), 0)
+	#adds assemblers to inventory
+	for x in range(5):
+		inventory.add_item_to_slot(preload("uid://c3mwgrehm27rk"), 0)
+	#adds splitters to inventory
+	for x in range(10):
+		inventory.add_item_to_slot(preload("uid://cpewoocd340yg"), 0)
 
 
 #Camera and movement rotation

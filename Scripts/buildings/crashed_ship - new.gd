@@ -4,7 +4,7 @@ var container_manager : ContainerManager
 
 
 var tier_1_item : Array = [preload("res://Resources/items/item_hull_component.tres")] 
-var tier_1_amount : int = 50
+var tier_1_amount : int = 25
 var tier_1_completed : bool = false
 
 var forward_cell_offset : Vector3i
@@ -34,7 +34,7 @@ func create_goal_billboard():
 	billboard.position = self.position + Vector3(0, 3, 0)
 	
 	text.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
-	text.text = "Eesmärk: 50 Kerekomponenti"
+	text.text = str("Eesmärk: ", tier_1_amount, " Kerekomponenti")
 	text.position = self.position + Vector3(0, 2, 0)
 	
 	add_child(billboard)
@@ -57,5 +57,5 @@ func _physics_process(_delta: float) -> void:
 	if amount >= tier_1_amount:
 		tier_1_completed = true
 		text.text = "Eesmärk täidetud"
-		billboard.texture = "res://Assets/Textures/Untitled.png"
-		print("YIPEEEE")
+		billboard.texture = preload("uid://dir0exoj5ej8o")
+		Globals.speedrun_timer_started = false

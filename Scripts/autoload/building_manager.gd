@@ -174,6 +174,10 @@ func build_building(build_info : Building):
 #				print("No ore at", cell)
 
 	update_conveyor_neighbors()
+	
+	if Globals.speedrun_timer_started == false:
+		Globals.speedrun_timer_started = true
+		print("its started")
 
 
 
@@ -224,6 +228,10 @@ func update_conveyor_neighbors():
 	for assembler in get_tree().get_nodes_in_group("assemblers"):
 		if assembler.has_method("update_connections"):
 			assembler.update_connections()
+	
+	for splitter in get_tree().get_nodes_in_group("splitters"):
+		if splitter.has_method("update_connections"):
+			splitter.update_connections()
 
 
 

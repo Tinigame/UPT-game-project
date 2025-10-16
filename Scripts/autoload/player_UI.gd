@@ -83,6 +83,9 @@ func open(target_building):
 	recipe_item_list.max_columns = len(category_recipes)
 	
 	for recipe in category_recipes.values():
+		if recipe.recipe_name == "Debug belt making":
+			continue
+
 		var index = recipe_item_list.add_icon_item(recipe.recipe_sprite)
 		
 		# Build tooltip strings
@@ -203,6 +206,9 @@ func update_menu():
 	recipe_item_list.max_columns = len(category_recipes)
 	
 	for recipe in category_recipes.values():
+		if recipe.recipe_name == "Debug belt making":
+			continue
+
 		var index = recipe_item_list.add_icon_item(recipe.recipe_sprite)
 		
 		#constructs ingridients tooltip text

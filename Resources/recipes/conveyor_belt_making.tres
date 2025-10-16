@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://c6yqq0uytvr6r"]
+[gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3 uid="uid://c6yqq0uytvr6r"]
 
 [ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_fsrf3"]
 [ext_resource type="Resource" uid="uid://dgkue0mlq4kg2" path="res://Resources/items/item_pure_iron.tres" id="2_1fl3j"]
-[ext_resource type="Resource" uid="uid://dgx8nruow5c06" path="res://Resources/items/item_pure_copper.tres" id="3_hpovf"]
 [ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_pfwn4"]
 [ext_resource type="Resource" uid="uid://bkeso58byrvis" path="res://Resources/items/item_conveyor.tres" id="4_f11ax"]
 [ext_resource type="Texture2D" uid="uid://bgyc0uex0irha" path="res://Assets/Textures/conveyor.png" id="5_81e07"]
@@ -10,12 +9,6 @@
 [sub_resource type="Resource" id="Resource_nj38u"]
 script = ExtResource("1_fsrf3")
 item = ExtResource("2_1fl3j")
-amount = 2
-metadata/_custom_type_script = "uid://beft7b6oy0qdf"
-
-[sub_resource type="Resource" id="Resource_ygxwx"]
-script = ExtResource("1_fsrf3")
-item = ExtResource("3_hpovf")
 amount = 2
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
@@ -27,7 +20,7 @@ metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [resource]
 script = ExtResource("3_pfwn4")
-recipe_ingredients = Array[ExtResource("1_fsrf3")]([SubResource("Resource_nj38u"), SubResource("Resource_ygxwx")])
+recipe_ingredients = Array[ExtResource("1_fsrf3")]([SubResource("Resource_nj38u")])
 recipe_products = Array[ExtResource("1_fsrf3")]([SubResource("Resource_j35cf")])
 recipe_name = "Konveierlint"
 recipe_sprite = ExtResource("5_81e07")

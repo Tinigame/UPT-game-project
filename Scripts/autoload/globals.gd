@@ -9,23 +9,26 @@ var ore_map : Dictionary
 var debug_item = preload("res://Resources/buildings/conveyor_belt.tres")
 var debug_recipe = preload("res://Resources/recipes/debug_recipe.tres")
 var debug_mode : bool = false
-
-var starter_kit : Array = [preload("res://Resources/items/item_assembler.tres"), preload("res://Resources/items/item_conveyor.tres"), preload("res://Resources/items/item_mining_drill.tres")]
+var speedrun_timer_started : bool = false
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("temp_select_building_1"):
 		selected_building = preload("res://Resources/buildings/conveyor_belt.tres")
 		print("selected conveyor")
-
 	elif Input.is_action_just_pressed("temp_select_building_2"):
-		selected_building = preload("res://Resources/buildings/mining_drill.tres")
-		print("selected mining drill")
+		selected_building = preload("uid://bg763wlyjknto")
+		print("selected splitter")
 	elif Input.is_action_just_pressed("temp_select_building_3"):
 		selected_building = preload("res://Resources/buildings/assembler.tres")
 		print("selected assembler")
 	elif Input.is_action_just_pressed("temp_select_building_4"):
+		selected_building = preload("res://Resources/buildings/mining_drill.tres")
+		print("selected mining drill")
+	elif Input.is_action_just_pressed("temp_select_building_5"):
 		selected_building = preload("uid://mb62a3jadg2u")
 		print("selected chemical reactor")
+
+
 
 	elif Input.is_action_just_pressed("temp_deselect_building"):
 		selected_building = null

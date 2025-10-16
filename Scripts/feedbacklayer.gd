@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var popup_lifetime : = 1.5
 @export var error_color : = Color.RED
 @export var success_color : = Color.GREEN
+@onready var speedruntimer: Label = $Speedruntimer
 
 
 @onready var kill_timer: Timer = $Timer
@@ -53,3 +54,10 @@ func _on_timer_timeout() -> void:
 	label.hide()
 	label.text = ""
 	feedback_showing = false
+
+
+var time_since_start : float
+func _process(delta: float) -> void:
+	if Globals.speedrun_timer_started == true:
+		time_since_start += delta
+		speedruntimer.text = str("Aeg: ", time_since_start).pad_decimals(2)

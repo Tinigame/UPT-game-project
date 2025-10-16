@@ -57,8 +57,6 @@ func get_own_container_manager() -> ContainerManager:
 
 
 
-#TODO todo, should visibly display the contents ingame somehow, using the mesh maybe
-#maybe like in DSP where it has the item sprite
 var item_mesh = MeshInstance3D.new()
 var item_material = StandardMaterial3D.new()
 func summon_rendering_cube():
