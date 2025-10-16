@@ -4,6 +4,8 @@ extends Node3D
 @export var forward_cell_offset: Vector3i
 var grid_position: Vector3i
 
+var cached_neighbor: Node3D = null
+
 var container_manager: ContainerManager
 var output_index := 0
 
@@ -47,12 +49,18 @@ func get_own_container_manager() -> ContainerManager:
 		return get_parent().get_node("ContainerManager")
 	return null
 
+
+
 func _on_space_changed(_has_space: bool) -> void:
 	var items = container_manager.get_items_in_slot(0)
 	if items.size() > 0:
 		_send_item(items[0])
 
+
 func _send_item(item: Item):
+	if !container_manager.has_item(item):
+		return # already removed or moved
+
 	var outputs := []
 	for offset in output_offsets:
 		var cell = grid_position + offset
@@ -63,18 +71,24 @@ func _send_item(item: Item):
 
 	if outputs.is_empty():
 		return
-	
-	var target = outputs[output_index % outputs.size()]
-	output_index += 1
 
-	var neighbor_cm: ContainerManager = target.get_node("ContainerManager")
+	var num_outputs := outputs.size()
+	var attempts := 0
 
-	if neighbor_cm.has_space_for_item_in_slot(item, 0):
-		if neighbor_cm.add_item_to_slot(item, 0):
-			container_manager.remove_item_from_slot(item, 0)
+	while attempts < num_outputs:
+		var target_index = output_index % num_outputs
+		var target = outputs[target_index]
+		output_index += 1
+		attempts += 1
+
+		var neighbor_cm: ContainerManager = target.get_node("ContainerManager")
+
+		if neighbor_cm.has_space_for_item_in_slot(item, 0):
+			if neighbor_cm.add_item_to_slot(item, 0):
+				container_manager.remove_item_from_slot(item, 0)
+				return
 
 
-var cached_neighbor: Node3D = null
 func update_connections():
 	cached_neighbor = check_neighbor(forward_cell_offset)
 

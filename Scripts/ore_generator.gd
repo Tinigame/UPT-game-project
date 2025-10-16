@@ -107,7 +107,7 @@ func visualize_ores():
 func _ready() -> void:
 	generate_copper_ore_with_noise(ore_grid_size)
 	generate_iron_ore_with_noise(ore_grid_size)
-	generate_coal_ore_with_noise(ore_grid_size)
+#	generate_coal_ore_with_noise(ore_grid_size)
 	
 	visualize_ores()
 	Globals.ore_map = ore_map

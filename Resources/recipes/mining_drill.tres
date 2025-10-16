@@ -11,7 +11,7 @@
 [sub_resource type="Resource" id="Resource_l8yuc"]
 script = ExtResource("1_xnq3x")
 item = ExtResource("2_e8nsi")
-amount = 8
+amount = 4
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [sub_resource type="Resource" id="Resource_7obn3"]
@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 [sub_resource type="Resource" id="Resource_xprk1"]
 script = ExtResource("1_xnq3x")
 item = ExtResource("4_8qrl8")
-amount = 10
+amount = 5
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [sub_resource type="Resource" id="Resource_swwhd"]

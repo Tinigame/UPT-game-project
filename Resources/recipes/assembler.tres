@@ -11,13 +11,13 @@
 [sub_resource type="Resource" id="Resource_2ubyf"]
 script = ExtResource("1_gfp6q")
 item = ExtResource("2_wqgi6")
-amount = 10
+amount = 5
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [sub_resource type="Resource" id="Resource_7uauk"]
 script = ExtResource("1_gfp6q")
 item = ExtResource("3_fhhcj")
-amount = 4
+amount = 2
 metadata/_custom_type_script = "uid://beft7b6oy0qdf"
 
 [sub_resource type="Resource" id="Resource_ci82v"]
