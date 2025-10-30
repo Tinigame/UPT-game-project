@@ -59,6 +59,9 @@ func _ready():
 	#adds splitters to inventory
 	for x in range(10):
 		inventory.add_item_to_slot(preload("uid://cpewoocd340yg"), 0)
+	#adds crossers to inventory
+	for x in range(10):
+		inventory.add_item_to_slot(preload("uid://dko8w6iesohyi"), 0)
 
 
 #Camera and movement rotation

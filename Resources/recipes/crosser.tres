@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=10 format=3 uid="uid://cw0dd54120brm"]
+
+[ext_resource type="Script" uid="uid://beft7b6oy0qdf" path="res://Scripts/resource base scripts/recipe_slot.gd" id="1_t0t2y"]
+[ext_resource type="Resource" uid="uid://bkeso58byrvis" path="res://Resources/items/item_conveyor.tres" id="2_igu3o"]
+[ext_resource type="Resource" uid="uid://dgkue0mlq4kg2" path="res://Resources/items/item_pure_iron.tres" id="3_mfryv"]
+[ext_resource type="Script" uid="uid://dv0jdd6iysabc" path="res://Scripts/resource base scripts/recipe_resource_script.gd" id="3_qdede"]
+[ext_resource type="Resource" uid="uid://dko8w6iesohyi" path="res://Resources/items/item_crosser.tres" id="4_bjjpu"]
+[ext_resource type="Texture2D" uid="uid://bwt0ms5w5s1p5" path="res://Assets/Textures/crosser.png" id="5_refml"]
+
+[sub_resource type="Resource" id="Resource_swv3l"]
+script = ExtResource("1_t0t2y")
+item = ExtResource("2_igu3o")
+amount = 2
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_63ivn"]
+script = ExtResource("1_t0t2y")
+item = ExtResource("3_mfryv")
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[sub_resource type="Resource" id="Resource_evf5a"]
+script = ExtResource("1_t0t2y")
+item = ExtResource("4_bjjpu")
+amount = 2
+metadata/_custom_type_script = "uid://beft7b6oy0qdf"
+
+[resource]
+script = ExtResource("3_qdede")
+recipe_ingredients = Array[ExtResource("1_t0t2y")]([SubResource("Resource_swv3l"), SubResource("Resource_63ivn")])
+recipe_products = Array[ExtResource("1_t0t2y")]([SubResource("Resource_evf5a")])
+crafting_time = 3.0
+recipe_name = "Konveierläbipääs"
+recipe_sprite = ExtResource("5_refml")
+disallowed_crafters = 4
+metadata/_custom_type_script = "uid://dv0jdd6iysabc"

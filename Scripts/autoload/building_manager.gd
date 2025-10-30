@@ -232,7 +232,10 @@ func update_conveyor_neighbors():
 	for splitter in get_tree().get_nodes_in_group("splitters"):
 		if splitter.has_method("update_connections"):
 			splitter.update_connections()
-
+	
+	for crosser in get_tree().get_nodes_in_group("crossers"):
+		if crosser.has_method("update_connections"):
+			crosser.update_connections()
 
 
 #same as the regular function except it doesnt need player input

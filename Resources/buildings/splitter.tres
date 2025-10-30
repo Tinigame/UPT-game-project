@@ -4,20 +4,20 @@
 [ext_resource type="Script" uid="uid://dbtoj443lgn6a" path="res://Scripts/resource base scripts/building_resource_script.gd" id="1_k1dwb"]
 [ext_resource type="Script" uid="uid://dikn7mcioqime" path="res://Scripts/buildings/splitter.gd" id="2_vb2ci"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8me3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7outc"]
 albedo_color = Color(0.650552, 0.649244, 1.92523e-07, 1)
 albedo_texture = ExtResource("1_7outc")
 uv1_offset = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_e2vj2"]
-material = SubResource("StandardMaterial3D_u8me3")
+[sub_resource type="BoxMesh" id="BoxMesh_vb2ci"]
+material = SubResource("StandardMaterial3D_7outc")
 
 [resource]
 script = ExtResource("1_k1dwb")
 building_name = "Jagaja"
 building_size = Vector3(1, 1, 1)
-building_mesh = SubResource("BoxMesh_e2vj2")
+building_mesh = SubResource("BoxMesh_vb2ci")
 building_health = 10.0
 building_ingredient_name = "Jagaja"
 building_script = ExtResource("2_vb2ci")

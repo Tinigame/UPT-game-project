@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Building" load_steps=6 format=3 uid="uid://0m8hk2vy252i"]
+
+[ext_resource type="Script" uid="uid://dbtoj443lgn6a" path="res://Scripts/resource base scripts/building_resource_script.gd" id="1_10adx"]
+[ext_resource type="Texture2D" uid="uid://bwt0ms5w5s1p5" path="res://Assets/Textures/crosser.png" id="1_h7ody"]
+[ext_resource type="Script" uid="uid://de4osr1a7tnn" path="res://Scripts/buildings/crosser.gd" id="1_pbyqm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7ody"]
+albedo_color = Color(0.650552, 0.649244, 1.92523e-07, 1)
+albedo_texture = ExtResource("1_h7ody")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_yq8ns"]
+material = SubResource("StandardMaterial3D_h7ody")
+
+[resource]
+script = ExtResource("1_10adx")
+building_name = "Konveierläbipääs"
+building_size = Vector3(1, 1, 1)
+building_mesh = SubResource("BoxMesh_yq8ns")
+building_health = 10.0
+building_ingredient_name = "Konveierläbipääs"
+building_script = ExtResource("1_pbyqm")
+has_container = true
+container_max_slots = 1
+metadata/_custom_type_script = "uid://dbtoj443lgn6a"

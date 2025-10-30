@@ -77,11 +77,11 @@ func push_items(neighbor, conveyor, item_to_move) -> void:
 			if neighbor_cm.has_space_for_item_in_slot(item_to_move, slot):
 				if neighbor_cm.add_item_to_slot(item_to_move, slot):
 					conveyor.container_manager.remove_item_from_slot(item_to_move, 0)
-					return  # stop once item is delivered
+					return  #stops once item is delivered
 
 
 	if neighbor.is_in_group("splitters"):
-		return  # splitters handle distribution themselves
+		return  #splitters handle distribution themselves
 
 
 	else:

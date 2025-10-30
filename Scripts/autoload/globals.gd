@@ -17,13 +17,20 @@ func _physics_process(_delta: float) -> void:
 		_toggle_building("res://Resources/buildings/conveyor_belt.tres", "conveyor")
 
 	elif Input.is_action_just_pressed("temp_select_building_2"):
-		_toggle_building("uid://bg763wlyjknto", "splitter")
+		_toggle_building("res://Resources/buildings/splitter.tres", "splitter")
 
 	elif Input.is_action_just_pressed("temp_select_building_3"):
-		_toggle_building("res://Resources/buildings/assembler.tres", "assembler")
+		_toggle_building("res://Resources/buildings/crosser_belt.tres", "crosser")
 
 	elif Input.is_action_just_pressed("temp_select_building_4"):
+		_toggle_building("res://Resources/buildings/assembler.tres", "assembler")
+
+	elif Input.is_action_just_pressed("temp_select_building_5"):
 		_toggle_building("res://Resources/buildings/mining_drill.tres", "mining drill")
+	
+
+
+
 
 	elif Input.is_action_just_pressed("temp_deselect_building"):
 		selected_building = null
