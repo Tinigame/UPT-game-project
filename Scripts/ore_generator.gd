@@ -55,54 +55,61 @@ func generate_coal_ore_with_noise(grid_size : float):
 				ore_map[Vector3i(x, 0, z)] = "Süsi"
 
 
-
-
-#creates a mesh for each ore, assigns it to the multimesh then colours it.
-func visualize_ores():
+#visualizes the ores
+#now with added chunking for baller performance
+func visualize_ores_chunked(chunk_size : int = 32):
 	var ore_mesh = PlaneMesh.new()
 	ore_mesh.size = Vector2i(1, 1)
-
 
 	var mat = StandardMaterial3D.new()
 	mat.vertex_color_use_as_albedo = true
 	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	ore_mesh.material = mat
-	
 
+	# Organize ores by chunk
+	var chunks : Dictionary = {}
 
-	var multimesh = MultiMesh.new()
-	multimesh.mesh = ore_mesh
-	multimesh.use_colors = true
-	multimesh.transform_format = MultiMesh.TRANSFORM_3D
-	multimesh.instance_count = ore_map.size()
-
-	# Create the instance container
-	var multimesh_instance = MultiMeshInstance3D.new()
-	multimesh_instance.multimesh = multimesh
-	multimesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-
-	# Assign transform and color to each instance
-	var i = 0
 	for cell in ore_map.keys():
-		var transform = Transform3D()
-		transform.origin = Vector3(cell)
-		multimesh.set_instance_transform(i, transform)
+		var chunk_x = int(floor(cell.x / chunk_size))
+		var chunk_z = int(floor(cell.z / chunk_size))
+		var chunk_key = Vector2i(chunk_x, chunk_z)
 
-		var color := Color.WHITE
-		match ore_map[cell]:
-			"Rauamaak":
-				color = Color(0.1, 0.1, 1)
-			"Vasemaak":
-				color = Color(1.0, 0.1, 0.1)
-			"Süsi":
-				color = Color(0, 0, 0)
-			"stone ore":
-				color = Color(0, 1, 0)
+		if not chunks.has(chunk_key):
+			chunks[chunk_key] = []
+		chunks[chunk_key].append(cell)
 
-		multimesh.set_instance_color(i, color)
-		i += 1
+	# Create a MultiMeshInstance for each chunk
+	for chunk_key in chunks.keys():
+		var cells = chunks[chunk_key]
+		var multimesh = MultiMesh.new()
+		multimesh.mesh = ore_mesh
+		multimesh.use_colors = true
+		multimesh.transform_format = MultiMesh.TRANSFORM_3D
+		multimesh.instance_count = cells.size()
 
-	add_child(multimesh_instance)
+		var multimesh_instance = MultiMeshInstance3D.new()
+		multimesh_instance.multimesh = multimesh
+		multimesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		add_child(multimesh_instance)
+
+		for i in range(cells.size()):
+			var cell = cells[i]
+			var transform = Transform3D()
+			transform.origin = Vector3(cell)
+			multimesh.set_instance_transform(i, transform)
+
+			var color := Color.WHITE
+			match ore_map[cell]:
+				"Rauamaak":
+					color = Color(0.1, 0.1, 1)
+				"Vasemaak":
+					color = Color(1.0, 0.1, 0.1)
+				"Süsi":
+					color = Color(0, 0, 0)
+				"stone ore":
+					color = Color(0, 1, 0)
+			multimesh.set_instance_color(i, color)
+
 
 
 
@@ -111,5 +118,5 @@ func _ready() -> void:
 	generate_iron_ore_with_noise(ore_grid_size)
 #	generate_coal_ore_with_noise(ore_grid_size)
 	
-	visualize_ores()
+	visualize_ores_chunked()
 	Globals.ore_map = ore_map

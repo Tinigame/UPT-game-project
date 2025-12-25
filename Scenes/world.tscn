@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=8 format=3 uid="uid://cvlfsbayttnbq"]
 
 [ext_resource type="Script" uid="uid://4xjf73360oqy" path="res://Scripts/ore_generator.gd" id="3_8j60k"]
 [ext_resource type="Script" uid="uid://dtsxa10gk8wf5" path="res://Scenes/help.gd" id="3_fo5ed"]
@@ -16,21 +16,15 @@ fog_depth_begin = 0.0
 volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.815686, 1, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a02cp"]
-albedo_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5a7ea"]
+albedo_color = Color(0.12955844, 0.12955847, 0.12955844, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yp4wr"]
-material = SubResource("StandardMaterial3D_a02cp")
+material = SubResource("StandardMaterial3D_5a7ea")
 size = Vector2(1000, 1000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a02cp"]
 size = Vector3(1000, 1, 1000)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_go701"]
-size = Vector3(10, 10, 20)
-
-[sub_resource type="BoxMesh" id="BoxMesh_a02cp"]
-size = Vector3(10, 10, 20)
 
 [node name="World" type="Node3D"]
 
@@ -53,23 +47,12 @@ script = ExtResource("3_8j60k")
 collision_layer = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_yp4wr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.478643, 0)
 shape = SubResource("BoxShape3D_a02cp")
-
-[node name="cube" type="StaticBody3D" parent="floor"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -15.5185, 0, 0)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="floor/cube"]
-transform = Transform3D(0.982613, -0.0496172, 0.178914, 0, 0.96363, 0.267238, -0.185667, -0.262592, 0.946876, 0, 0, 0)
-shape = SubResource("BoxShape3D_go701")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="floor/cube"]
-transform = Transform3D(0.982729, -0.0494056, 0.178332, 0, 0.9637, 0.266986, -0.185049, -0.262375, 0.947057, 0, 0, 0)
-mesh = SubResource("BoxMesh_a02cp")
-skeleton = NodePath("../..")
 
 [node name="Player_UI" parent="." instance=ExtResource("5_5ukr8")]
 layer = -1
