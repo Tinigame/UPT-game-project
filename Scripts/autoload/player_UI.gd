@@ -159,9 +159,9 @@ func _on_inventory_item_activated(index: int) -> void:
 	if current_container.is_player_inventory == true:
 		return
 	
+	# moves item from container to player inventory
 	var current_activated_item : Item = inventory_item_list.get_item_metadata(index)
 	Player.inventory.add_item_to_slot(current_activated_item, 0)
-#	inventory_item_list.remove_item(index)
 	current_container.remove_item_from_slot(current_activated_item, index)
 	update_menu()
 

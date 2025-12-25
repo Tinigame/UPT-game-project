@@ -17,7 +17,7 @@ volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.815686, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a02cp"]
-albedo_color = Color(0.552956, 0.552956, 0.552956, 1)
+albedo_color = Color(0.12225222, 0.12225225, 0.12225217, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yp4wr"]
 material = SubResource("StandardMaterial3D_a02cp")
@@ -36,7 +36,7 @@ size = Vector3(10, 10, 20)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.436912, -0.876291, -0.203032, 0, -0.225716, 0.974193, -0.899504, -0.425636, -0.0986179, 0, 3.51138, 0)
-light_energy = 2.0
+light_energy = 1.446
 directional_shadow_mode = 0
 directional_shadow_blend_splits = true
 directional_shadow_max_distance = 50.0
