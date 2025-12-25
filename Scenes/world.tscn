@@ -46,7 +46,7 @@ directional_shadow_pancake_size = 0.0
 environment = SubResource("Environment_a02cp")
 
 [node name="Ore_Generator" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 script = ExtResource("3_8j60k")
 
 [node name="floor" type="StaticBody3D" parent="."]
@@ -61,7 +61,6 @@ shape = SubResource("BoxShape3D_a02cp")
 
 [node name="cube" type="StaticBody3D" parent="floor"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -15.5185, 0, 0)
-visible = false
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="floor/cube"]
 transform = Transform3D(0.982613, -0.0496172, 0.178914, 0, 0.96363, 0.267238, -0.185667, -0.262592, 0.946876, 0, 0, 0)

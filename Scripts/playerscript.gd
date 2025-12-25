@@ -175,15 +175,10 @@ var last_Selected_building = null
 func update_build_ghost(ghost_pos, current_ghost_instance : MeshInstance3D, current_ghost_rotation_instance : MeshInstance3D):
 	
 	if Input.is_action_just_pressed("rotate_clockwise"):
-		Globals.building_rotation.y += 90
+		Globals.building_rotation.y -= 90
 		if Globals.building_rotation.y == 360 or Globals.building_rotation.y == -360:
 			Globals.building_rotation.y = 0
 		print(Globals.building_rotation.y)
-	#if Input.is_action_just_pressed("rotate_counterclockwise"):
-		#Globals.building_rotation.y += -180
-		#if Globals.building_rotation.y == 360 or Globals.building_rotation.y == -360:
-			#Globals.building_rotation.y = 0
-		#print(Globals.building_rotation.y)
 	
 	#makes ghost aligned to the grid like the buildings
 	var size = Globals.selected_building.building_size
@@ -227,6 +222,16 @@ func get_forward_cell_offset(building_size, grotation) -> Vector3:
 			forward = Vector3(0, 0, 1)
 		270:
 			forward = Vector3(-1, 0, 0)
+		360:
+			forward = Vector3(0, 0, -1)
+		-90:
+			forward = Vector3(1, 0, 0)
+		-180:
+			forward = Vector3(0, 0, 1)
+		-270:
+			forward = Vector3(-1, 0, 0)
+		-360:
+			forward = Vector3(0, 0, -1)
 	
 	return forward * (building_size.z / 2.0)
 

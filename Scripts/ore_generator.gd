@@ -59,17 +59,19 @@ func generate_coal_ore_with_noise(grid_size : float):
 
 #creates a mesh for each ore, assigns it to the multimesh then colours it.
 func visualize_ores():
-	var box_mesh = BoxMesh.new()
-	box_mesh.size = Vector3i(1, 1, 1)
+	var ore_mesh = PlaneMesh.new()
+	ore_mesh.size = Vector2i(1, 1)
 
 
 	var mat = StandardMaterial3D.new()
 	mat.vertex_color_use_as_albedo = true
-	box_mesh.material = mat
+	mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	ore_mesh.material = mat
+	
 
 
 	var multimesh = MultiMesh.new()
-	multimesh.mesh = box_mesh
+	multimesh.mesh = ore_mesh
 	multimesh.use_colors = true
 	multimesh.transform_format = MultiMesh.TRANSFORM_3D
 	multimesh.instance_count = ore_map.size()

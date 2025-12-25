@@ -43,6 +43,12 @@ func get_direction_of_building(brotation):
 			return Enums.direction.DOWN
 		270:
 			return Enums.direction.LEFT
+		-90:
+			return Enums.direction.RIGHT
+		-180:
+			return Enums.direction.DOWN
+		-270:
+			return Enums.direction.LEFT
 		_:
 			print("ey boss idk the fuck this rotation is")
 			return Enums.direction.UP  # default/fallback
