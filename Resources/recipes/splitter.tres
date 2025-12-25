@@ -31,5 +31,6 @@ recipe_products = Array[ExtResource("1_orgw0")]([SubResource("Resource_ynogp")])
 crafting_time = 2.0
 recipe_name = "Jagaja"
 recipe_sprite = ExtResource("5_fj0wf")
+recipe_tab = "Ehitised"
 disallowed_crafters = 4
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

@@ -24,5 +24,6 @@ recipe_ingredients = Array[ExtResource("1_fsrf3")]([SubResource("Resource_nj38u"
 recipe_products = Array[ExtResource("1_fsrf3")]([SubResource("Resource_j35cf")])
 recipe_name = "Konveierlint"
 recipe_sprite = ExtResource("5_81e07")
+recipe_tab = "Ehitised"
 disallowed_crafters = 4
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

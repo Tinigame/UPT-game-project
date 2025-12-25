@@ -1,9 +1,8 @@
 extends CanvasLayer
 
-@onready var UI_base : PanelContainer = $CenterContainer/AspectRatioContainer/PanelContainer
-@onready var inventory_splitter : HSplitContainer = $CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer
-@onready var recipe_tabs: TabContainer = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/crafting menu/TabContainer"
-@onready var container_label: Label = $"CenterContainer/AspectRatioContainer/PanelContainer/HSplitContainer/Container menu/Container label"
+@onready var UI_base : PanelContainer = $MarginContainer/PanelContainer
+@onready var recipe_tabs: TabContainer = $MarginContainer/PanelContainer/HBoxContainer/Craftingpanel/VSplitContainer/Craftingtabs
+@onready var container_label: Label = $MarginContainer/PanelContainer/HBoxContainer/Containerpanel/VSplitContainer/Containerlabel
 
 
 var menu_open : bool = false
@@ -20,7 +19,7 @@ func _ready() -> void:
 	self.hide()
 	recipe_tabs.tab_changed.connect(_on_tab_container_tab_changed)
 	_connect_recipe_list_signals()
-#	feedbacklayer = $FeedBackLayer
+	
 
 
 
@@ -42,13 +41,7 @@ func open(target_building):
 	
 	current_container = container
 	
-	UI_base.custom_minimum_size.x = get_viewport().size.x / 1.25
-	UI_base.custom_minimum_size.y = get_viewport().size.y / 1.25
-	inventory_splitter.split_offset = UI_base.custom_minimum_size.x / 2
-	
 	inventory_item_list = %InventoryList
-	inventory_item_list.max_columns = container.get_slot_count()
-#	print(inventory_item_list.max_columns, " collumns")
 	if not inventory_item_list.item_selected.is_connected(_on_inventory_item_selected):
 		inventory_item_list.item_selected.connect(_on_inventory_item_selected)
 	if not inventory_item_list.item_activated.is_connected(_on_inventory_item_activated):
@@ -75,12 +68,10 @@ func open(target_building):
 			last_item = item
 	
 	
-	recipe_item_list = recipe_tabs.get_current_tab_control().get_child(0)
+	recipe_item_list = recipe_tabs.get_current_tab_control()
 	
 
 	var category_recipes = RecipeDatabase.get_all_recipes(recipe_item_list.name)
-	
-	recipe_item_list.max_columns = len(category_recipes)
 	
 	for recipe in category_recipes.values():
 		if recipe.recipe_name == "Debug belt making":
@@ -111,9 +102,6 @@ func open(target_building):
 		recipe_item_list.set_item_tooltip(index, tooltip_text)
 		recipe_item_list.set_item_text(index, recipe.recipe_name)
 		recipe_item_list.set_item_metadata(index, recipe)
-		
-	
-	
 	
 	show()
 
@@ -125,10 +113,8 @@ func _connect_recipe_list_signals():
 
 		
 		var tab = recipe_tabs.get_tab_control(i)
-#		if tab.get_child_count() > 0 and tab.get_child(0) is ItemList:
-		var list = tab.get_child(0)
-		if not list.is_connected("item_selected", _on_recipe_selected):
-			list.item_selected.connect(_on_recipe_selected.bind(list))
+		if not tab.is_connected("item_selected", _on_recipe_selected):
+			tab.item_selected.connect(_on_recipe_selected.bind(tab))
 
 
 
@@ -174,7 +160,6 @@ func update_menu():
 	inventory_item_list = %InventoryList
 	inventory_item_list.clear()
 	inventory_item_list.deselect_all()
-	inventory_item_list.max_columns = current_container.get_slot_count()
 	for slot_index in range(current_container.get_slot_count()):
 		var slot = current_container.slots[slot_index]
 		var last_item = null
@@ -199,11 +184,8 @@ func update_menu():
 	
 	recipe_item_list.clear()
 	recipe_item_list.deselect_all()
-	recipe_item_list = recipe_tabs.get_current_tab_control().get_child(0)
-#	print(recipe_item_list.name)
+	recipe_item_list = recipe_tabs.get_current_tab_control()
 	var category_recipes = RecipeDatabase.get_all_recipes(recipe_item_list.name)
-	
-	recipe_item_list.max_columns = len(category_recipes)
 	
 	for recipe in category_recipes.values():
 		if recipe.recipe_name == "Debug belt making":
@@ -246,7 +228,7 @@ func close_menu() -> void:
 	inventory_item_list.clear()
 	inventory_item_list.deselect_all()
 	
-	recipe_item_list = recipe_tabs.get_current_tab_control().get_child(0)
+	recipe_item_list = recipe_tabs.get_current_tab_control()
 	recipe_item_list.clear()
 	recipe_item_list.deselect_all()
 	

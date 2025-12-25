@@ -24,6 +24,6 @@ recipe_products = Array[ExtResource("1_1knub")]([SubResource("Resource_50r15")])
 crafting_time = 0.5
 recipe_name = "Vasktraat"
 recipe_sprite = ExtResource("4_8t5vi")
-recipe_tab = "Intermediates"
+recipe_tab = "Vahepealsed"
 disallowed_crafters = 4
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

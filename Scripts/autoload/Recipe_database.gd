@@ -1,9 +1,9 @@
 extends Node
 
 var recipes : = {
-	"Buildings": {},
-	"Intermediates": {},
-	"Consumables": {},
+	"Ehitised": {},
+	"Vahepealsed": {},
+	"Kasutatavad": {},
 }
 
 func _ready():
@@ -26,9 +26,11 @@ func _load_recipes_from(path: String):
 		if fname.ends_with(".tres") or fname.ends_with(".tres.remap") or fname.ends_with(".res"):
 			var res_path = path + "/" + fname
 			var resource = load(res_path)
+			
+			
 			if resource is Recipe:
 				if not recipes.has(resource.recipe_tab):
-					recipes[resource.recipe_tab] = "Buildings"
+					recipes[resource.recipe_tab] = "Ehitised"
 				recipes[resource.recipe_tab][resource.recipe_name] = resource
 		fname = dir.get_next()
 	dir.list_dir_end()

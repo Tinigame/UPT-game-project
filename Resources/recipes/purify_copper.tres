@@ -24,6 +24,6 @@ recipe_products = Array[ExtResource("1_vms6q")]([SubResource("Resource_rvdev")])
 crafting_time = 3.0
 recipe_name = "Vasemaagi puhastus"
 recipe_sprite = ExtResource("4_bcw3k")
-recipe_tab = "Intermediates"
+recipe_tab = "Vahepealsed"
 disallowed_crafters = 4
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"
