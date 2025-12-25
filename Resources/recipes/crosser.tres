@@ -31,5 +31,6 @@ recipe_products = Array[ExtResource("1_t0t2y")]([SubResource("Resource_evf5a")])
 crafting_time = 3.0
 recipe_name = "Konveierläbipääs"
 recipe_sprite = ExtResource("5_refml")
+recipe_tab = "Ehitised"
 disallowed_crafters = 4
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"

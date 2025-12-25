@@ -13,6 +13,6 @@ extends Resource
 @export var recipe_sprite : Texture2D = preload("res://Assets/Textures/placeholder texture.png")
 
 #recipe tab categories
-@export_enum("Buildings", "Intermediates", "Consumables") var recipe_tab: String = "Buildings"
+@export_enum("Ehitised", "Vahepealsed", "Kasutatavad") var recipe_tab: String = "Buildings"
 
 @export_flags("Handcraft", "Assembler", "Chemical reactor") var disallowed_crafters = 0

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgoldkcm4mwnv"]
+
+[ext_resource type="Script" uid="uid://qv73fgu1m4da" path="res://recipe_tooltip.gd" id="1_yu0mv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65tky"]
+
+[node name="Recipetooltip" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_65tky")
+script = ExtResource("1_yu0mv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
+layout_mode = 2
+bbcode_enabled = true

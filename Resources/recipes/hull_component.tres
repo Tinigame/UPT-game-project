@@ -38,6 +38,6 @@ recipe_products = Array[ExtResource("1_7s3m7")]([SubResource("Resource_lrxny")])
 crafting_time = 20.0
 recipe_name = "Kerekomponent"
 recipe_sprite = ExtResource("6_n8t84")
-recipe_tab = "Intermediates"
+recipe_tab = "Vahepealsed"
 disallowed_crafters = 5
 metadata/_custom_type_script = "uid://dv0jdd6iysabc"
