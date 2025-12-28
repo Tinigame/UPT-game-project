@@ -38,10 +38,6 @@ func open(target_building):
 	menu_open = true
 	
 	inventory_item_list = %InventoryList
-	#if not inventory_item_list.item_selected.is_connected(_on_inventory_item_selected):
-		#inventory_item_list.item_selected.connect(_on_inventory_item_selected)
-	#if not inventory_item_list.item_activated.is_connected(_on_inventory_item_activated):
-		#inventory_item_list.item_activated.connect(_on_inventory_item_activated)
 	
 	
 	if target_building.name == "ContainerManager":
@@ -67,7 +63,10 @@ func open(target_building):
 				show_single_container(container)
 			"io":
 				show_io_container(container)
-	
+
+	for list in [inventory_item_list, input_list, output_list]:
+		if list and not list.item_activated.is_connected(on_container_item_activated):
+			list.item_activated.connect(on_container_item_activated.bind(list))
 	
 	
 	recipe_item_list = recipe_tabs.get_current_tab_control()
@@ -117,7 +116,7 @@ func show_single_container(container):
 		var slot = container.slots[i]
 		match slot["role"]:
 			"storage":
-				fill_item_list_from_slot(inventory_item_list, slot)
+				fill_item_list_from_slot(inventory_item_list, slot, i)
 
 
 @onready var input_list: ItemList = $MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer/Inputslist
@@ -134,13 +133,13 @@ func show_io_container(container):
 		var slot = container.slots[i]
 		match slot["role"]:
 			"input":
-				fill_item_list_from_slot(input_list, slot)
+				fill_item_list_from_slot(input_list, slot, i)
 			"output":
-				fill_item_list_from_slot(output_list, slot)
+				fill_item_list_from_slot(output_list, slot, i)
 
 
 
-func fill_item_list_from_slot(list: ItemList, slot: Dictionary):
+func fill_item_list_from_slot(list : ItemList, slot : Dictionary, slot_index : int):
 	var last_item = null
 	var item_count := 1
 	var index := -1
@@ -152,8 +151,13 @@ func fill_item_list_from_slot(list: ItemList, slot: Dictionary):
 			item_count = 1
 			index = list.add_icon_item(item.item_sprite)
 
+			# Store BOTH item and slot index
+			list.set_item_metadata(index, {
+				"item": item,
+				"slot_index": slot_index
+			})
+
 		list.set_item_text(index, "%s (%d)" % [item.item_name, item_count])
-		list.set_item_metadata(index, item)
 		last_item = item
 
 
@@ -193,15 +197,22 @@ func _on_inventory_item_selected(index: int) -> void:
 
 
 
-func _on_inventory_item_activated(index: int) -> void:
-	if current_container.is_player_inventory == true:
+#should move item to player inventory
+func on_container_item_activated(index: int, list: ItemList) -> void:
+	if current_container.is_player_inventory:
 		return
-	
-	# moves item from container to player inventory
-	var current_activated_item : Item = inventory_item_list.get_item_metadata(index)
-	Player.inventory.add_item_to_slot(current_activated_item, 0)
-	current_container.remove_item_from_slot(current_activated_item, index)
-	update_menu()
+
+	var data = list.get_item_metadata(index)
+	if data == null:
+		return
+
+	var item: Item = data["item"]
+	var slot_index: int = data["slot_index"]
+
+	# Try to move ONE item
+	if Player.inventory.add_item_to_slot(item, 0):
+		current_container.remove_item_from_slot(item, slot_index)
+		update_menu()
 
 
 
