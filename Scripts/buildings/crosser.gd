@@ -34,6 +34,7 @@ func _ready() -> void:
 		if container_manager.get_slot_count() == 0:
 			container_manager.add_slot(1, [])
 		conveyor_contents = container_manager.get_items_in_slot(0)
+		container_manager.ui_mode = "single"
 
 	# compute neighbors now (and rely on BuildingManager.update_conveyor_neighbors to call update_connections later)
 	update_connections()

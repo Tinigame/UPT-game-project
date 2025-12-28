@@ -28,8 +28,7 @@ func _ready() -> void:
 	crafting_timer.connect("timeout", _on_crafting_complete)
 	add_to_group("assemblers")
 	get_parent().add_to_group("assemblers")
-	
-#	set_recipe(Globals.debug_recipe)
+	container_manager.ui_mode = "io"
 
 
 #sets the recipe then calls the array rebuilder
@@ -59,14 +58,14 @@ func set_container_slots():
 	# Inputs
 	for ingridient in current_recipe.recipe_ingredients:
 		var ingridients : Array = [ingridient.item] 
-		var slot_index = container_manager.add_slot(84, ingridients)
+		var slot_index = container_manager.add_slot(84, ingridients, "input")
 		input_slots.append(slot_index)
 #		print("we added slot for: ", ingridient.item.item_name)
 
 	# Outputs
 	for product in current_recipe.recipe_products:
 		var products : Array = [product.item] 
-		var slot_index = container_manager.add_slot(84, products)
+		var slot_index = container_manager.add_slot(84, products, "output")
 		output_slots.append(slot_index)
 #		print("we added slot for: ", product.item.item_name)
 

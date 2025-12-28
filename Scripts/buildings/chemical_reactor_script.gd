@@ -29,7 +29,7 @@ func _ready() -> void:
 	add_to_group("assemblers")
 	get_parent().add_to_group("assemblers")
 	
-#	set_recipe(Globals.debug_recipe)
+	container_manager.ui_mode = "io"
 
 
 #sets the recipe then calls the array rebuilder

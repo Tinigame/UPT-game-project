@@ -42,6 +42,7 @@ func _ready() -> void:
 		conveyor_contents = container_manager.get_items_in_slot(0)
 		last_contents = conveyor_contents.duplicate()
 		container_manager.add_slot(84, [])
+		container_manager.ui_mode = "single"
 
 
 

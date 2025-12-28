@@ -22,6 +22,7 @@ func _ready() -> void:
 	container_manager = get_own_container_manager()
 	container_manager.add_slot(84, tier_1_item)
 	create_goal_billboard()
+	container_manager.ui_mode = "single"
 
 
 

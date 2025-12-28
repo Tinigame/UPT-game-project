@@ -39,6 +39,7 @@ func _ready():
 	inventory = container_manager.instantiate()
 	inventory.is_player_inventory = true
 	self.add_child(inventory)
+	inventory.ui_mode = "single"
 	
 	crafter_node = Node3D.new()
 	crafter_node.set_script(crafting_module)

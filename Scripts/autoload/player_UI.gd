@@ -4,6 +4,10 @@ extends CanvasLayer
 @onready var recipe_tabs: TabContainer = $MarginContainer/PanelContainer/HBoxContainer/Craftingpanel/VSplitContainer/Craftingtabs
 @onready var container_label: Label = $MarginContainer/PanelContainer/HBoxContainer/Containerpanel/VSplitContainer/Containerlabel
 
+@onready var io_container_panel: PanelContainer = $MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel
+@onready var container_panel: PanelContainer = $MarginContainer/PanelContainer/HBoxContainer/Containerpanel
+
+
 
 var menu_open : bool = false
 
@@ -26,6 +30,20 @@ func _ready() -> void:
 func open(target_building):
 	current_building = target_building
 	var container
+	
+	
+	
+	if menu_open == true:
+		return
+	menu_open = true
+	
+	inventory_item_list = %InventoryList
+	#if not inventory_item_list.item_selected.is_connected(_on_inventory_item_selected):
+		#inventory_item_list.item_selected.connect(_on_inventory_item_selected)
+	#if not inventory_item_list.item_activated.is_connected(_on_inventory_item_activated):
+		#inventory_item_list.item_activated.connect(_on_inventory_item_activated)
+	
+	
 	if target_building.name == "ContainerManager":
 		container = target_building
 		container_label.text = str("Inventuur (", container.slot_free_space(0), "/", container.slots[0].capacity, " vaba kohta)")
@@ -35,37 +53,21 @@ func open(target_building):
 		container_label.text = str("Ehitise ",  target_building.name, " Konteiner")
 	
 	
-	if menu_open == true:
-		return
-	menu_open = true
-	
 	current_container = container
 	
-	inventory_item_list = %InventoryList
-	if not inventory_item_list.item_selected.is_connected(_on_inventory_item_selected):
-		inventory_item_list.item_selected.connect(_on_inventory_item_selected)
-	if not inventory_item_list.item_activated.is_connected(_on_inventory_item_activated):
-		inventory_item_list.item_activated.connect(_on_inventory_item_activated)
 	
 	
-	for slot_index in range(container.get_slot_count()):
-		var slot = container.slots[slot_index]
-		var last_item = null
-		var item_count : int = 1
-		var index
-		for item in slot["contents"]:
-#			print("we got a ", item.item_name)
-			
-			if item == last_item:
-				item_count += 1
-			else:
-				item_count = 1
-				index = inventory_item_list.add_icon_item(item.item_sprite)
-			
-			
-			inventory_item_list.set_item_text(index, str(item.item_name, " (", item_count, ")"))
-			inventory_item_list.set_item_metadata(index, item)
-			last_item = item
+	if container.is_player_inventory == true:
+		show_single_container(container)
+	else:
+		match target_building.container_manager.ui_mode:
+			"none":
+				return
+			"single":
+				show_single_container(container)
+			"io":
+				show_io_container(container)
+	
 	
 	
 	recipe_item_list = recipe_tabs.get_current_tab_control()
@@ -104,6 +106,56 @@ func open(target_building):
 		recipe_item_list.set_item_metadata(index, recipe)
 	
 	show()
+
+
+
+func show_single_container(container):
+	io_container_panel.hide()
+	container_panel.show()
+	
+	for i in range(container.get_slot_count()):
+		var slot = container.slots[i]
+		match slot["role"]:
+			"storage":
+				fill_item_list_from_slot(inventory_item_list, slot)
+
+
+@onready var input_list: ItemList = $MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer/Inputslist
+@onready var output_list: ItemList = $MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer2/Outputslist
+
+func show_io_container(container):
+	container_panel.hide()
+	io_container_panel.show()
+
+	input_list.clear()
+	output_list.clear()
+
+	for i in range(container.get_slot_count()):
+		var slot = container.slots[i]
+		match slot["role"]:
+			"input":
+				fill_item_list_from_slot(input_list, slot)
+			"output":
+				fill_item_list_from_slot(output_list, slot)
+
+
+
+func fill_item_list_from_slot(list: ItemList, slot: Dictionary):
+	var last_item = null
+	var item_count := 1
+	var index := -1
+
+	for item in slot["contents"]:
+		if item == last_item:
+			item_count += 1
+		else:
+			item_count = 1
+			index = list.add_icon_item(item.item_sprite)
+
+		list.set_item_text(index, "%s (%d)" % [item.item_name, item_count])
+		list.set_item_metadata(index, item)
+		last_item = item
+
 
 
 
@@ -160,25 +212,16 @@ func update_menu():
 	inventory_item_list = %InventoryList
 	inventory_item_list.clear()
 	inventory_item_list.deselect_all()
-	for slot_index in range(current_container.get_slot_count()):
-		var slot = current_container.slots[slot_index]
-		var last_item = null
-		var item_count : int = 1
-		var index
-		for item in slot["contents"]:
-#			print("we got a ", item.item_name)
-			
-			if item == last_item:
-				item_count += 1
-			else:
-				item_count = 1
-				index = inventory_item_list.add_icon_item(item.item_sprite)
-				
-			
-			
-			inventory_item_list.set_item_text(index, str(item.item_name, " (", item_count, ")"))
-			inventory_item_list.set_item_metadata(index, item)
-			last_item = item
+	if current_container.is_player_inventory == true:
+		show_single_container(current_container)
+	else:
+		match current_container.ui_mode:
+			"none":
+				return
+			"single":
+				show_single_container(current_container)
+			"io":
+				show_io_container(current_container)
 	
 	
 	

@@ -29,6 +29,7 @@ func _ready() -> void:
 		container_manager.add_slot(1, [])
 		conveyor_contents = container_manager.get_items_in_slot(0)
 		last_contents = conveyor_contents.duplicate()
+		container_manager.ui_mode = "single"
 
 #the bool looks like it isnt used but for some reason it makes stuff more stable
 #updates the miners internal copy of contents, then process them

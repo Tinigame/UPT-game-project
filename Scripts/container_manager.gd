@@ -2,9 +2,10 @@ class_name ContainerManager
 extends Node3D
 
 #Each slot is:
-#{ contents: [], capacity: int, allowed_types: [] }
-var slots: Array = []
-
+#{ contents: [], capacity: int, allowed_types: [], role: ""}
+# role can be "input" or "output" or "storage"
+var slots : Array = []
+var ui_mode : String
 
 signal space_changed(has_space: bool)
 
@@ -30,12 +31,13 @@ func group_duplicates(array: Array) -> Array:
 
 
 
-#Adds a new slot with capacity and optional allowed item types
-func add_slot(capacity: int, allowed_types: Array = []) -> int:
+#Adds a new slot with capacity and optional allowed item types + its role for UI
+func add_slot(capacity: int, allowed_types: Array = [], role: String = "storage") -> int:
 	slots.append({
 		"contents": [],
 		"capacity": capacity,
-		"allowed_types": allowed_types
+		"allowed_types": allowed_types,
+		"role": role,
 	})
 	emit_signal("space_changed", has_any_space())
 	return slots.size() - 1

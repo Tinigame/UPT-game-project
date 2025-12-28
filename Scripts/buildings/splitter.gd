@@ -43,6 +43,7 @@ func _ready() -> void:
 	if container_manager:
 		container_manager.add_slot(1, [])
 		container_manager.connect("space_changed", _on_space_changed)
+		container_manager.ui_mode = "single"
 
 func get_own_container_manager() -> ContainerManager:
 	if get_parent().has_node("ContainerManager"):

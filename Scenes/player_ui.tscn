@@ -21,7 +21,59 @@ size_flags_vertical = 4
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
 layout_mode = 2
 
+[node name="IOContainerPanel" type="PanelContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(768, 0)
+layout_mode = 2
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel"]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="Containerlabel" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer"]
+layout_mode = 2
+text = "Inventuur (yadda ydaadaddada)"
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer"]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="VSplitContainer" type="VSplitContainer" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2"]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer"]
+layout_mode = 2
+text = "Sisendid"
+
+[node name="Inputslist" type="ItemList" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+allow_search = false
+max_text_lines = 2
+max_columns = 4
+same_column_width = true
+icon_mode = 0
+fixed_icon_size = Vector2i(64, 64)
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2"]
+layout_mode = 2
+dragging_enabled = false
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer2"]
+layout_mode = 2
+text = "Väljundid"
+
+[node name="Outputslist" type="ItemList" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer2"]
+layout_mode = 2
+allow_search = false
+max_text_lines = 2
+max_columns = 4
+same_column_width = true
+icon_mode = 0
+fixed_icon_size = Vector2i(64, 64)
+
 [node name="Containerpanel" type="PanelContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(768, 0)
 layout_mode = 2
 
