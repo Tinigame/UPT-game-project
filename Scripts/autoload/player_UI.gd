@@ -94,7 +94,7 @@ func open(target_building):
 		
 		
 		var tooltip_text : String = recipe.recipe_name + "\n" \
-			+ "Koostisosad:\n" + ingredients_text \
+			+ tr("INGREDIENTS") + ":\n" + ingredients_text \
 			+ "Tooted:\n" + products_text \
 			+ "Meisterdamisaeg: " + str(recipe.crafting_time) + "s\n" \
 			+ bad_crafters
@@ -263,7 +263,7 @@ func update_menu():
 		
 		
 		var tooltip_text : String = recipe.recipe_name + "\n" \
-			+ "Koostisosad:\n" + ingredients_text \
+			+ tr("INGREDIENTS") + "\n" + ingredients_text \
 			+ "Tooted:\n" + products_text \
 			+ "Meisterdamisaeg: " + str(recipe.crafting_time) + "s\n" \
 			+ bad_crafters

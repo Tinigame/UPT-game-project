@@ -163,6 +163,10 @@ help_menu={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translation/translation.en.translation", "res://translation/translation.et.translation")
+
 [physics]
 
 common/physics_ticks_per_second=1000
