@@ -1,2 +1,5 @@
 keys,et,en
 INGREDIENTS,Koostisosad,Ingredients
+DISALLOWED_CRAFTERS,Sobimatud tootmismeetodid,Disallowed crafters
+PRODUCTS,Tooted,Products
+CRAFTING_TIME,Tootmisaeg,Crafting time

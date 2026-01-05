@@ -166,6 +166,7 @@ help_menu={
 [internationalization]
 
 locale/translations=PackedStringArray("res://translation/translation.en.translation", "res://translation/translation.et.translation")
+locale/test="en"
 
 [physics]
 
