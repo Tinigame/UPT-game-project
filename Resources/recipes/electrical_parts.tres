@@ -31,6 +31,7 @@ recipe_ingredients = Array[ExtResource("1_cdhhd")]([SubResource("Resource_vwrn2"
 recipe_products = Array[ExtResource("1_cdhhd")]([SubResource("Resource_184so")])
 crafting_time = 4.0
 recipe_name = "Elektrikomponendid"
+name_key = "RECIPE_ELECTRICAL_COMPONENTS"
 recipe_sprite = ExtResource("5_bu17o")
 recipe_tab = "Vahepealsed"
 disallowed_crafters = 5

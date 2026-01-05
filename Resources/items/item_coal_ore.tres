@@ -6,4 +6,5 @@
 [resource]
 script = ExtResource("2_xqypq")
 item_name = "Süsi"
+name_key = "ITEM_COAL_ORE"
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

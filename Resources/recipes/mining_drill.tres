@@ -37,6 +37,7 @@ recipe_ingredients = Array[ExtResource("1_xnq3x")]([SubResource("Resource_l8yuc"
 recipe_products = Array[ExtResource("1_xnq3x")]([SubResource("Resource_swwhd")])
 crafting_time = 10.0
 recipe_name = "Kaevanduspuur"
+name_key = "RECIPE_MINING_DRILL"
 recipe_sprite = ExtResource("6_hc1tn")
 recipe_tab = "Ehitised"
 disallowed_crafters = 4

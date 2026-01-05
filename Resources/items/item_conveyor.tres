@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_ejmay")
 item_name = "Konveierilint"
+name_key = "ITEM_CONVEYOR"
 item_sprite = ExtResource("1_ur84b")
 is_building = true
 building_resource = ExtResource("1_2b1go")

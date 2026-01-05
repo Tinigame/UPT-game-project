@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("2_rbg5k")
 item_name = "Mehaanikaosad"
+name_key = "ITEM_MECHANICAL_PARTS"
 item_sprite = ExtResource("1_f8gbv")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

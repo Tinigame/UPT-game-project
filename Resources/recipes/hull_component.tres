@@ -37,6 +37,7 @@ recipe_ingredients = Array[ExtResource("1_7s3m7")]([SubResource("Resource_er5mf"
 recipe_products = Array[ExtResource("1_7s3m7")]([SubResource("Resource_lrxny")])
 crafting_time = 20.0
 recipe_name = "Kerekomponent"
+name_key = "RECIPE_HULL_COMPONENTS"
 recipe_sprite = ExtResource("6_n8t84")
 recipe_tab = "Vahepealsed"
 disallowed_crafters = 5

@@ -23,6 +23,7 @@ recipe_ingredients = Array[ExtResource("1_3jwam")]([SubResource("Resource_46rks"
 recipe_products = Array[ExtResource("1_3jwam")]([SubResource("Resource_fjjfv")])
 crafting_time = 3.0
 recipe_name = "Rauamaagi puhastus"
+name_key = "RECIPE_PURIFY_IRON"
 recipe_sprite = ExtResource("4_lp17m")
 recipe_tab = "Vahepealsed"
 disallowed_crafters = 4

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("2_4lwku")
 item_name = "Jagaja"
+name_key = "ITEM_SPLITTER"
 item_sprite = ExtResource("2_lt1mi")
 is_building = true
 building_resource = ExtResource("1_4lwku")

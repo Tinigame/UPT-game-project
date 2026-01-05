@@ -10,6 +10,7 @@ extends Resource
 @export var crafting_time : float = 1.0
 
 @export var recipe_name : String = "eldritch belt duplication"
+@export var name_key : String = "DEBUG_RECIPE_NAME_SHIT"
 @export var recipe_sprite : Texture2D = preload("res://Assets/Textures/placeholder texture.png")
 
 #recipe tab categories

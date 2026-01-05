@@ -13,6 +13,7 @@ size = Vector3(0.5, 0.5, 0.5)
 [resource]
 script = ExtResource("2_wc2th")
 item_name = "Rauamaak"
+name_key = "ITEM_IRON_ORE"
 item_mesh = SubResource("PrismMesh_wc2th")
 item_sprite = ExtResource("1_ws74h")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

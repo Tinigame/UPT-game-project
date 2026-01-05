@@ -31,6 +31,7 @@ recipe_ingredients = Array[ExtResource("1_57e4w")]([SubResource("Resource_dw55h"
 recipe_products = Array[ExtResource("1_57e4w")]([SubResource("Resource_yhawl")])
 crafting_time = 4.0
 recipe_name = "Mehaanikaosad"
+name_key = "RECIPE_MECHANICAL_PARTS"
 recipe_sprite = ExtResource("5_66hkc")
 recipe_tab = "Vahepealsed"
 disallowed_crafters = 5

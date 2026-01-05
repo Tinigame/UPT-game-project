@@ -12,6 +12,7 @@ material = SubResource("StandardMaterial3D_dw3v7")
 [resource]
 script = ExtResource("2_06bt1")
 item_name = "Vasemaak"
+name_key = "ITEM_COPPER_ORE"
 item_mesh = SubResource("PrismMesh_06bt1")
 item_sprite = ExtResource("1_dw3v7")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

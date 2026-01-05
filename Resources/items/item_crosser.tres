@@ -6,7 +6,8 @@
 
 [resource]
 script = ExtResource("2_xcsxi")
-item_name = "Konveierläbipääs"
+item_name = "Konveieriläbipääs"
+name_key = "ITEM_CROSSER_BELT"
 item_sprite = ExtResource("2_dgyiq")
 is_building = true
 building_resource = ExtResource("1_xcsxi")

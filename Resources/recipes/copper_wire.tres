@@ -23,6 +23,7 @@ recipe_ingredients = Array[ExtResource("1_1knub")]([SubResource("Resource_vfwk2"
 recipe_products = Array[ExtResource("1_1knub")]([SubResource("Resource_50r15")])
 crafting_time = 0.5
 recipe_name = "Vasktraat"
+name_key = "RECIPE_COPPER_WIRE"
 recipe_sprite = ExtResource("4_8t5vi")
 recipe_tab = "Vahepealsed"
 disallowed_crafters = 4

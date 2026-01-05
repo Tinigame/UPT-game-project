@@ -23,6 +23,7 @@ recipe_ingredients = Array[ExtResource("1_vms6q")]([SubResource("Resource_r8mhf"
 recipe_products = Array[ExtResource("1_vms6q")]([SubResource("Resource_rvdev")])
 crafting_time = 3.0
 recipe_name = "Vasemaagi puhastus"
+name_key = "RECIPE_PURIFY_COPPER"
 recipe_sprite = ExtResource("4_bcw3k")
 recipe_tab = "Vahepealsed"
 disallowed_crafters = 4

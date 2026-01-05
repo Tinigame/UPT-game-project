@@ -30,6 +30,7 @@ recipe_ingredients = Array[ExtResource("1_orgw0")]([SubResource("Resource_8se7x"
 recipe_products = Array[ExtResource("1_orgw0")]([SubResource("Resource_ynogp")])
 crafting_time = 2.0
 recipe_name = "Jagaja"
+name_key = "RECIPE_SPLITTER"
 recipe_sprite = ExtResource("5_fj0wf")
 recipe_tab = "Ehitised"
 disallowed_crafters = 4

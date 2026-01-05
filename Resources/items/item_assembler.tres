@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_oykdp")
 item_name = "Koostamismasin"
+name_key = "ITEM_ASSEMBLER"
 item_sprite = ExtResource("2_50tc2")
 is_building = true
 building_resource = ExtResource("1_lp7qw")

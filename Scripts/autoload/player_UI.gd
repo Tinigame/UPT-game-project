@@ -84,18 +84,18 @@ func open(target_building):
 		# Build tooltip strings
 		var ingredients_text := ""
 		for ing in recipe.recipe_ingredients:
-			ingredients_text += str(ing.item.item_name, " x", ing.amount, "\n")
+			ingredients_text += str(tr(ing.item.name_key), " x", ing.amount, "\n")
 		
 		var products_text := ""
 		for prod in recipe.recipe_products:
-			products_text += str(prod.item.item_name, " x", prod.amount, "\n")
+			products_text += str(tr(prod.item.name_key), " x", prod.amount, "\n")
 		
 		#Sobimatud tootmismeetodid
 		var bad_crafters = tr("DISALLOWED_CRAFTERS") + ": " + Enums.get_disallowed_crafter_name(recipe.disallowed_crafters)
 		
 		
 		
-		var tooltip_text : String = recipe.recipe_name + "\n" \
+		var tooltip_text : String = recipe.name_key + "\n" \
 			+ tr("INGREDIENTS") + ":\n" + ingredients_text \
 			+ tr("PRODUCTS") + ":\n" + products_text \
 			+ tr("CRAFTING_TIME") + ": " + str(recipe.crafting_time) + "s\n" \
@@ -103,7 +103,7 @@ func open(target_building):
 
 		recipe_item_list.set_item_tooltip_enabled(index, true)
 		recipe_item_list.set_item_tooltip(index, tooltip_text)
-		recipe_item_list.set_item_text(index, recipe.recipe_name)
+		recipe_item_list.set_item_text(index, recipe.name_key)
 		recipe_item_list.set_item_metadata(index, recipe)
 	
 	show()
@@ -159,7 +159,7 @@ func fill_item_list_from_slot(list : ItemList, slot : Dictionary, slot_index : i
 				"slot_index": slot_index
 			})
 
-		list.set_item_text(index, "%s (%d)" % [item.item_name, item_count])
+		list.set_item_text(index, "%s (%d)" % [tr(item.name_key), item_count])
 		last_item = item
 
 
@@ -252,19 +252,19 @@ func update_menu():
 		#constructs ingridients tooltip text
 		var ingredients_text = ""
 		for ing in recipe.recipe_ingredients:
-			ingredients_text += str(ing.item.item_name, " x", ing.amount, "\n")
+			ingredients_text += str(tr(ing.item.name_key), " x", ing.amount, "\n")
 		
 		#constructs products tooltip text
 		var products_text = ""
 		for prod in recipe.recipe_products:
-			products_text += str(prod.item.item_name, " x", prod.amount, "\n")
+			products_text += str(tr(prod.item.name_key), " x", prod.amount, "\n")
 		
 		
 		var bad_crafters = tr("DISALLOWED_CRAFTERS") + ": " + Enums.get_disallowed_crafter_name(recipe.disallowed_crafters)
 		
 		
 		
-		var tooltip_text : String = recipe.recipe_name + "\n" \
+		var tooltip_text : String = recipe.name_key + "\n" \
 			+ tr("INGREDIENTS") + ":\n" + ingredients_text \
 			+ tr("PRODUCTS") + ":\n" + products_text \
 			+ tr("CRAFTING_TIME") + ": " + str(recipe.crafting_time) + "s\n" \
@@ -272,7 +272,7 @@ func update_menu():
 		
 		recipe_item_list.set_item_tooltip_enabled(index, true)
 		recipe_item_list.set_item_tooltip(index, tooltip_text)
-		recipe_item_list.set_item_text(index, recipe.recipe_name)
+		recipe_item_list.set_item_text(index, recipe.name_key)
 		recipe_item_list.set_item_metadata(index, recipe)
 
 

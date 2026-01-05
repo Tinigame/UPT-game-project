@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("2_gwfay")
 item_name = "Keemiline reaktor"
+name_key = "ITEM_CHEMICAL_REACTOR"
 is_building = true
 building_resource = ExtResource("1_gwfay")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

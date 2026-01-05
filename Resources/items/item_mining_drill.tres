@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_v8550")
 item_name = "Kaevanduspuur"
+name_key = "ITEM_MINING_DRILL"
 item_sprite = ExtResource("3_aedt6")
 is_building = true
 building_resource = ExtResource("1_6aqhh")

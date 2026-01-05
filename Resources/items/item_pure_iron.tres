@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("2_emoad")
 item_name = "Puhas raud"
+name_key = "ITEM_IRON"
 item_sprite = ExtResource("1_xcp7a")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

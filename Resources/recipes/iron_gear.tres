@@ -23,6 +23,7 @@ recipe_ingredients = Array[ExtResource("1_0v8x1")]([SubResource("Resource_cfdpg"
 recipe_products = Array[ExtResource("1_0v8x1")]([SubResource("Resource_skksn")])
 crafting_time = 0.5
 recipe_name = "Raud hammasratas"
+name_key = "RECIPE_IRON_GEAR"
 recipe_sprite = ExtResource("4_l3lhp")
 recipe_tab = "Vahepealsed"
 disallowed_crafters = 4

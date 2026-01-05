@@ -30,6 +30,7 @@ recipe_ingredients = Array[ExtResource("1_t0t2y")]([SubResource("Resource_swv3l"
 recipe_products = Array[ExtResource("1_t0t2y")]([SubResource("Resource_evf5a")])
 crafting_time = 3.0
 recipe_name = "Konveierläbipääs"
+name_key = "RECIPE_CROSSER"
 recipe_sprite = ExtResource("5_refml")
 recipe_tab = "Ehitised"
 disallowed_crafters = 4

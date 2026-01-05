@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("2_s50x1")
 item_name = "Elektrikomponendid"
+name_key = "ITEM_ELECTRICAL_PARTS"
 item_sprite = ExtResource("1_nkdil")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

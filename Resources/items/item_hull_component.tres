@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2_lrqwg")
-item_name = "Kerekomponent"
+item_name = "Kerekomponendid"
+name_key = "ITEM_HULL_COMPONENT"
 item_sprite = ExtResource("1_35lmx")
 metadata/_custom_type_script = "uid://b6ywqmrhgnwyo"

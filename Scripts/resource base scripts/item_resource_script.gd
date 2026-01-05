@@ -1,7 +1,10 @@
 class_name Item
 extends Resource
 
+#name used internally
 @export var item_name : String
+#name used for display purposes
+@export var name_key : String = "DEBUG_ITEM_NAME_SHIT"
 @export var max_stack_size : int = 84
 
 #mesh when its visible outside menus
