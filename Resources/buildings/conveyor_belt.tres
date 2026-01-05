@@ -17,6 +17,7 @@ size = Vector3(1, 0.5, 1)
 [resource]
 script = ExtResource("1_03vpt")
 building_name = "Konveierilint"
+name_key = "BUILDING_CONVEYOR"
 building_size = Vector3(1, 0.5, 1)
 building_mesh = SubResource("BoxMesh_dmevg")
 building_health = 10.0

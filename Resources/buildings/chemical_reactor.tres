@@ -9,6 +9,7 @@ size = Vector3(3, 5, 3)
 [resource]
 script = ExtResource("1_q0n4k")
 building_name = "Keemiline reaktor"
+name_key = "BUILDING_CHEMICAL_REACTOR"
 building_size = Vector3(3, 5, 3)
 building_mesh = SubResource("BoxMesh_w0dlg")
 building_health = 300.0

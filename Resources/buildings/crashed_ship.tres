@@ -9,6 +9,7 @@ size = Vector3(5, 2, 5)
 [resource]
 script = ExtResource("1_38u8u")
 building_name = "crashed ship"
+name_key = "BUILDING_CRASHED_SHIP"
 building_size = Vector3(5, 2, 5)
 building_mesh = SubResource("BoxMesh_a02cp")
 building_health = 10000000000.0

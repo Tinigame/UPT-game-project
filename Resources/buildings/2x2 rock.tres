@@ -12,6 +12,7 @@ size = Vector3(2, 2, 2)
 [resource]
 script = ExtResource("1_gbe0e")
 building_name = "rock"
+name_key = "BUILDING_ROCK"
 building_size = Vector3(2, 2, 2)
 building_mesh = SubResource("BoxMesh_i5d80")
 building_health = 1000.0

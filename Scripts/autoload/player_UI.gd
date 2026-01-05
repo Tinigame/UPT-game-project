@@ -6,7 +6,10 @@ extends CanvasLayer
 
 @onready var io_container_panel: PanelContainer = $MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel
 @onready var container_panel: PanelContainer = $MarginContainer/PanelContainer/HBoxContainer/Containerpanel
+@onready var inputlabel: Label = $MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer/Inputlabel
+@onready var outputlabel: Label = $MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer2/OutputLabel
 
+@onready var crafting_label: Label = $MarginContainer/PanelContainer/HBoxContainer/Craftingpanel/VSplitContainer/CraftingLabel
 
 
 var menu_open : bool = false
@@ -25,6 +28,9 @@ func _ready() -> void:
 	recipe_tabs.tab_changed.connect(_on_tab_container_tab_changed)
 	_connect_recipe_list_signals()
 	
+	inputlabel.text = tr("UI_INPUTS")
+	outputlabel.text = tr("UI_OUTPUTS")
+	crafting_label.text = tr("UI_CRAFTING_LABEL")
 
 
 
@@ -44,10 +50,12 @@ func open(target_building):
 	if target_building.name == "ContainerManager":
 		container = target_building
 		container_label.text = str(tr("UI_INVENTORY_LABEL") + " (", container.slot_free_space(0), "/", container.slots[0].capacity, " ", tr("UI_CONTAINER_FREE_SPACE") + ")")
-		
+#		containerlabel_2.text = str(tr("UI_INVENTORY_LABEL") + " (", container.slot_free_space(0), "/", container.slots[0].capacity, " ", tr("UI_CONTAINER_FREE_SPACE") + ")")
+			
 	else:
 		container = target_building.container_manager
 		container_label.text = str(tr("UI_CONTAINER_BUILDING") + " ",  target_building.name, " ", tr("UI_CONTAINER_LABEL_SOMETHING"))
+#		containerlabel_2.text = str(tr("UI_CONTAINER_BUILDING") + " ",  target_building.name, " ", tr("UI_CONTAINER_LABEL_SOMETHING"))
 	
 	
 	current_container = container
@@ -105,7 +113,12 @@ func open(target_building):
 		recipe_item_list.set_item_tooltip(index, tooltip_text)
 		recipe_item_list.set_item_text(index, recipe.name_key)
 		recipe_item_list.set_item_metadata(index, recipe)
-	
+		
+		inputlabel.text = tr("UI_INPUTS")
+		outputlabel.text = tr("UI_OUTPUTS")
+		
+		
+		
 	show()
 
 
@@ -127,7 +140,7 @@ func show_single_container(container):
 func show_io_container(container):
 	container_panel.hide()
 	io_container_panel.show()
-
+	
 	input_list.clear()
 	output_list.clear()
 
@@ -235,6 +248,21 @@ func update_menu():
 				show_single_container(current_container)
 			"io":
 				show_io_container(current_container)
+
+
+
+	if current_container.name == "ContainerManager":
+		container_label.text = str(tr("UI_INVENTORY_LABEL") + " (", current_container.slot_free_space(0), "/", current_container.slots[0].capacity, " ", tr("UI_CONTAINER_FREE_SPACE") + ")")
+#		containerlabel_2.text = str(tr("UI_INVENTORY_LABEL") + " (", container.slot_free_space(0), "/", container.slots[0].capacity, " ", tr("UI_CONTAINER_FREE_SPACE") + ")")
+			
+	else:
+		container_label.text = str(tr("UI_CONTAINER_BUILDING") + " ",  current_container.name, " ", tr("UI_CONTAINER_LABEL_SOMETHING"))
+#		containerlabel_2.text = str(tr("UI_CONTAINER_BUILDING") + " ",  target_building.name, " ", tr("UI_CONTAINER_LABEL_SOMETHING"))
+	
+	
+	
+	inputlabel.text = tr("UI_INPUTS")
+	outputlabel.text = tr("UI_OUTPUTS")
 	
 	
 	

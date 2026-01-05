@@ -16,6 +16,7 @@ material = SubResource("StandardMaterial3D_7outc")
 [resource]
 script = ExtResource("1_k1dwb")
 building_name = "Jagaja"
+name_key = "BUILDING_SPLITTER"
 building_size = Vector3(1, 1, 1)
 building_mesh = SubResource("BoxMesh_vb2ci")
 building_health = 10.0

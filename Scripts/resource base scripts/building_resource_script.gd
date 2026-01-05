@@ -2,6 +2,7 @@ class_name Building
 extends Resource
 
 @export var building_name : String
+@export var name_key : String = "DEBUG_BUILDING_NAME_SHIT"
 
 @export var building_size : Vector3
 @export var building_mesh : Mesh

@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("1_bvtuc")
 building_name = "Kaevanduspuur"
+name_key = "BUILDING_MINING_DRILL"
 building_size = Vector3(3, 1, 3)
 building_mesh = ExtResource("1_yinh4")
 building_health = 100.0

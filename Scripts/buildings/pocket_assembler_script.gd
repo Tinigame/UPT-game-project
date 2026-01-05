@@ -23,7 +23,7 @@ func _ready() -> void:
 func set_recipe(recipe: Recipe) -> void:
 	if recipe.disallowed_crafters == 1:
 		print("recipe not allowed")
-		FeedBackLayer.show_message(str("Seda retsepti ei saa käsitsi valmistada."), true)
+		FeedBackLayer.show_message(str(tr("CRAFT_UNCRAFTABLE_BY_HAND")), true)
 		return
 
 	if container_manager == null:
@@ -49,7 +49,7 @@ func _has_required_inputs() -> bool:
 		var count : int = container_manager.count_item_in_slot(need.item, slot)
 		if count < need.amount:
 			print("missing required ingridients")
-			FeedBackLayer.show_message(str("Koostisosad puuduvad"), true)
+			FeedBackLayer.show_message(str(tr("CRAFT_LACKING_INGREDIENTS")), true)
 			return false
 	return true
 

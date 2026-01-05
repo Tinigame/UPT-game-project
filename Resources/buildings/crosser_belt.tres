@@ -16,10 +16,11 @@ material = SubResource("StandardMaterial3D_h7ody")
 [resource]
 script = ExtResource("1_10adx")
 building_name = "Konveierläbipääs"
+name_key = "BUILDING_CROSSER"
 building_size = Vector3(1, 1, 1)
 building_mesh = SubResource("BoxMesh_yq8ns")
 building_health = 10.0
-building_ingredient_name = "Konveierläbipääs"
+building_ingredient_name = "Konveieriläbipääs"
 building_script = ExtResource("1_pbyqm")
 has_container = true
 container_max_slots = 1

@@ -42,3 +42,23 @@ UI_INVENTORY_LABEL,Inventuur,Inventory
 UI_CONTAINER_FREE_SPACE,vaba kohta,free space
 UI_CONTAINER_BUILDING,Ehitise,Building
 UI_CONTAINER_LABEL_SOMETHING,konteiner,container
+,,
+UI_INPUTS,Sisendid,Inputs
+UI_OUTPUTS,Väljundid,Outputs
+UI_CRAFTING_LABEL,Meisterdamine,Crafting
+,,
+FEEDBACK_BUILDING,Ehitis,Building
+FEEDBACK_REQUIRES_ORE,vajab enda all ressursse,requires ores beneath
+FEEDBACK_MISSING,Puudub,Missing
+,,
+BUILDING_ROCK,Kivi,Rock
+BUILDING_ASSEMBLER,Koostamismasin,Assembler
+BUILDING_CHEMICAL_REACTOR,Keemiline reaktor,Chemical reactor
+BUILDING_CONVEYOR,Konveierilint,Conveyor
+BUILDING_CRASHED_SHIP,Hävinud kosmoselaev,Crashed ship
+BUILDING_CROSSER,Konveieriläbipääs,Crosser
+BUILDING_MINING_DRILL,Kaevanduspuur,Mining drill
+BUILDING_SPLITTER,Jagaja,Splitter
+,,
+CRAFT_LACKING_INGREDIENTS,Koostisosad puuduvad.,Lacking ingredients.
+CRAFT_UNCRAFTABLE_BY_HAND,Seda retsepti ei saa käsitsi valmistada.,Uncraftable by hand.

@@ -31,7 +31,7 @@ dragging_enabled = false
 
 [node name="Containerlabel" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer"]
 layout_mode = 2
-text = "Inventuur (yadda ydaadaddada)"
+text = "Konteiner (DEBUG yes i know this is a debug)"
 
 [node name="VSplitContainer2" type="VSplitContainer" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer"]
 layout_mode = 2
@@ -41,7 +41,7 @@ dragging_enabled = false
 layout_mode = 2
 dragging_enabled = false
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer"]
+[node name="Inputlabel" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer"]
 layout_mode = 2
 text = "Sisendid"
 
@@ -59,7 +59,7 @@ fixed_icon_size = Vector2i(64, 64)
 layout_mode = 2
 dragging_enabled = false
 
-[node name="Label" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer2"]
+[node name="OutputLabel" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/VSplitContainer2/VSplitContainer2"]
 layout_mode = 2
 text = "Väljundid"
 
@@ -83,7 +83,7 @@ dragging_enabled = false
 
 [node name="Containerlabel" type="Label" parent="MarginContainer/PanelContainer/HBoxContainer/Containerpanel/VSplitContainer"]
 layout_mode = 2
-text = "Inventuur (yadda ydaadaddada)"
+text = "Konteiner (DEBUG yes i know this is a debug)"
 
 [node name="InventoryList" type="ItemList" parent="MarginContainer/PanelContainer/HBoxContainer/Containerpanel/VSplitContainer"]
 unique_name_in_owner = true

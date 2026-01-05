@@ -93,7 +93,7 @@ func build_building(build_info : Building):
 	if build_info.only_buildable_on_ores == true:
 		if has_required_ore(required_cells) == false:
 			print("no ores")
-			FeedBackLayer.show_message(str("Ehitis ", build_info.building_name, " vajab enda all ressursse"), true)
+			FeedBackLayer.show_message(str(tr("FEEDBACK_BUILDING") + " ", tr(build_info.name_key)," " + tr("FEEDBACK_REQUIRES_ORE")), true)
 			return
 		else:
 			for cell in required_cells:
@@ -113,7 +113,7 @@ func build_building(build_info : Building):
 		pass
 	elif Player.inventory.has_item(building_ingredient) == false and Globals.debug_mode == false:
 		print("no required building item")
-		FeedBackLayer.show_message(str("Puudub ", building_ingredient.item_name, "."), true)
+		FeedBackLayer.show_message(str(tr("FEEDBACK_MISSING") + " ", tr(building_ingredient.name_key), "."), true)
 		return
 	else:
 		pass
