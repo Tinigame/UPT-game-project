@@ -76,6 +76,8 @@ func open(target_building):
 	for list in [inventory_item_list, input_list, output_list]:
 		if list and not list.item_activated.is_connected(on_container_item_activated):
 			list.item_activated.connect(on_container_item_activated.bind(list))
+		if list and not list.item_selected.is_connected(_on_inventory_item_selected):
+			list.item_selected.connect(_on_inventory_item_selected.bind(list))
 	
 	
 	recipe_item_list = recipe_tabs.get_current_tab_control()
@@ -201,14 +203,20 @@ func _on_recipe_selected(index: int, list: ItemList):
 		Player.handcraft_item(recipe)
 
 
+#should set the item
+func _on_inventory_item_selected(index: int, list: ItemList) -> void:
+	if not current_container.is_player_inventory:
+		return
 
-func _on_inventory_item_selected(index: int) -> void:
-	var current_selected_item : Item = inventory_item_list.get_item_metadata(index)
-	print("The selected item is: ", current_selected_item.item_name)
-	if current_container.is_player_inventory == true:
-		if current_selected_item.is_building == true:
-			Globals.selected_building = current_selected_item.building_resource
-			print("selected building: ", current_selected_item.item_name)
+	var data = list.get_item_metadata(index)
+	if data == null:
+		return
+
+	var item: Item = data["item"]
+#	var slot_index: int = data["slot_index"]
+	
+	if item.is_building == true:
+		Globals.selected_building = item.building_resource
 
 
 
@@ -252,12 +260,13 @@ func update_menu():
 
 
 	if current_container.name == "ContainerManager":
-		container_label.text = str(tr("UI_INVENTORY_LABEL") + " (", current_container.slot_free_space(0), "/", current_container.slots[0].capacity, " ", tr("UI_CONTAINER_FREE_SPACE") + ")")
-#		containerlabel_2.text = str(tr("UI_INVENTORY_LABEL") + " (", container.slot_free_space(0), "/", container.slots[0].capacity, " ", tr("UI_CONTAINER_FREE_SPACE") + ")")
-			
+		if current_container.slots.size() > 0:
+			container_label.text = tr("UI_INVENTORY_LABEL") + " (" + str(current_container.slot_free_space(0)) + "/" + str(current_container.slots[0].capacity) + " " + tr("UI_CONTAINER_FREE_SPACE") + ")"
+		else:
+			container_label.text = tr("UI_INVENTORY_LABEL") + " (" + str(current_container.slot_free_space(0)) + "/" + str(current_container.slot_free_space(0)) + " " + tr("UI_CONTAINER_FREE_SPACE") + ")"
+		
 	else:
-		container_label.text = str(tr("UI_CONTAINER_BUILDING") + " ",  current_container.name, " ", tr("UI_CONTAINER_LABEL_SOMETHING"))
-#		containerlabel_2.text = str(tr("UI_CONTAINER_BUILDING") + " ",  target_building.name, " ", tr("UI_CONTAINER_LABEL_SOMETHING"))
+		container_label.text = tr("UI_CONTAINER_BUILDING") + " " +  str(current_container.name) + " " + tr("UI_CONTAINER_LABEL_SOMETHING")
 	
 	
 	
