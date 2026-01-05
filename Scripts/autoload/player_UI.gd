@@ -21,6 +21,7 @@ var current_building = null
 
 func _ready() -> void:
 	self.hide()
+	
 	recipe_tabs.tab_changed.connect(_on_tab_container_tab_changed)
 	_connect_recipe_list_signals()
 	

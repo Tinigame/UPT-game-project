@@ -7,6 +7,7 @@ var recipes : = {
 }
 
 func _ready():
+	
 	_load_recipes_from("res://Resources/recipes")
 
 	for cat in recipes.keys():

@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://qg7mgeqdek0x"]
+[gd_scene load_steps=8 format=3 uid="uid://qg7mgeqdek0x"]
 
 [ext_resource type="Script" uid="uid://cxfymy4srn7bb" path="res://Scenes/playbutton.gd" id="1_28flt"]
+[ext_resource type="Script" uid="uid://d2cpwj3g0nlwg" path="res://Scripts/main_menu.gd" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://c03jf5xa0axaa" path="res://Assets/Textures/Eesti.png" id="3_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://c6vly42ssn4ul" path="res://Assets/Textures/English.png" id="4_n45e2"]
+[ext_resource type="Texture2D" uid="uid://boehdw36wqxyw" path="res://Assets/Textures/Eesti_pressed.png" id="4_opfnp"]
+[ext_resource type="Texture2D" uid="uid://bdlciwakor6rv" path="res://Assets/Textures/English_pressed.png" id="6_cp0ys"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xlc"]
+bg_color = Color(0.25828254, 0.2836502, 0.3202662, 1)
 
 [node name="MainMenu" type="CenterContainer"]
 anchors_preset = 15
@@ -8,21 +16,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_48xlc")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_48xlc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 891.0
+offset_top = 493.0
+offset_right = 1028.0
+offset_bottom = 586.0
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 text = "UPT project game"
 
-[node name="Playbutton" type="Button" parent="VBoxContainer"]
+[node name="Playbutton" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 text = "Play game"
 script = ExtResource("1_28flt")
 
-[node name="Tutorialbutton" type="Button" parent="VBoxContainer"]
+[node name="Tutorialbutton" type="Button" parent="CanvasLayer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Tutorial"
 
-[connection signal="pressed" from="VBoxContainer/Playbutton" to="VBoxContainer/Playbutton" method="_on_pressed"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="estonian" type="TextureButton" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("3_ce3w2")
+texture_pressed = ExtResource("4_opfnp")
+
+[node name="english" type="TextureButton" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("4_n45e2")
+texture_pressed = ExtResource("6_cp0ys")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Playbutton" to="CanvasLayer/VBoxContainer/Playbutton" method="_on_pressed"]

@@ -5,6 +5,7 @@ var items : Dictionary = {}
 
 
 func _ready():
+	
 	_load_items_from("res://Resources/items")
 
 	#for name in items.keys():
