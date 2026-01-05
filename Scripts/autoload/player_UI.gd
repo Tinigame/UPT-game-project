@@ -43,11 +43,11 @@ func open(target_building):
 	
 	if target_building.name == "ContainerManager":
 		container = target_building
-		container_label.text = str("Inventuur (", container.slot_free_space(0), "/", container.slots[0].capacity, " vaba kohta)")
+		container_label.text = str(tr("UI_INVENTORY_LABEL") + " (", container.slot_free_space(0), "/", container.slots[0].capacity, " ", tr("UI_CONTAINER_FREE_SPACE") + ")")
 		
 	else:
 		container = target_building.container_manager
-		container_label.text = str("Ehitise ",  target_building.name, " Konteiner")
+		container_label.text = str(tr("UI_CONTAINER_BUILDING") + " ",  target_building.name, " ", tr("UI_CONTAINER_LABEL_SOMETHING"))
 	
 	
 	current_container = container

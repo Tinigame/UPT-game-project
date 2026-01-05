@@ -3,3 +3,42 @@ INGREDIENTS,Koostisosad,Ingredients
 DISALLOWED_CRAFTERS,Sobimatud tootmismeetodid,Disallowed crafters
 PRODUCTS,Tooted,Products
 CRAFTING_TIME,Tootmisaeg,Crafting time
+,,
+ITEM_ASSEMBLER,Koostamismasin,Assembler
+ITEM_CHEMICAL_REACTOR,Keemiline reaktor,Chemical reactor
+ITEM_COAL_ORE,Süsi,Coal
+ITEM_CONVEYOR,Konveierilint,Conveyor
+ITEM_COPPER_ORE,Vasemaak,Copper ore
+ITEM_COPPER_WIRE,Vasktraat,Copper wire
+ITEM_CROSSER_BELT,Konveieriläbipääs,Crosser
+ITEM_ELECTRICAL_PARTS,Elektrikomponendid,Electrical parts
+ITEM_HULL_COMPONENT,Kerekomponendid,Hull components
+ITEM_IRON_GEAR,Raud hammasratas,Iron gear
+ITEM_IRON_ORE,Rauamaak,Iron ore
+ITEM_MECHANICAL_PARTS,Mehaanikaosad,Mechanical parts
+ITEM_MINING_DRILL,Kaevanduspuur,Mining drill
+ITEM_COPPER,Vask,Copper
+ITEM_IRON,Raud,Iron
+ITEM_SPLITTER,Jagaja,Splitter
+,,
+RECIPE_ASSEMBLER,Koostamismasin,Assembler
+RECIPE_CONVEYOR,Konveierilint,Conveyor
+RECIPE_COPPER_WIRE,Vasktraat,Copper wire
+RECIPE_CROSSER,Konveierläbipääs,Crosser
+RECIPE_ELECTRICAL_COMPONENTS,Elektrikomponendid,Electrical parts
+RECIPE_HULL_COMPONENTS,Kerekomponent,Hull components
+RECIPE_IRON_GEAR,Raud hammasratas,Iron gear
+RECIPE_MECHANICAL_PARTS,Mehaanikaosad,Mechanical parts
+RECIPE_MINING_DRILL,Kaevanduspuur,Mining drill
+RECIPE_PURIFY_COPPER,Vasemaagi puhastus,Purify copper
+RECIPE_PURIFY_IRON,Rauamaagi puhastus,Purify iron
+RECIPE_SPLITTER,Jagaja,Splitter
+,,
+CRAFTER_HANDCRAFT,Käsitsi meisterdamine,Handcraft
+CRAFTER_ASSEMBLER,Koostamismasin,Assembler
+CRAFTER_CHEMICAL_REACTOR,Keemiline reaktor,Chemical reactor
+,,
+UI_INVENTORY_LABEL,Inventuur,Inventory
+UI_CONTAINER_FREE_SPACE,vaba kohta,free space
+UI_CONTAINER_BUILDING,Ehitise,Building
+UI_CONTAINER_LABEL_SOMETHING,konteiner,container
