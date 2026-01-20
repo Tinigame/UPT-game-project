@@ -34,7 +34,7 @@ func _ready() -> void:
 	create_goal_billboard()
 	container_manager.ui_mode = "single"
 
-
+# Mida sa siit otsid?
 
 func create_goal_billboard():
 	var bilbboardimage = tier_1_item[0].item_sprite.get_image()
