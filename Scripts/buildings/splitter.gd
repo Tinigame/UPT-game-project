@@ -4,7 +4,7 @@ extends Node3D
 @export var forward_cell_offset: Vector3i
 var grid_position: Vector3i
 
-var cached_neighbor: Node3D = null
+var cached_outputs: Array[Node3D] = []
 
 var container_manager: ContainerManager
 var output_index := 0
@@ -60,25 +60,17 @@ func _on_space_changed(_has_space: bool) -> void:
 
 func _send_item(item: Item):
 	if !container_manager.has_item(item):
-		return # already removed or moved
-
-	var outputs := []
-	for offset in output_offsets:
-		var cell = grid_position + offset
-		if BuildingManager.occupied_cells.has(cell):
-			var neighbor = BuildingManager.occupied_cells[cell]
-			if neighbor.has_node("ContainerManager"):
-				outputs.append(neighbor)
-
-	if outputs.is_empty():
 		return
 
-	var num_outputs := outputs.size()
+	if cached_outputs.is_empty():
+		return
+
+	var num_outputs := cached_outputs.size()
 	var attempts := 0
 
 	while attempts < num_outputs:
-		var target_index = output_index % num_outputs
-		var target = outputs[target_index]
+		var target_index := output_index % num_outputs
+		var target := cached_outputs[target_index]
 		output_index += 1
 		attempts += 1
 
@@ -90,8 +82,24 @@ func _send_item(item: Item):
 				return
 
 
+
+
 func update_connections():
-	cached_neighbor = check_neighbor(forward_cell_offset)
+	cached_outputs.clear()
+
+	var current_grid_position = get_parent().grid_position
+
+	for offset in output_offsets:
+		var cell = current_grid_position + offset
+		if BuildingManager.occupied_cells.has(cell):
+			var neighbor = BuildingManager.occupied_cells[cell]
+			if neighbor.has_node("ContainerManager"):
+				cached_outputs.append(neighbor)
+	
+	var items = container_manager.get_items_in_slot(0)
+	if items.size() > 0:
+		_send_item(items[0])
+
 
 func check_neighbor(neighbor_position: Vector3i) -> Node3D:
 	if BuildingManager.occupied_cells.has(neighbor_position):

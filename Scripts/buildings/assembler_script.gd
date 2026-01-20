@@ -46,6 +46,8 @@ func set_recipe(recipe: Recipe) -> void:
 	#Validates slot counts
 	assert(recipe.recipe_ingredients.size() == input_slots.size(), "input_slots count must match number of ingredients")
 	assert(recipe.recipe_products.size() == output_slots.size(), "output_slots count must match number of products")
+	
+	BuildingManager.update_conveyor_neighbors()
 
 
 

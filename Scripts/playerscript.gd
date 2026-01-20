@@ -5,7 +5,7 @@ var tcamera: Camera3D
 const GRID_SIZE : int = 1
 const JUMP_VELOCITY : float = 5.0
 
-var move_speed : float = 5.0
+var move_speed : float = 10.0
 var mouse_sensitivity : float = 0.002
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
