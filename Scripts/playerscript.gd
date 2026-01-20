@@ -49,13 +49,13 @@ func _ready():
 	inventory.add_slot(1000, [])
 	
 	#adds conveyors to inventory
-	for x in range(30):
+	for x in range(60):
 		inventory.add_item_to_slot(preload("uid://bkeso58byrvis"), 0)
 	#adds drills to inventory
 	for x in range(5):
 		inventory.add_item_to_slot(preload("uid://dm6bu7txklg6r"), 0)
 	#adds assemblers to inventory
-	for x in range(5):
+	for x in range(10):
 		inventory.add_item_to_slot(preload("uid://c3mwgrehm27rk"), 0)
 	#adds splitters to inventory
 	for x in range(10):

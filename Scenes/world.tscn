@@ -1,9 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvlfsbayttnbq"]
+[gd_scene load_steps=11 format=3 uid="uid://cvlfsbayttnbq"]
 
 [ext_resource type="PackedScene" uid="uid://qg7mgeqdek0x" path="res://Scenes/main_menu.tscn" id="1_8j60k"]
 [ext_resource type="Script" uid="uid://4xjf73360oqy" path="res://Scripts/ore_generator.gd" id="3_8j60k"]
 [ext_resource type="Script" uid="uid://dtsxa10gk8wf5" path="res://Scenes/help.gd" id="3_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://moegk404igb4" path="res://Scenes/player_ui.tscn" id="5_5ukr8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8j60k"]
+font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_fo5ed"]
+font_size = 15
 
 [sub_resource type="Environment" id="Environment_a02cp"]
 background_energy_multiplier = 0.0
@@ -28,6 +34,118 @@ size = Vector2(1000, 1000)
 size = Vector3(1000, 1, 1000)
 
 [node name="World" type="Node3D"]
+
+[node name="help" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 18.0
+offset_right = 1908.0
+offset_bottom = 1061.0
+text = "press H for help / Vajuta H, et saada abi"
+script = ExtResource("3_fo5ed")
+
+[node name="CenterContainer" type="CenterContainer" parent="help"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="help/CenterContainer"]
+layout_mode = 2
+
+[node name="Tutorialtext ET" type="Label" parent="help/CenterContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Sinu eesmärk on luua vajalikke varuosi, et oma kosmoselaeva parandada.
+See eesmärk on nähtaval kosmoselaeva peal, et seda täita pead 
+konveierite abil vajalikke osi sinna sisestama.
+
+Et luua neid komponente pead ehitama tehase, mis iseenesest kaevandab
+ja rafineerib tooreid resursse, nagu raud, koostamismasinates.
+
+Ehitisi saab ehitada vajutades B nuppu, see paneb sind ülalvaates
+olevasse ehitusrežiimi. Ehitisi saab valida kas vajutades
+numbreid 1-5 või oma inventarist vajutades ehitiste peale.
+Inventari saab avada vajutades E nuppu.
+
+Vajutades backspace või vastava ehitise numbri peale saad
+eemaldada oma ehitise valiku. Kui sul pole ehitis valitud 
+ehitusrežiimis, saad ehitatud ehitiste peale vajutada, mis teeb
+nende konteineri lahti. Ehitise konteinerist saad võtta tooteid, või
+kui ehitis kasutab retsepte, saad seda määrata nende peale vajutades.
+
+Ehitised võtavad konveieritelt, või teistelt ehitistelt vastu tooteid
+igalt küljelt, kuid väljutavad neid ainult punasega märgitud kohast, mis
+on nähtaval ehitise ehitamisel. \"Jagaja\" ehitisel võib olla kuni 3 
+väljutuskohta.
+
+Sul on võimalik võtta ehitisest tooteid kui avad selle konteineri ning
+vajutad kaks korda toote peale. Sul on ka võimalik oma inventarist asju
+meisterdada nt konveiereid, kui sul on vajalikud koostisosad olemas.
+
+WASD - liikumine
+E - inventar
+ESC - sulge menüü
+SPACE - hüpe
+B - ehitusrežiimi sisse-/väljalülitus
+Vasak hiireklõps - ehita
+Parem hiireklõps - eemalda ehitis
+R - pööra päripäeva
+numbrid 1-5 - vali ehitis (valida saab ka inventarist)
+Backspace - tühista ehitise valik
+F4 - lahku mängust
+
+debug:
+pgup - populate containers
+pgdn - infinite building materials"
+label_settings = SubResource("LabelSettings_8j60k")
+
+[node name="Tutorialtext EN" type="Label" parent="help/CenterContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Your goal is to create the necessary spare parts to repair your spaceship.
+This objective is visible on the spaceship, to complete it, you must use
+conveyors to insert the required parts into it.
+
+To create these components, you need to build a factory that automatically
+mines and refines raw resources, such as iron, in assembly machines.
+
+Buildings can be constructed by pressing the B key, which switches you 
+into top-down build mode. Buildings can be selected either by pressing
+the number keys 1–5 or by clicking on buildings in your inventory. 
+The inventory can be opened by pressing the E key.
+
+By pressing Backspace or the corresponding building number, you can cancel your building selection.
+If you do not have a building selected in build mode, you can click on already 
+built structures to open their container.
+From a building’s container, you can take products, or if the building 
+uses recipes, you can assign them by clicking on them.
+
+Buildings accept items from conveyors or other buildings from any side, 
+but they only output items from the side marked in red, which is visible when placing the building.
+The “Splitter” building can have up to three output points.
+
+You can take products from a building by opening its container and double-clicking on the product. 
+You can also craft items from your inventory, such as conveyors, if you have the required ingredients.
+
+WASD – movement
+E – inventory
+ESC – close menu
+SPACE – jump
+B – toggle build mode
+Left mouse click – build
+Right mouse click – remove building
+R – rotate clockwise
+Numbers 1–5 – select building (can also be selected from inventory)
+Backspace – cancel building selection
+F4 – exit game
+
+Debug:
+Page Up – populate containers
+Page Down – infinite building materials
+"
+label_settings = SubResource("LabelSettings_fo5ed")
 
 [node name="MainMenu" parent="." instance=ExtResource("1_8j60k")]
 
@@ -59,85 +177,3 @@ shape = SubResource("BoxShape3D_a02cp")
 
 [node name="Player_UI" parent="." instance=ExtResource("5_5ukr8")]
 layer = -1
-
-[node name="help" type="Label" parent="."]
-offset_left = 2.0
-offset_top = 3.0
-offset_right = 125.0
-offset_bottom = 26.0
-text = "press H for help"
-script = ExtResource("3_fo5ed")
-
-[node name="CenterContainer" type="CenterContainer" parent="help"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -1.0
-offset_right = 1028.0
-offset_bottom = 519.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="help/CenterContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="help/CenterContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer ENG" type="VBoxContainer" parent="help/CenterContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="help/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer ENG"]
-layout_mode = 2
-text = "
-WASD - movement
-E - inventory
-esc - close menu
-space - jump
-B - toggle build mode
-Left mouse - build
-Right mouse - remove building
-R - rotate clockwise
-1-4 - select building (can also select from inventory)
-backspace - unselect building
-f4 - close game
-
-clicking on a recipe inside your own inventory crafts the item from your inventory
-clicking on a recipe inside a building sets the buildings recipe
-hovering over recipes shows their ingridients and products
-
-debug:
-pgup - populate containers
-pgdn - infinite building materials"
-
-[node name="Container" type="Container" parent="help/CenterContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(10, 0)
-layout_mode = 2
-
-[node name="VBoxContainer EE" type="VBoxContainer" parent="help/CenterContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="help/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer EE"]
-layout_mode = 2
-text = "
-WASD - liikumine
-E - inventuur
-esc - sulge menüü
-space - hüppamine
-B - ehitusrežiimi sisse-/väljalülitus
-Vasak hiir - ehita
-Parem hiir - eemalda ehitis
-R - pööra päripäeva
-1-4 - vali ehitis (valida saab ka inventarist)
-Backspace - tühista ehitise valik
-f4 - lahku mängust
-
-Klõpsates retseptil oma inventaris, valmistatakse ese inventarist
-Klõpsates retseptil ehitisest, määratakse ehitise retsept
-Retseptide peal hõljumine näitab nende koostisosi ja tooteid
-(gpt poolt tõlgitud)
-
-Eesmärk on nähtaval \"kosmoselaeva peal\""

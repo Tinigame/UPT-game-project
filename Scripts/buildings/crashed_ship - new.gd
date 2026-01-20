@@ -3,17 +3,17 @@ extends Node
 var container_manager : ContainerManager
 
 # hull component
-#var tier_1_item : Array = [preload("res://Resources/items/item_hull_component.tres")]
-var tier_1_item : Array = [preload("uid://dnx2ktbw4m5t0")]
-#var tier_1_amount : int = 25
-var tier_1_amount : int = 1
+var tier_1_item : Array = [preload("res://Resources/items/item_hull_component.tres")]
+#var tier_1_item : Array = [preload("uid://dnx2ktbw4m5t0")]
+var tier_1_amount : int = 25
+#var tier_1_amount : int = 1
 var tier_1_completed : bool = false
 
 # electrical components
-#var tier_2_item : Array = [preload("uid://ddlws1uul1ugp")]
-var tier_2_item : Array = [preload("uid://bwlfgu77hlfb")]
-#var tier_2_amount : int = 20
-var tier_2_amount : int = 2
+var tier_2_item : Array = [preload("uid://ddlws1uul1ugp")]
+#var tier_2_item : Array = [preload("uid://bwlfgu77hlfb")]
+var tier_2_amount : int = 20
+#var tier_2_amount : int = 2
 var tier_2_completed : bool = false
 
 
@@ -37,10 +37,10 @@ func _ready() -> void:
 
 
 func create_goal_billboard():
-	#var bilbboardimage = preload("uid://88ef2wmelerv").get_image()
-	#bilbboardimage.resize(64, 64, Image.INTERPOLATE_NEAREST)
-	#var bilbtext = ImageTexture.create_from_image(bilbboardimage)
-	billboard.texture = tier_1_item[0].item_sprite
+	var bilbboardimage = tier_1_item[0].item_sprite.get_image()
+	bilbboardimage.resize(64, 64, Image.INTERPOLATE_NEAREST)
+	var bilbtext = ImageTexture.create_from_image(bilbboardimage)
+	billboard.texture = bilbtext
 	billboard.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 	billboard.position = self.position + Vector3(0, 3, 0)
 	

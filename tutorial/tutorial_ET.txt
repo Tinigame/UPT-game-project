@@ -1,0 +1,42 @@
+Sinu eesmärk on luua vajalikke varuosi, et oma kosmoselaeva parandada.
+See eesmärk on nähtaval kosmoselaeva peal, et seda täita pead 
+konveierite abil vajalikke osi sinna sisestama.
+
+Et luua neid komponente pead ehitama tehase, mis iseenesest kaevandab
+ja rafineerib tooreid resursse, nagu raud, koostamismasinates.
+
+Ehitisi saab ehitada vajutades B nuppu, see paneb sind ülalvaates
+olevasse ehitusrežiimi. Ehitisi saab valida kas vajutades
+numbreid 1-5 või oma inventarist vajutades ehitiste peale.
+Inventari saab avada vajutades E nuppu.
+
+Vajutades backspace või vastava ehitise numbri peale saad
+eemaldada oma ehitise valiku. Kui sul pole ehitis valitud 
+ehitusrežiimis, saad ehitatud ehitiste peale vajutada, mis teeb
+nende konteineri lahti. Ehitise konteinerist saad võtta tooteid, või
+kui ehitis kasutab retsepte, saad seda määrata nende peale vajutades.
+
+Ehitised võtavad konveieritelt, või teistelt ehitistelt vastu tooteid
+igalt küljelt, kuid väljutavad neid ainult punasega märgitud kohast, mis
+on nähtaval ehitise ehitamisel. "Jagaja" ehitisel võib olla kuni 3 
+väljutuskohta.
+
+Sul on võimalik võtta ehitisest tooteid kui avad selle konteineri ning
+vajutad kaks korda toote peale. Sul on ka võimalik oma inventarist asju
+meisterdada nt konveiereid, kui sul on vajalikud koostisosad olemas.
+
+WASD - liikumine
+E - inventar
+ESC - sulge menüü
+SPACE - hüpe
+B - ehitusrežiimi sisse-/väljalülitus
+Vasak hiireklõps - ehita
+Parem hiireklõps - eemalda ehitis
+R - pööra päripäeva
+numbrid 1-5 - vali ehitis (valida saab ka inventarist)
+Backspace - tühista ehitise valik
+F4 - lahku mängust
+
+debug:
+pgup - populate containers
+pgdn - infinite building materials

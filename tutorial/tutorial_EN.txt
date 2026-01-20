@@ -1,0 +1,40 @@
+Your goal is to create the necessary spare parts to repair your spaceship.
+This objective is visible on the spaceship, to complete it, you must use
+conveyors to insert the required parts into it.
+
+To create these components, you need to build a factory that automatically
+mines and refines raw resources, such as iron, in assembly machines.
+
+Buildings can be constructed by pressing the B key, which switches you 
+into top-down build mode. Buildings can be selected either by pressing
+the number keys 1–5 or by clicking on buildings in your inventory. 
+The inventory can be opened by pressing the E key.
+
+By pressing Backspace or the corresponding building number, you can cancel your building selection.
+If you do not have a building selected in build mode, you can click on already 
+built structures to open their container.
+From a building’s container, you can take products, or if the building 
+uses recipes, you can assign them by clicking on them.
+
+Buildings accept items from conveyors or other buildings from any side, 
+but they only output items from the side marked in red, which is visible when placing the building.
+The “Splitter” building can have up to three output points.
+
+You can take products from a building by opening its container and double-clicking on the product. 
+You can also craft items from your inventory, such as conveyors, if you have the required ingredients.
+
+WASD – movement
+E – inventory
+ESC – close menu
+SPACE – jump
+B – toggle build mode
+Left mouse click – build
+Right mouse click – remove building
+R – rotate clockwise
+Numbers 1–5 – select building (can also be selected from inventory)
+Backspace – cancel building selection
+F4 – exit game
+
+Debug:
+Page Up – populate containers
+Page Down – infinite building materials
