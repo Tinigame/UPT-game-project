@@ -19,6 +19,8 @@ var inventory
 var crafting_module = preload("res://Scripts/buildings/pocket_assembler_script.gd")
 var crafter_node : Node3D
 
+var camera_moveable = true
+
 func _ready():
 	camera = $"FP camera"
 	tcamera = $"Top camera"
@@ -67,6 +69,10 @@ func _ready():
 
 #Camera and movement rotation
 func _input(event):
+	
+	if camera_moveable == false:
+		return
+	
 	if event is InputEventMouseMotion and Globals.buildmode == false:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
@@ -257,12 +263,22 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("open_inventory") and inventory_open == false:
 		PlayerUI.open(inventory)
 		inventory_open = true
+		if Globals.buildmode == false:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			camera_moveable = false
+			
 	elif Input.is_action_just_pressed("open_inventory") and inventory_open == true:
 		inventory_open = false
 		PlayerUI.close_menu()
+		camera_moveable = true
+		if Globals.buildmode == false:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if Input.is_action_just_pressed("close_menu"):
 		inventory_open = false
 		PlayerUI.close_menu()
+		camera_moveable = true
+		if Globals.buildmode == false:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 	player_movement()

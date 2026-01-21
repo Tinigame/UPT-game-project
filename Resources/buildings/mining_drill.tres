@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dopvvvjs051af" path="res://Scripts/buildings/mining_drill_script.gd" id="1_bmi6u"]
 [ext_resource type="Script" uid="uid://dbtoj443lgn6a" path="res://Scripts/resource base scripts/building_resource_script.gd" id="1_bvtuc"]
-[ext_resource type="ArrayMesh" uid="uid://c5odku7jrcjlv" path="res://Assets/Models/mining_drill_2.obj" id="1_yinh4"]
+[ext_resource type="ArrayMesh" uid="uid://bswoda6jimbro" path="res://Assets/Models/mining_drill_improved.obj" id="1_yinh4"]
 
 [resource]
 script = ExtResource("1_bvtuc")

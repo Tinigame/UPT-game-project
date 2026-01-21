@@ -69,8 +69,10 @@ func open(target_building):
 			"none":
 				return
 			"single":
+				container_label = $MarginContainer/PanelContainer/HBoxContainer/Containerpanel/VSplitContainer/Containerlabel
 				show_single_container(container)
 			"io":
+				container_label = $MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/Containerlabel
 				show_io_container(container)
 
 	for list in [inventory_item_list, input_list, output_list]:
@@ -105,7 +107,7 @@ func open(target_building):
 		
 		
 		
-		var tooltip_text : String = recipe.name_key + "\n" \
+		var tooltip_text : String = tr(recipe.name_key) + "\n" \
 			+ tr("INGREDIENTS") + ":\n" + ingredients_text \
 			+ tr("PRODUCTS") + ":\n" + products_text \
 			+ tr("CRAFTING_TIME") + ": " + str(recipe.crafting_time) + "s\n" \
@@ -253,8 +255,10 @@ func update_menu():
 			"none":
 				return
 			"single":
+				container_label = $MarginContainer/PanelContainer/HBoxContainer/Containerpanel/VSplitContainer/Containerlabel
 				show_single_container(current_container)
 			"io":
+				container_label = $MarginContainer/PanelContainer/HBoxContainer/IOContainerPanel/VSplitContainer/Containerlabel
 				show_io_container(current_container)
 
 
@@ -301,7 +305,7 @@ func update_menu():
 		
 		
 		
-		var tooltip_text : String = recipe.name_key + "\n" \
+		var tooltip_text : String = tr(recipe.name_key) + "\n" \
 			+ tr("INGREDIENTS") + ":\n" + ingredients_text \
 			+ tr("PRODUCTS") + ":\n" + products_text \
 			+ tr("CRAFTING_TIME") + ": " + str(recipe.crafting_time) + "s\n" \

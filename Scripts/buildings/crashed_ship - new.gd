@@ -45,7 +45,7 @@ func create_goal_billboard():
 	billboard.position = self.position + Vector3(0, 3, 0)
 	
 	text.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
-	text.text = str("Eesmärk: ", tier_1_amount, " " , tr(tier_1_item[0].name_key))
+	text.text = str(tr("GOAL_TEXT"), tier_1_amount, " " , tr(tier_1_item[0].name_key))
 	text.position = self.position + Vector3(0, 2, 0)
 	
 	add_child(billboard)
@@ -60,7 +60,7 @@ func update_goal_billboard():
 	var bilbtext = ImageTexture.create_from_image(bilbboardimage)
 	
 	
-	text.text = str("Eesmärk: ", tier_2_amount, " " , tr(tier_2_item[0].name_key))
+	text.text = str(tr("GOAL_TEXT"), tier_2_amount, " " , tr(tier_2_item[0].name_key))
 	billboard.texture = bilbtext
 
 
@@ -82,6 +82,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if tier_1_completed == true and container_manager.count_item_in_slot(tier_2_item[0], 0) >= tier_2_amount:
 		tier_2_completed = true
-		text.text = "Eesmärk täidetud!"
+		text.text = tr("GOAL_COMPLETED")
 		billboard.texture = preload("uid://dir0exoj5ej8o")
 		Globals.speedrun_timer_started = false

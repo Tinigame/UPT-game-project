@@ -62,3 +62,6 @@ BUILDING_SPLITTER,Jagaja,Splitter
 ,,
 CRAFT_LACKING_INGREDIENTS,Koostisosad puuduvad.,Lacking ingredients.
 CRAFT_UNCRAFTABLE_BY_HAND,Seda retsepti ei saa käsitsi valmistada.,Uncraftable by hand.
+,,
+GOAL_TEXT,Eesmärk: ,Goal: 
+GOAL_COMPLETED,Eesmärk täidetud!,Goal completed!
